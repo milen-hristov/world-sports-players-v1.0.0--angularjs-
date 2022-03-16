@@ -24,11 +24,11 @@
     letter-spacing: 3px;
 }
 
-.player-details h2{
+.player-details h2 {
     color: var(--main-color);
 }
 
-.player-details h3{
+.player-details h3 {
     color: var(--secondary-color);
 }
 
@@ -96,3 +96,35 @@
     font-size: 13px;
     margin-left: 3px;
 }
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttons .btn-back,
+.buttons .btn-edit,
+.buttons .btn-delete {
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 15px;
+    margin: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.buttons .btn-back {
+    background-color: var(--text-color);
+}
+
+.buttons .btn-delete {
+    background-color: var(--danger-color);
+}
+
+.buttons .btn-edit {
+    background-color: var(--neutral-color);
+}
+
