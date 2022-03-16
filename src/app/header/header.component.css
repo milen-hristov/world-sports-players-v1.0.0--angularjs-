@@ -1,0 +1,46 @@
+.navigation {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;
+    gap: 30%;
+    background-color: #F7F7F7;
+}
+
+.navigation-logo {
+    margin-left: 100px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.fas.fa-globe-americas {
+    margin: 5px;
+    color: #008CBA;
+}
+
+.navigation-logo span {
+    color: #008CBA;
+}
+
+.navigation ul {
+    display: flex;
+
+}
+
+.navigation ul li {
+    list-style: none;
+    margin: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+
+}
+
+.navigation .active {
+    border-bottom: 2px solid #008CBA;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #262B2F;
+}
