@@ -33,7 +33,14 @@
     font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
+    transition: transform .25s cubic-bezier(.7, .98, .86, .98), box-shadow .25s cubic-bezier(.7, .98, .86, .98);
+    cursor: pointer;
 }
+
+.navigation ul li:hover {
+    transform: scale(1.1);
+}
+
 
 .navigation .active {
     border-bottom: 2px solid var(--main-color);
