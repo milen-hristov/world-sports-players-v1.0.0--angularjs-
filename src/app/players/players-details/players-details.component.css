@@ -44,7 +44,7 @@
 
 .player-board-profile {
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-columns: 1fr 1fr 3fr;
     align-items: center;
     padding: 10px 30px 10px 10px;
     overflow: hidden;
@@ -55,10 +55,10 @@
     background-color: #fff;
 }
 
-.player-board-profile:hover {
+/* .player-board-profile:hover {
     transform: scale(1.05);
     box-shadow: 0 9px 47px 11px rgba(51, 51, 51, 0.18);
-}
+} */
 
 .player-board-picture {
     max-width: 100%;
@@ -76,10 +76,10 @@
 }
 
 .player-board-value {
-    color: var(--main-color);
+    color: var(--text-color);
     font-weight: 700;
     font-size: 34px;
-    text-align: right;
+    text-align: justify;
 }
 
 .player-board-profile>span {
