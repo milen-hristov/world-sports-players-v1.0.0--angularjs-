@@ -2,73 +2,16 @@
     <h2>Player<span>List</span></h2>
     <section class="players-wrapper">
 
-        <article class="player-card">
+        <article class="player-card" *ngFor="let player of players">
             <article class="player-card-image">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Ivet_Lalova_by_Augustas_Didzgalvis.jpg"
-                    alt="player One">
+                <img [src]="player.imagePath" alt="{{player.name}}">
             </article>
             <article class="player-card-details-wrapper">
-                <h3>Player Name</h3>
-                <p>Sport</p>
-                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et dolore magna aliqua.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et dolore magna aliqua.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et dolore magna aliqua.
-                </p> -->
-                <!-- <button>Read More</button> -->
-            </article>
-        
-        </article>
-        <article class="player-card">
-            <article class="player-card-image">
-                <img src="https://phantom-marca.unidadeditorial.es/14cc0543ea4d71a07d7d254da3b547df/resize/660/f/webp/assets/multimedia/imagenes/2022/02/26/16458934615953.jpg"
-                    alt="player Two">
-            </article>
-            <article class="player-card-details-wrapper">
-                <h3>Player Name</h3>
-                <p>Sport</p>
-                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et dolore magna aliqua.
-                </p> -->
-                <!-- <button>Read More</button> -->
-            </article>
-
-        </article>
-        <article class="player-card">
-            <article class="player-card-image">
-                <img src="https://cdn-7.motorsport.com/images/mgl/24vA3r46/s8/max-verstappen-red-bull-racing-1.jpg"
-                    alt="player Three">
-            </article>
-            <article class="player-card-details-wrapper">
-                <h3>Player Name</h3>
-                <p>Sport</p>
-                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et dolore magna aliqua.
-                </p> -->
+                <h3>{{player.name}}</h3>
+                <p>{{player.sport}}</p>
+                <p>{{player.description}}</p>
                 <!-- <button>Read More</button> -->
             </article>
         </article>
-        <article class="player-card">
-            <article class="player-card-image">
-                <img src="https://static.dw.com/image/60366554_303.jpg" alt="player Three">
-            </article>
-            <article class="player-card-details-wrapper">
-                <h3>Player Name</h3>
-                <p>Sport</p>
-                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et dolore magna aliqua.
-                </p> -->
-                <!-- <button>Read More</button> -->
-            </article>
-        </article>
-
     </section>
 </section>
