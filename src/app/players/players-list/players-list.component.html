@@ -2,7 +2,7 @@
     <h2>Player<span>List</span></h2>
     <section class="players-wrapper">
 
-        <article class="player-card" *ngFor="let player of players">
+        <article class="player-card" *ngFor="let player of players; let i = index" [routerLink]="[i]">
             <article class="player-card-image">
                 <img [src]="player.imagePath" alt="{{player.name}}">
             </article>

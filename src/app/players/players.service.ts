@@ -1,6 +1,9 @@
+import { EventEmitter } from "@angular/core";
+
 import { Player } from "./player.model";
 
 export class PlayersService {
+    selectedPlayer = new EventEmitter<Player>();
 
     private players: Player[] = [
         new Player('Ivet Lalova',
