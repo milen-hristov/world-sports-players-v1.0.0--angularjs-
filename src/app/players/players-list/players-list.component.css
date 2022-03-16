@@ -23,8 +23,8 @@
     transform: scale(1);
     /* -webkit-filter: grayscale(100%);
 	filter: grayscale(100%); */
-	-webkit-transition: .3s ease-in-out;
-	transition: .3s ease-in-out;
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
 }
 
 .player-card img:hover {
@@ -32,6 +32,11 @@
     transform: scale(1.05);
     /* -webkit-filter: grayscale(0);
 	filter: grayscale(0); */
+}
+
+.player-name h3 {
+    color: var(--main-color);
+    font-weight: bold;
 }
 
 .players h2 {
@@ -42,20 +47,25 @@
     text-align: center;
 }
 
-.players span {
+.players h2>span {
     color: var(--main-color);
 }
 
-.player-card h3 {
-    padding: 5% 0;
-    text-align: justify;
-    color: var(--secondary-color);
+.player-card-details-wrapper .player-name {
+    color: var(--main-color);
 }
 
-.player-card p {
+.player-card-details-wrapper .player-desc {
     padding: 2% 0;
+    text-align: center;
+    color: var(--text-color);
+    font-style: italic;
+}
+
+.player-card-details-wrapper .player-sport {
     text-align: justify;
     color: var(--text-color);
+    font-weight: bold;
 }
 
 .player-card-details-wrapper {
