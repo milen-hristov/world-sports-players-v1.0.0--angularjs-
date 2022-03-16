@@ -60,7 +60,7 @@
     padding: 2% 0;
     text-align: center;
     color: var(--text-color);
-    font-style: italic;
+    font-size: 14px;
 }
 
 .player-card-details-wrapper .player-sport {
