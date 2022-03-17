@@ -22,6 +22,7 @@ const routes: Routes = [
       { path: '', component: PlayersListComponent },
       { path: 'create', component: PlayersCreateComponent },
       { path: ':id', component: PlayersDetailsComponent },
+      { path: ':id/edit', component: PlayersCreateComponent },
     ]
   },
 ];

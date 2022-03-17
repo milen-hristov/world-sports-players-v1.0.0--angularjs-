@@ -28,7 +28,7 @@ export class PlayersService {
             '/assets/images/novak.jpg',
             'Serbia', '	22 May 1987', '20 Grand Slam titles',
             true, 'Tennis'),
-            new Player('Ivet Lalova',
+        new Player('Ivet Lalova',
             'A Bulgarian athlete who specialises in the 100 metres and 200 metres sprint events',
             '/assets/images/ivet.jpg',
             'Bulgaria', '18 May 1984', 'European Championships - 1 Golden Medal, 2 Silver Medals',
@@ -48,7 +48,7 @@ export class PlayersService {
             '/assets/images/novak.jpg',
             'Serbia', '	22 May 1987', '20 Grand Slam titles',
             true, 'Tennis'),
-            new Player('Ivet Lalova',
+        new Player('Ivet Lalova',
             'A Bulgarian athlete who specialises in the 100 metres and 200 metres sprint events',
             '/assets/images/ivet.jpg',
             'Bulgaria', '18 May 1984', 'European Championships - 1 Golden Medal, 2 Silver Medals',
@@ -68,7 +68,7 @@ export class PlayersService {
             '/assets/images/novak.jpg',
             'Serbia', '	22 May 1987', '20 Grand Slam titles',
             true, 'Tennis'),
-            
+
     ];
 
     getPlayers() {
@@ -81,6 +81,11 @@ export class PlayersService {
 
     addPlayer(player: Player) {
         this.players.push(player);
+        this.playersChanged.next(this.players.slice());
+    }
+
+    updatePlayer(index: number, updatedPlayer: Player) {
+        this.players[index] = updatedPlayer;
         this.playersChanged.next(this.players.slice());
     }
 }

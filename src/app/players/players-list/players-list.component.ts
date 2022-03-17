@@ -16,8 +16,6 @@ export class PlayersListComponent implements OnInit {
   constructor(private playersService: PlayersService) { }
 
   ngOnInit() {
-    console.log(this.players)
-    
     this.subscription = this.playersService.playersChanged
       .subscribe(
         (players: Player[]) => {

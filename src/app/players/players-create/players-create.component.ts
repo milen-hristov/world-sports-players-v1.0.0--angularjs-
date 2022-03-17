@@ -23,14 +23,17 @@ export class PlayersCreateComponent implements OnInit {
     this.route.params
       .subscribe((params: Params) => {
         this.id = Number(params['id']);
-        // this.editMode = params['id'] != null;
+        this.editMode = params['id'] != null;
         this.initForm();
       });
   }
 
   onSubmit() {
-    console.log(this.playerForm);
-    this.playersService.addPlayer(this.playerForm.value);
+    if (this.editMode) {
+      this.playersService.updatePlayer(this.id, this.playerForm.value);
+    } else {
+      this.playersService.addPlayer(this.playerForm.value);
+    }
     this.router.navigate(['../'], {relativeTo: this.route});
   }
 
@@ -41,8 +44,20 @@ export class PlayersCreateComponent implements OnInit {
     let playerImg = '';
     let playerDOB = '';
     let playerAchievements = '';
-    let playerActive = '';
+    let playerActive = false;
     let playerSport = '';
+
+    if (this.editMode) {
+      const player = this.playersService.getPlayer(this.id);
+      playerName = player.name;
+      playerCountry = player.country;
+      playerDesc = player.description;
+      playerImg = player.imagePath;
+      playerDOB = player.dob;
+      playerAchievements = player.achievements;
+      playerActive = player.active;
+      playerSport = player.sport;
+    }
 
     this.playerForm = new FormGroup({
       'name': new FormControl(playerName),

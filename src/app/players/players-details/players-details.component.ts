@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Player } from '../player.model';
 import { PlayersService } from '../players.service';
@@ -13,9 +13,10 @@ export class PlayersDetailsComponent implements OnInit {
   player: Player;
   id: number;
 
-
   constructor(private playersService: PlayersService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private router: Router) {
+  }
 
   ngOnInit() {
     this.route.params
@@ -25,5 +26,9 @@ export class PlayersDetailsComponent implements OnInit {
           this.player = this.playersService.getPlayer(this.id);
         }
       );
+  }
+
+  onEditPlayer() {
+    this.router.navigate(['edit'], { relativeTo: this.route });
   }
 }
