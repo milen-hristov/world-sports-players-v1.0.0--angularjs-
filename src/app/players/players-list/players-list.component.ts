@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs/internal/Subscription';
 import { map } from 'rxjs/operators';
 
 import { PlayersService } from '../players.service';
@@ -12,21 +11,11 @@ import { Player } from '../player.model';
 })
 export class PlayersListComponent implements OnInit {
   players: Player[] | undefined;
-  subscription: Subscription;
 
   constructor(private playersService: PlayersService) { }
 
   ngOnInit() {
-    // this.subscription = this.playersService.playersChanged
-    //   .subscribe(
-    //     (players: Player[]) => {
-    //       this.players = players;
-    //     }
-    //   );
-    // this.players = this.playersService.getPlayers();
-
     this.fetchPlayers();
-
   }
 
   fetchPlayers() {

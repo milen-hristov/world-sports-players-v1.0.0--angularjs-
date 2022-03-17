@@ -22,7 +22,6 @@ export class PlayersDetailsComponent implements OnInit {
     this.route.params
       .subscribe(
         (params: Params) => {
-          // this.id = Number(params['id']);
           this.id = params['id'];
           this.playersService.getPlayer(this.id).subscribe((player) => {
             this.player = player;
