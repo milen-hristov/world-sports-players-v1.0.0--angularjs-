@@ -1,0 +1,135 @@
+.player {
+    padding: 2% 5%;
+    display: flex;
+    gap: 1%;
+    align-items: center;
+    justify-content: center;
+  
+}
+
+.player-image {
+    width: 40%;
+}
+
+.player-image img {
+    width: 100%;
+    border-radius: 84% 16% 83% 17% / 12% 87% 13% 88%;
+}
+
+.player-details {
+    width: 60%;
+}
+
+.player-details h2,
+.player-details h3 {
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.player-details h2 {
+    color: var(--main-color);
+}
+
+.player-details h3 {
+    color: var(--secondary-color);
+}
+
+.player-details-notes {
+    padding: 2%;
+    text-align: center;
+}
+
+
+.player-board {
+    width: 96%;
+    border-radius: 12px;
+}
+
+.player-board-profiles {
+    border-radius: 0 0 12px 12px;
+    padding: 15px 15px 20px;
+    display: grid;
+    row-gap: 8px;
+}
+
+.player-board-profile {
+    display: grid;
+    grid-template-columns: 1fr 1fr 3fr;
+    align-items: center;
+    padding: 10px 30px 10px 10px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 7px -1px rgba(51, 51, 51, 0.23);
+    /* cursor: pointer; */
+    transition: transform .25s cubic-bezier(.7, .98, .86, .98), box-shadow .25s cubic-bezier(.7, .98, .86, .98);
+    background-color: #fff;
+    margin: 2%;
+}
+
+/* .player-board-profile:hover {
+    transform: scale(1.05);
+    box-shadow: 0 9px 47px 11px rgba(51, 51, 51, 0.18);
+} */
+
+.player-board-picture {
+    max-width: 100%;
+    width: 60px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px #ebeef3, 0 0 0 22px #f3f4f6;
+}
+
+.player-board-name {
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 0.64px;
+    margin-left: 12px;
+}
+
+.player-board-value {
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 34px;
+    text-align: justify;
+}
+
+.player-board-profile>label,
+.player-board-profile>input,
+.player-board-profile>textarea  {
+    opacity: .8;
+    font-weight: 600;
+    font-size: 16px;
+    margin-left: 3px;
+}
+
+.player-board-profile>textarea,
+.player-board-profile>input {
+    padding: 5%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttons .btn-back,
+.buttons .btn-save {
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 15px;
+    margin: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.buttons .btn-back {
+    background-color: var(--text-color);
+}
+
+.buttons .btn-save {
+    background-color: var(--safe-color);
+}

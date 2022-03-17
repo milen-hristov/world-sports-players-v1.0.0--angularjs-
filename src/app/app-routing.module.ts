@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PlayersDetailsComponent } from './players/players-details/players-details.component';
 import { PlayersListComponent } from './players/players-list/players-list.component';
 import { PlayersComponent } from './players/players.component';
+import { PlayersCreateComponent } from './players/players-create/players-create.component';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: '/players', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   {
     path: 'players', component: PlayersComponent, children: [
       { path: '', component: PlayersListComponent },
+      { path: 'create', component: PlayersCreateComponent },
       { path: ':id', component: PlayersDetailsComponent },
     ]
   },

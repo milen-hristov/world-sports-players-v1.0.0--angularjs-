@@ -1,0 +1,113 @@
+<p>players-create works!</p>
+<main class="player">
+    <form>
+        <article class="player-board-profile">
+            <img src="/assets/images/background.jpg" alt="Item" class="player-board-picture">
+            <label class="player-board-name" for="name">Name</label>
+            <input type="text" id="name" class="player-board-value" formControlName="name">
+        </article>
+        <article class="player-board-profile">
+            <img src="/assets/images/background.jpg" alt="Item" class="player-board-picture">
+            <label class="player-board-name" for="sport">Sport</label>
+            <input type="text" id="sport" class="player-board-value" formControlName="sport">
+        </article>
+
+        <article class="player-board-profile">
+            <img src="/assets/images/background.jpg" alt="Item" class="player-board-picture">
+            <label class="player-board-name" for="country">Country</label>
+            <input type="text" id="country" class="player-board-value" formControlName="country">
+        </article>
+
+        <article class="player-board-profile">
+            <img src="/assets/images/background.jpg" alt="Item" class="player-board-picture">
+            <label class="player-board-name" for="imagePath">Image URL</label>
+            <input type="text" id="imagePath" class="player-board-value" formControlName="imagePath">
+        </article>
+
+        <article class="player-board-profile">
+            <img src="/assets/images/background.jpg" alt="Item" class="player-board-picture">
+            <label class="player-board-name" for="dob">Date of Birth</label>
+            <input type="text" id="dob" class="player-board-value" formControlName="dob">
+        </article>
+
+        <article class="player-board-profile">
+            <img src="/assets/images/background.jpg" alt="Item" class="player-board-picture">
+            <label class="player-board-name" for="achievements">Achievements</label>
+            <textarea type="text" id="achievements" class="player-board-value" formControlName="achievements"
+                rows="7"></textarea>
+        </article>
+
+        <article class="player-board-profile">
+            <img src="/assets/images/background.jpg" alt="Item" class="player-board-picture">
+            <label class="player-board-name" for="description">Description</label>
+            <textarea type="text" id="description" class="player-board-value" formControlName="description"
+                rows="7"></textarea>
+        </article>
+
+        <article class="player-board-profile">
+            <img src="/assets/images/background.jpg" alt="Item" class="player-board-picture">
+            <label class="player-board-name" for="status">Status</label>
+            <input type="text" id="status" class="player-board-value" formControlName="status">
+        </article>
+
+        <article class="buttons">
+            <section>
+                <button class="btn-back" routerLink="/players" >Back</button>
+            </section>
+            <section>
+                <button class="btn-save">Save</button>
+            </section>
+        </article>    
+    </form>
+
+   
+
+    <!-- <section class="player-image">
+        <img src="{{player.imagePath}}" alt="{{player.name}}">
+    </section>
+    <section class="player-details">
+        <h2>{{player.name}}</h2>
+        <h3>{{player.sport}}</h3>
+
+        <p class="player-details-notes">{{player.description}}</p>
+
+        <article class="player-board">
+            <section class="player-board-profiles">
+                <article class="player-board-profile">
+                    <img src="https://i.ibb.co/tBs7P7F/32-3.jpg" alt="Item" class="player-board-picture">
+                    <span class="player-board-name">Country</span>
+                    <span class="player-board-value">{{player.country}}<span></span></span>
+                </article>
+
+                <article class="player-board-profile">
+                    <img src="https://i.ibb.co/tBs7P7F/32-3.jpg" alt="Item" class="player-board-picture">
+                    <span class="player-board-name">Date of Birth</span>
+                    <span class="player-board-value">{{player.dob}}<span></span></span>
+                </article>
+
+                <article class="player-board-profile">
+                    <img src="https://i.ibb.co/tBs7P7F/32-3.jpg" alt="Item" class="player-board-picture">
+                    <span class="player-board-name">Achievements</span>
+                    <span class="player-board-value">{{player.achievements}}<span></span></span>
+                </article>
+
+                <article class="player-board-profile">
+                    <img src="https://i.ibb.co/tBs7P7F/32-3.jpg" alt="Item" class="player-board-picture">
+                    <span class="player-board-name">Status</span>
+                    <span class="player-board-value">{{player.active == true ? 'Active' : 'Inactive'}}</span>
+                </article>
+
+                <article class="buttons">
+                    <section>
+                        <button class="btn-delete">Delete</button>
+                        <button class="btn-edit">Edit</button>
+                    </section>
+                    <section>
+                        <button class="btn-back" routerLink="/players" >Back</button>
+                    </section>
+                </article>
+
+            </section>
+        </article>
+    </section> -->
+</main>
