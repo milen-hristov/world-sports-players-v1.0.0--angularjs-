@@ -5,6 +5,7 @@ import { PlayersDetailsComponent } from './players/players-details/players-detai
 import { PlayersListComponent } from './players/players-list/players-list.component';
 import { PlayersComponent } from './players/players.component';
 import { PlayersCreateComponent } from './players/players-create/players-create.component';
+import { AuthComponent } from './auth/auth.component';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: '/players', pathMatch: 'full' },
@@ -25,6 +26,7 @@ const routes: Routes = [
       { path: ':id/edit', component: PlayersCreateComponent },
     ]
   },
+  { path: 'auth', component: AuthComponent }
 ];
 
 

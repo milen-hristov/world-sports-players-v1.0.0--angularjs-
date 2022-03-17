@@ -11,6 +11,7 @@ import { PlayersListComponent } from './players/players-list/players-list.compon
 import { PlayersDetailsComponent } from './players/players-details/players-details.component';
 import { PlayersService } from './players/players.service';
 import { PlayersCreateComponent } from './players/players-create/players-create.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PlayersCreateComponent } from './players/players-create/players-create.
     PlayersComponent,
     PlayersListComponent,
     PlayersDetailsComponent,
-    PlayersCreateComponent
+    PlayersCreateComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,

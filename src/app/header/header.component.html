@@ -1,12 +1,14 @@
 <header>
     <nav class="navigation">
 
-        <p class="navigation-logo"> <i class="fas fa-globe-americas"></i>Sports<span>Players</span></p>
+        <p class="navigation-logo"><a routerLink="/players"><i
+                    class="fas fa-globe-americas"></i>Sports<span>Players</span></a></p>
         <ul>
-            <li routerLinkActive="active"><a routerLink="/players">Home</a></li>
-            <li routerLinkActive="active"><a routerLink="1">Login</a></li>
-            <li routerLinkActive="active"><a routerLink="2">Register</a></li>
-            <li routerLinkActive="active"><a routerLink="/players/create">Create</a></li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/players">Home</a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/auth">Login</a></li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a
+                    routerLink="/players/create">Create</a></li>
         </ul>
     </nav>
 </header>
