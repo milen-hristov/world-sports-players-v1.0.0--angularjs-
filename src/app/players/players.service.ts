@@ -1,11 +1,16 @@
-import { EventEmitter } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 import { Subject } from "rxjs/internal/Subject";
 
 import { Player } from "./player.model";
 
+@Injectable()
+
 export class PlayersService {
     selectedPlayer = new EventEmitter<Player>();
     playersChanged = new Subject<Player[]>();
+
+    constructor(private http: HttpClient) { }
 
     private players: Player[] = [
         new Player('Ivet Lalova',
@@ -31,7 +36,9 @@ export class PlayersService {
     ];
 
     getPlayers() {
-        return this.players.slice();
+        // return this.players.slice();
+
+        return this.http.get<Player[]>('https://world-sports-players-default-rtdb.europe-west1.firebasedatabase.app/players.json');
     }
 
     getPlayer(index: number) {
