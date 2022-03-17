@@ -28,47 +28,6 @@ export class PlayersService {
             '/assets/images/novak.jpg',
             'Serbia', '	22 May 1987', '20 Grand Slam titles',
             true, 'Tennis'),
-        new Player('Ivet Lalova',
-            'A Bulgarian athlete who specialises in the 100 metres and 200 metres sprint events',
-            '/assets/images/ivet.jpg',
-            'Bulgaria', '18 May 1984', 'European Championships - 1 Golden Medal, 2 Silver Medals',
-            true, 'Athletics'),
-        new Player('Lionel Andres Messi',
-            'An Argentine professional footballer',
-            '/assets/images/messi.jpg',
-            'Argentina', '24 June 1987', 'Ballon dOr/FIFA Ballon dOr: 2009, 2010, 2011, 2012, 2015, 2019, 2021',
-            true, 'Football'),
-        new Player('Max Verstappen',
-            'A Belgian-Dutch racing driver - Formula 1',
-            '/assets/images/max.jpg',
-            'Netherlands', '30 September 1997', '2021 Formula One World Champion',
-            true, 'Formula 1'),
-        new Player('Novak Djokovic',
-            'A Serbian professional tennis player',
-            '/assets/images/novak.jpg',
-            'Serbia', '	22 May 1987', '20 Grand Slam titles',
-            true, 'Tennis'),
-        new Player('Ivet Lalova',
-            'A Bulgarian athlete who specialises in the 100 metres and 200 metres sprint events',
-            '/assets/images/ivet.jpg',
-            'Bulgaria', '18 May 1984', 'European Championships - 1 Golden Medal, 2 Silver Medals',
-            true, 'Athletics'),
-        new Player('Lionel Andres Messi',
-            'An Argentine professional footballer',
-            '/assets/images/messi.jpg',
-            'Argentina', '24 June 1987', 'Ballon dOr/FIFA Ballon dOr: 2009, 2010, 2011, 2012, 2015, 2019, 2021',
-            true, 'Football'),
-        new Player('Max Verstappen',
-            'A Belgian-Dutch racing driver - Formula 1',
-            '/assets/images/max.jpg',
-            'Netherlands', '30 September 1997', '2021 Formula One World Champion',
-            true, 'Formula 1'),
-        new Player('Novak Djokovic',
-            'A Serbian professional tennis player',
-            '/assets/images/novak.jpg',
-            'Serbia', '	22 May 1987', '20 Grand Slam titles',
-            true, 'Tennis'),
-
     ];
 
     getPlayers() {
@@ -86,6 +45,11 @@ export class PlayersService {
 
     updatePlayer(index: number, updatedPlayer: Player) {
         this.players[index] = updatedPlayer;
+        this.playersChanged.next(this.players.slice());
+    }
+
+    deletePlayer(index: number) {
+        this.players.splice(index, 1);
         this.playersChanged.next(this.players.slice());
     }
 }
