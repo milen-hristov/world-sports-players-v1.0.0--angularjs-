@@ -10,7 +10,7 @@ import { PlayersService } from '../players.service';
   styleUrls: ['./players-create.component.css']
 })
 export class PlayersCreateComponent implements OnInit {
-  id: number;
+  id: string;
   editMode = false;
   playerForm: FormGroup;
 
@@ -22,7 +22,7 @@ export class PlayersCreateComponent implements OnInit {
   ngOnInit() {
     this.route.params
       .subscribe((params: Params) => {
-        this.id = Number(params['id']);
+        this.id = params['id'];
         this.editMode = params['id'] != null;
         this.initForm();
       });
@@ -30,11 +30,25 @@ export class PlayersCreateComponent implements OnInit {
 
   onSubmit() {
     if (this.editMode) {
-      this.playersService.updatePlayer(this.id, this.playerForm.value);
+      this.playersService.updatePlayer(this.id, this.playerForm.value).subscribe({
+        next: () => {
+          this.router.navigate(['/players']);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
     } else {
-      this.playersService.addPlayer(this.playerForm.value);
+      this.playersService.addPlayer(this.playerForm.value).subscribe({
+        next: () => {
+          this.router.navigate(['/players']);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
     }
-    this.router.navigate(['../'], {relativeTo: this.route});
+    // this.router.navigate(['../'], {relativeTo: this.route});
   }
 
   private initForm() {
@@ -48,15 +62,18 @@ export class PlayersCreateComponent implements OnInit {
     let playerSport = '';
 
     if (this.editMode) {
-      const player = this.playersService.getPlayer(this.id);
-      playerName = player.name;
-      playerCountry = player.country;
-      playerDesc = player.description;
-      playerImg = player.imagePath;
-      playerDOB = player.dob;
-      playerAchievements = player.achievements;
-      playerActive = player.active;
-      playerSport = player.sport;
+      this.playersService.getPlayer(this.id).subscribe((player) => {
+        this.playerForm.patchValue({
+          name: player.name,
+          country: player.country,
+          description: player.description,
+          imagePath: player.imagePath,
+          dob: player.dob,
+          achievements: player.achievements,
+          active: player.active,
+          sport: player.sport
+        });
+      });
     }
 
     this.playerForm = new FormGroup({
@@ -66,7 +83,7 @@ export class PlayersCreateComponent implements OnInit {
       'imagePath': new FormControl(playerImg),
       'dob': new FormControl(playerDOB),
       'achievements': new FormControl(playerAchievements),
-      'status': new FormControl(playerActive),
+      'active': new FormControl(playerActive),
       'sport': new FormControl(playerSport),
     });
   }

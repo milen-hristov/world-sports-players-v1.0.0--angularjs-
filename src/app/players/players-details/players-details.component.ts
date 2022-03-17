@@ -11,7 +11,7 @@ import { PlayersService } from '../players.service';
 })
 export class PlayersDetailsComponent implements OnInit {
   player: Player;
-  id: number;
+  id: string;
 
   constructor(private playersService: PlayersService,
     private route: ActivatedRoute,
@@ -22,18 +22,29 @@ export class PlayersDetailsComponent implements OnInit {
     this.route.params
       .subscribe(
         (params: Params) => {
-          this.id = Number(params['id']);
-          this.player = this.playersService.getPlayer(this.id);
+          // this.id = Number(params['id']);
+          this.id = params['id'];
+          this.playersService.getPlayer(this.id).subscribe((player) => {
+            this.player = player;
+            console.log(this.player)
+          });
         }
       );
   }
 
   onEditPlayer() {
-    this.router.navigate(['edit'], { relativeTo: this.route });
+    // this.router.navigate(['edit'], { relativeTo: this.route });
+    this.router.navigate(['../', this.id, 'edit'], { relativeTo: this.route });
   }
 
   onDeletePlayer() {
-    this.playersService.deletePlayer(this.id);
-    this.router.navigate(['/players']);
+    this.playersService.deletePlayer(this.id).subscribe({
+      next: () => {
+        this.router.navigate(['/players']);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
   }
 }
