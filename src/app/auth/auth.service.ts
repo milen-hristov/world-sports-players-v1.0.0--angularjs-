@@ -11,6 +11,7 @@ import { User } from './user.model';
 
 export class AuthService {
     user = new BehaviorSubject<User>(null);
+    private tokenExpirationTimer: any;
 
     constructor(private http: HttpClient, private router: Router) {
     }
@@ -60,6 +61,16 @@ export class AuthService {
                 })
             );
     }
+
+    logout() {
+        this.user.next(null);
+        this.router.navigate(['/auth']);
+        localStorage.removeItem('userData');
+        if (this.tokenExpirationTimer) {
+          clearTimeout(this.tokenExpirationTimer);
+        }
+        this.tokenExpirationTimer = null;
+      }
 
     private handleAuthentication(
         email: string,
