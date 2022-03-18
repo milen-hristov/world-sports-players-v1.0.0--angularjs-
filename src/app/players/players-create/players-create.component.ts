@@ -3,6 +3,8 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 
 import { PlayersService } from '../players.service';
+import { AuthService } from 'src/app/auth/auth.service';
+import { UserData } from 'src/app/auth/userData.model';
 
 @Component({
   selector: 'app-players-create',
@@ -13,13 +15,17 @@ export class PlayersCreateComponent implements OnInit {
   id: string;
   editMode = false;
   playerForm: FormGroup;
+  currentUser: UserData;
 
   constructor(private route: ActivatedRoute,
     private playersService: PlayersService,
-    private router: Router) {
+    private router: Router,
+    private authService: AuthService) {
   }
 
   ngOnInit() {
+    this.currentUser = this.authService.getUserID();
+
     this.route.params
       .subscribe((params: Params) => {
         this.id = params['id'];
@@ -60,6 +66,7 @@ export class PlayersCreateComponent implements OnInit {
     let playerAchievements = '';
     let playerActive = false;
     let playerSport = '';
+    let owner = this.currentUser.id;
 
     if (this.editMode) {
       this.playersService.getPlayer(this.id).subscribe((player) => {
@@ -85,6 +92,7 @@ export class PlayersCreateComponent implements OnInit {
       'achievements': new FormControl(playerAchievements),
       'active': new FormControl(playerActive),
       'sport': new FormControl(playerSport),
+      'owner': new FormControl(owner)
     });
   }
 }

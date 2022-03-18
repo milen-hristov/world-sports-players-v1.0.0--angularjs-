@@ -1,5 +1,6 @@
 export class Player {
     public id: string;
+    public owner: string;
     public name: string;
     public description: string;
     public imagePath: string;

@@ -118,4 +118,13 @@ export class AuthService {
         }, expirationDuration);
     }
 
+    getUserID() {
+        const userData: {
+            email: string;
+            id: string;
+        } = JSON.parse(localStorage.getItem('userData'));
+        
+        return userData;
+    }
+
 }
