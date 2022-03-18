@@ -6,10 +6,9 @@
         <ul>
             <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/players">Home</a>
             </li>
-            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/auth">Auth</a></li>
-            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a
-                    routerLink="/players/create">Create</a></li>
-            <li><a (click)="onLogout()">Logout</a>
+            <li routerLinkActive="active"><a routerLink="/auth" *ngIf="!isAuthenticated">Auth</a></li>
+            <li routerLinkActive="active"><a routerLink="/players/create" *ngIf="isAuthenticated">Create</a></li>
+            <li><a (click)="onLogout()" *ngIf="isAuthenticated">Logout</a>
             </li>
 
         </ul>
