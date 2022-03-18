@@ -22,7 +22,7 @@ const routes: Routes = [
   {
     path: 'players', component: PlayersComponent, children: [
       { path: '', component: PlayersListComponent },
-      { path: 'create', component: PlayersCreateComponent, canActivate: [AuthGuard], },
+      { path: 'create', component: PlayersCreateComponent, canActivate: [AuthGuard] },
       { path: ':id', component: PlayersDetailsComponent },
       { path: ':id/edit', component: PlayersCreateComponent },
     ]

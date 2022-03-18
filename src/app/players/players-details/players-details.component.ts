@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 
 import { Player } from '../player.model';
 import { PlayersService } from '../players.service';
@@ -13,9 +14,14 @@ export class PlayersDetailsComponent implements OnInit {
   player: Player;
   id: string;
 
+  isOwner: boolean;
+  ownerID: string;
+  currentUserID: string;
+
   constructor(private playersService: PlayersService,
     private route: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -25,7 +31,16 @@ export class PlayersDetailsComponent implements OnInit {
           this.id = params['id'];
           this.playersService.getPlayer(this.id).subscribe((player) => {
             this.player = player;
-            console.log(this.player)
+            this.ownerID = player.owner;
+
+            let userData = this.authService.getUserID();
+            this.currentUserID = userData.id;
+
+            if (this.ownerID === this.currentUserID) {
+              this.isOwner = true;
+            } else {
+              this.isOwner = false;
+            }
           });
         }
       );

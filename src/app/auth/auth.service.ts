@@ -6,11 +6,14 @@ import { BehaviorSubject } from "rxjs";
 
 import { AuthResponseData } from './authResponseData.interface';
 import { User } from './user.model';
+import { UserData } from "./userData.model";
 
 @Injectable({ providedIn: 'root' })
 
 export class AuthService {
     user = new BehaviorSubject<User>(null);
+    userData = new BehaviorSubject<UserData>(null);
+
     private tokenExpirationTimer: any;
 
     constructor(private http: HttpClient, private router: Router) {
@@ -119,10 +122,7 @@ export class AuthService {
     }
 
     getUserID() {
-        const userData: {
-            email: string;
-            id: string;
-        } = JSON.parse(localStorage.getItem('userData'));
+        const userData: UserData = JSON.parse(localStorage.getItem('userData'));
         
         return userData;
     }

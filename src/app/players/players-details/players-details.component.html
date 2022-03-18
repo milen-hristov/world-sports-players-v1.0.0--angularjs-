@@ -36,8 +36,9 @@
 
                 <article class="buttons">
                     <section>
-                        <button class="btn-delete" (click)="onDeletePlayer()" type="button">Delete</button>
-                        <button class="btn-edit" (click)="onEditPlayer()" type="button">Edit</button>
+                        <button class="btn-delete" (click)="onDeletePlayer()" type="button"
+                            *ngIf="isOwner">Delete</button>
+                        <button class="btn-edit" (click)="onEditPlayer()" type="button" *ngIf="isOwner">Edit</button>
                     </section>
                     <section>
                         <button class="btn-back" routerLink="/players" type="button">Back</button>
