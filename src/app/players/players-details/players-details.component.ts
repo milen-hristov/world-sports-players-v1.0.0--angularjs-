@@ -33,8 +33,10 @@ export class PlayersDetailsComponent implements OnInit {
             this.player = player;
             this.ownerID = player.owner;
 
-            let userData = this.authService.getUserID();
-            this.currentUserID = userData.id;
+            this.authService.user.subscribe(user => {
+              this.currentUserID = user.id;
+            });
+
 
             if (this.ownerID === this.currentUserID) {
               this.isOwner = true;

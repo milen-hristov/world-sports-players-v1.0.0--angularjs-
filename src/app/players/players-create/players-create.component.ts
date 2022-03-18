@@ -4,7 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 
 import { PlayersService } from '../players.service';
 import { AuthService } from 'src/app/auth/auth.service';
-import { UserData } from 'src/app/auth/userData.model';
+import { User } from 'src/app/auth/user.model';
 
 @Component({
   selector: 'app-players-create',
@@ -15,7 +15,7 @@ export class PlayersCreateComponent implements OnInit {
   id: string;
   editMode = false;
   playerForm: FormGroup;
-  currentUser: UserData;
+  currentUser: User;
 
   constructor(private route: ActivatedRoute,
     private playersService: PlayersService,
@@ -24,7 +24,9 @@ export class PlayersCreateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentUser = this.authService.getUserID();
+    this.authService.user.subscribe(user => {
+      this.currentUser = user;
+    });
 
     this.route.params
       .subscribe((params: Params) => {

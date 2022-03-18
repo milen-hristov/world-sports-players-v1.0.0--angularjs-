@@ -50,3 +50,12 @@
     text-decoration: none;
     color: var(--random-color);
 }
+
+.logged-user {
+    color: var(--main-color);
+}
+
+.logged-user span {
+    text-transform: capitalize;
+    color: var(--random-color);
+}

@@ -11,12 +11,14 @@ import { AuthService } from '../auth/auth.service';
 export class HeaderComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   private userSubcription: Subscription;
+  loggedUserEmail = '';
 
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
     this.userSubcription = this.authService.user.subscribe(user => {
       this.isAuthenticated = !!user;
+      this.loggedUserEmail = user.email;
       // console.log(!user);  // not logged in
       // console.log(!!user); // logged in
     });
