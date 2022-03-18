@@ -2,12 +2,15 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { tap } from "rxjs/operators";
+import { BehaviorSubject } from "rxjs";
 
 import { AuthResponseData } from './authResponseData.interface';
+import { User } from './user.model';
 
 @Injectable({ providedIn: 'root' })
 
 export class AuthService {
+    user = new BehaviorSubject<User>(null);
 
     constructor(private http: HttpClient, private router: Router) {
     }
@@ -25,7 +28,12 @@ export class AuthService {
             )
             .pipe(
                 tap(resData => {
-                    console.log(resData);
+                    this.handleAuthentication(
+                        resData.email,
+                        resData.localId,
+                        resData.idToken,
+                        Number(resData.expiresIn)
+                    );
                 })
             );
 
@@ -43,8 +51,25 @@ export class AuthService {
             )
             .pipe(
                 tap(resData => {
-                    console.log(resData);
+                  this.handleAuthentication(
+                    resData.email,
+                    resData.localId,
+                    resData.idToken,
+                    Number(resData.expiresIn)
+                  );
                 })
             );
     }
+
+    private handleAuthentication(
+        email: string,
+        userId: string,
+        token: string,
+        expiresIn: number
+      ) {
+        const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+        const user = new User(email, userId, token, expirationDate);
+        this.user.next(user);
+        localStorage.setItem('userData', JSON.stringify(user));
+      }
 }

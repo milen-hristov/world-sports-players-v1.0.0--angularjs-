@@ -33,7 +33,8 @@ export class AuthComponent implements OnInit {
 
     let authObs: Observable<AuthResponseData>;
 
-    console.log(form.value);
+    console.log(form.value)
+    // this.isLoading = true;
 
     if (this.isLoginMode) {
       authObs = this.authService.login(email, password);
@@ -43,7 +44,7 @@ export class AuthComponent implements OnInit {
       console.log('register');
     }
 
-    authObs.subscribe(resdata => console.log(resdata));
+    authObs.subscribe(() => this.router.navigate(['/players']));
 
     form.reset();
   }
