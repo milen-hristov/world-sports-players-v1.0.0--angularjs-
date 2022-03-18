@@ -6,6 +6,7 @@ import { PlayersListComponent } from './players/players-list/players-list.compon
 import { PlayersComponent } from './players/players.component';
 import { PlayersCreateComponent } from './players/players-create/players-create.component';
 import { AuthComponent } from './auth/auth.component';
+import { AuthGuard } from './auth/auth.guard';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: '/players', pathMatch: 'full' },
@@ -21,7 +22,7 @@ const routes: Routes = [
   {
     path: 'players', component: PlayersComponent, children: [
       { path: '', component: PlayersListComponent },
-      { path: 'create', component: PlayersCreateComponent },
+      { path: 'create', component: PlayersCreateComponent, canActivate: [AuthGuard], },
       { path: ':id', component: PlayersDetailsComponent },
       { path: ':id/edit', component: PlayersCreateComponent },
     ]
