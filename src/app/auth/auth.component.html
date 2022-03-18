@@ -7,23 +7,44 @@
     </section>
 </section>
 <main class="user">
-    <form>
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
         <article class="user-board-profile">
             <img src="/assets/images/background.jpg" alt="Item" class="user-board-picture">
-            <label class="user-board-name" for="name">Username</label>
-            <input type="text" id="username" class="user-board-value">
+            <label class="user-board-name" for="email">Email</label>
+            <input 
+            type="email" 
+            id="email" 
+            class="user-board-value"
+            ngModel
+            name="email"
+
+            >
         </article>
         <article class="user-board-profile">
             <img src="/assets/images/background.jpg" alt="Item" class="user-board-picture">
             <label class="user-board-name" for="sport">Password</label>
-            <input type="password" id="password" class="user-board-value">
+            <input 
+            type="password" 
+            id="password" 
+            class="user-board-value"
+            name="password"
+            ngModel
+
+            >
         </article>
 
-        <article class="user-board-profile" *ngIf="!isLoginMode">
+        <!-- <article class="user-board-profile" *ngIf="!isLoginMode">
             <img src="/assets/images/background.jpg" alt="Item" class="user-board-picture">
             <label class="user-board-name" for="sport">Repeat Password</label>
-            <input type="password" id="repeat-password" class="user-board-value">
-        </article>
+            <input 
+            type="password" 
+            id="repeat-password"
+            class="user-board-value"
+            ngModel
+            name="repeat-password"
+
+            >
+        </article> -->
 
         <article class="buttons">
             <section>
