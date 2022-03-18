@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 
 import { AuthService } from './auth.service';
 import { AuthResponseData } from './authResponseData.interface';
@@ -13,6 +13,8 @@ import { AuthResponseData } from './authResponseData.interface';
 })
 export class AuthComponent implements OnInit {
   isLoginMode = true;
+  isLoading = false;
+  error: string = 'Error message!';
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -33,8 +35,7 @@ export class AuthComponent implements OnInit {
 
     let authObs: Observable<AuthResponseData>;
 
-    console.log(form.value)
-    // this.isLoading = true;
+    this.isLoading = true;
 
     if (this.isLoginMode) {
       authObs = this.authService.login(email, password);
@@ -44,7 +45,17 @@ export class AuthComponent implements OnInit {
       console.log('register');
     }
 
-    authObs.subscribe(() => this.router.navigate(['/players']));
+    authObs.subscribe({
+      next: () => {
+        this.isLoading = false;
+        this.router.navigate(['/players']);
+      },
+      error: (errorRes) => {
+        console.log(errorRes);
+        this.error = errorRes.error.error.message;
+        this.isLoading = false;
+      }
+    });
 
     form.reset();
   }
