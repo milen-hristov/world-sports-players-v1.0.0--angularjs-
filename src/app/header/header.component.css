@@ -4,6 +4,7 @@
     justify-content: space-around;
     gap: 30%;
     background-color: #F7F7F7;
+    
 }
 
 .navigation-logo {
@@ -22,12 +23,13 @@
     color: var(--main-color);
 }
 
-.navigation ul {
+.navigation ul,
+.navigation-bottom ul {
     display: flex;
-
 }
 
-.navigation ul li {
+.navigation ul li,
+.navigation-bottom ul {
     list-style: none;
     margin: 10px;
     font-size: 14px;
@@ -35,6 +37,13 @@
     text-transform: uppercase;
     transition: transform .25s cubic-bezier(.7, .98, .86, .98), box-shadow .25s cubic-bezier(.7, .98, .86, .98);
     cursor: pointer;
+}
+
+.navigation-bottom {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    margin-right: 10%;
 }
 
 .navigation ul li:hover {

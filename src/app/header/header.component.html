@@ -4,11 +4,16 @@
         <p class="navigation-logo"><a routerLink="/players"><i
                     class="fas fa-globe-americas"></i>Sports<span>Players</span></a></p>
         <ul>
-            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/players">Home</a></li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/players">Home</a>
+            </li>
             <li routerLinkActive="active" *ngIf="!isAuthenticated"><a routerLink="/auth">Auth</a></li>
             <li routerLinkActive="active"><a routerLink="/players/create" *ngIf="isAuthenticated">Create</a></li>
-            <li class="logged-user" *ngIf="isAuthenticated"><span>logged as </span> {{loggedUserEmail}}</li>
             <li><a (click)="onLogout()" *ngIf="isAuthenticated">Logout</a> </li>
         </ul>
     </nav>
+    <article class="navigation-bottom">
+        <ul>
+            <li class="logged-user" *ngIf="isAuthenticated"><span>logged as </span><i class="fas fa-user"></i> {{loggedUserEmail}}</li>
+        </ul>
+    </article>
 </header>
