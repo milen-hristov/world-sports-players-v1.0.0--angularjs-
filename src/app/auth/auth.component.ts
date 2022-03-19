@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { AuthService } from './auth.service';
 import { AuthResponseData } from './authResponseData.interface';
@@ -9,20 +9,29 @@ import { AuthResponseData } from './authResponseData.interface';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.css']
+  styleUrls: ['./auth.component.css'],
 })
 export class AuthComponent implements OnInit {
   isLoginMode = true;
   isLoading = false;
-  error: string = 'Error message!';
+  error: string = null;
+  isSamePassword = true;
+  user = {
+    email: '',
+    password: '',
+    repeatPassword: '',
+  };
+  // repeatPasswordValid: boolean;
+  // repeatPasswordTouched: boolean;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
   }
 
   ngOnInit() {
+    console.log(this.isSamePassword);
   }
 
   onSubmit(form: NgForm) {
@@ -30,18 +39,29 @@ export class AuthComponent implements OnInit {
       return;
     }
 
-    const email = form.value.email;
-    const password = form.value.password;
+    this.user.email = form.value.email;
+    this.user.password = form.value.password;
+    this.user.repeatPassword = form.value.repeatPassword;
+
+    // this.repeatPasswordValid = form.controls['repeatPassword'].valid;
+    // this.repeatPasswordTouched = form.controls['repeatPassword'].touched;
+
+    if (!this.isLoginMode) {
+      if (this.user.password != this.user.repeatPassword) {
+        this.isSamePassword = false;
+        return;
+      }
+    }
 
     let authObs: Observable<AuthResponseData>;
 
     this.isLoading = true;
 
     if (this.isLoginMode) {
-      authObs = this.authService.login(email, password);
+      authObs = this.authService.login(this.user.email, this.user.password);
       console.log('login');
     } else {
-      authObs = this.authService.signup(email, password);
+      authObs = this.authService.signup(this.user.email, this.user.password);
       console.log('register');
     }
 
@@ -51,13 +71,13 @@ export class AuthComponent implements OnInit {
         this.router.navigate(['/players']);
       },
       error: (errorRes) => {
+        this.error = this.authService.handleError(errorRes);
         console.log(errorRes);
-        this.error = errorRes.error.error.message;
+        // this.error = errorRes.error.error.message;
         this.isLoading = false;
-      }
+      },
     });
 
     form.reset();
   }
-
 }

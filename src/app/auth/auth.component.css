@@ -112,6 +112,14 @@
 
 .buttons .btn-switch {
     background-color: var(--text-color);
+    transition: background-color 1s;
+}
+
+.buttons .btn-switch:hover {
+    background-color: white;
+    color: var(--text-color);
+    border:2px solid var(--text-color);
+    transition: background-color 1s;
 }
 
 .buttons .btn-enter {
@@ -126,4 +134,21 @@
     color: var(--danger-color);
     font-size: 16px;
     text-align: center;
+    text-transform: uppercase;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid var(--danger-color);
+}
+
+.notification-alert {
+    color: var(--danger-color);
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.fa-info-circle {
+    margin-right: 1%;
 }

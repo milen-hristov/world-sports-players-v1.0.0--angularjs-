@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { tap } from "rxjs/operators";
 import { BehaviorSubject } from "rxjs";
@@ -117,6 +117,23 @@ export class AuthService {
         this.tokenExpirationTimer = setTimeout(() => {
             this.logout();
         }, expirationDuration);
+    }
+
+    handleError(errorRes: HttpErrorResponse) {
+        let errorMessage = 'An error occurred!';
+        if (!errorRes.error || !errorRes.error.error) {
+            return errorMessage;
+        }
+        switch (errorRes.error.error.message) {
+            case 'EMAIL_EXISTS':
+            case 'INVALID_EMAIL':
+            case 'EMAIL_NOT_FOUND':
+            case 'INVALID_PASSWORD':
+            case 'MISSING_PASSWORD':
+                errorMessage = 'Please check your email & password and try again.';
+                break;
+        }
+        return errorMessage;
     }
 
 }

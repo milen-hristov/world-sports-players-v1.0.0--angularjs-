@@ -1,43 +1,105 @@
 <main>
-    <article class="user-board-name alert-message" *ngIf="error">
-        <p>{{ error }}</p>
-    </article>
-    <section class="users" *ngIf="!isLoading">
-        <h2>{{ isLoginMode ? 'Login' : 'Sign Up'}}<span>Now</span></h2>
-        <section class="buttons">
-            <button class="btn-switch" (click)="onSwitchMode()">
-                {{ isLoginMode ? 'No account? Sing Up Now': 'Already registered? Login Now'}}
-            </button>
+  <article class="user-board-name alert-message" *ngIf="error">
+    <p>{{ error }}</p>
+  </article>
+  <section class="users" *ngIf="!isLoading">
+    <h2>{{ isLoginMode ? "Login" : "Sign Up" }}<span>Now</span></h2>
+    <section class="buttons">
+      <button class="btn-switch" (click)="onSwitchMode()">
+        {{
+          isLoginMode
+            ? "No account? Sing Up Now"
+            : "Already registered? Login Now"
+        }}
+      </button>
+    </section>
+  </section>
+  <article class="loading" *ngIf="isLoading">
+    <p class="loading-text">Loading..</p>
+    <app-loading></app-loading>
+  </article>
+  <section class="user">
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
+      <article class="user-board-profile">
+        <img
+          src="/assets/images/background.jpg"
+          alt="Item"
+          class="user-board-picture"
+        />
+        <label class="user-board-name" for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          class="user-board-value"
+          ngModel
+          name="email"
+          required
+          email
+          #email="ngModel"
+        />
+      </article>
+      <article class="notification-alert" *ngIf="!email.valid && email.touched">
+        <i class="fas fa-info-circle"></i>
+        <span>Please enter a valid email.</span>
+      </article>
+      <article class="user-board-profile">
+        <img
+          src="/assets/images/background.jpg"
+          alt="Item"
+          class="user-board-picture"
+        />
+        <label class="user-board-name" for="sport">Password</label>
+        <input
+          type="password"
+          id="password"
+          class="user-board-value"
+          name="password"
+          ngModel
+          required
+          minlength="6"
+          #password="ngModel"
+        />
+      </article>
+      <article class="user-board-profile" *ngIf="!isLoginMode">
+        <img
+          src="/assets/images/background.jpg"
+          alt="Item"
+          class="user-board-picture"
+        />
+        <label class="user-board-name" for="repeatPassword">Repeat Password</label>
+        <input
+        type="password"
+        id="repeatPassword"
+        class="user-board-value"
+        name="repeatPassword"
+        ngModel
+        required
+        minlength="6"
+        #repeatPassword="ngModel"
+        />
+      </article>
+
+      <article class="notification-alert" *ngIf="!password.valid && password.touched">
+        <i class="fas fa-info-circle"></i>
+        <span>Please enter a password. Min lenght is 6 characters.</span>
+      </article>
+      <!-- <article class="notification-alert" *ngIf="!repeatPasswordValid && repeatPasswordTouched">
+        <i class="fas fa-info-circle"></i>
+        <span>Please enter a password. Min lenght is 6 characters.</span>
+      </article> -->
+      <article class="notification-alert" *ngIf="!isSamePassword">
+        <i class="fas fa-info-circle"></i>
+        <span>Passwords do not match.</span>
+      </article>
+
+   
+      <article class="buttons">
+        <section>
+          <button class="btn-enter" type="submit" [disabled]="!authForm.valid">
+            {{ isLoginMode ? "Login" : "Sign Up" }}
+          </button>
         </section>
-    </section>
-    <article class="loading" *ngIf="isLoading">
-        <p class="loading-text">Loading..</p>
-        <app-loading></app-loading>
-    </article>
-    <section class="user">
-        <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
-            <article class="user-board-profile">
-                <img src="/assets/images/background.jpg" alt="Item" class="user-board-picture">
-                <label class="user-board-name" for="email">Email</label>
-                <input type="email" id="email" class="user-board-value" ngModel name="email">
-            </article>
-            <article class="user-board-profile">
-                <img src="/assets/images/background.jpg" alt="Item" class="user-board-picture">
-                <label class="user-board-name" for="sport">Password</label>
-                <input type="password" id="password" class="user-board-value" name="password" ngModel>
-            </article>
-
-            <article class="user-board-profile" *ngIf="!isLoginMode">
-                <img src="/assets/images/background.jpg" alt="Item" class="user-board-picture">
-                <label class="user-board-name" for="sport">Repeat Password</label>
-                <input type="password" id="repeat-password" class="user-board-value" ngModel name="repeat-password">
-            </article>
-
-            <article class="buttons">
-                <section>
-                    <button class="btn-enter" type="submit"> {{ isLoginMode ? 'Login' : 'Sign Up' }}</button>
-                </section>
-            </article>
-        </form>
-    </section>
+      </article>
+    </form>
+  </section>
 </main>
