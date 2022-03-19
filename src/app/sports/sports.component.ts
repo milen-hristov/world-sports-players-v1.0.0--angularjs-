@@ -37,12 +37,15 @@ export class SportsComponent implements OnInit {
   onSubmit() {
     this.sportsService.addSport(this.sportForm.value).subscribe({
       next: () => {
-        this.router.navigate(['/players/create']);
+        this.fetchSports();
+        this.router.navigate(['/players/create/sport']);
       },
       error: (err) => {
         console.log(err);
       },
     });
+
+    this.sportForm.reset();
   }
 
   private initForm() {
