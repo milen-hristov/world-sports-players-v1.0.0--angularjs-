@@ -13,6 +13,7 @@ import { PlayersService } from './players/players.service';
 import { PlayersCreateComponent } from './players/players-create/players-create.component';
 import { AuthComponent } from './auth/auth.component';
 import { LoadingComponent } from './shared/loading/loading.component';
+import { SubstringPipe } from './shared/substring.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { LoadingComponent } from './shared/loading/loading.component';
     PlayersDetailsComponent,
     PlayersCreateComponent,
     AuthComponent,
-    LoadingComponent
+    LoadingComponent,
+    SubstringPipe
   ],
   imports: [
     BrowserModule,
