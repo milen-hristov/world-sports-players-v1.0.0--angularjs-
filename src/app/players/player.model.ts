@@ -7,10 +7,10 @@ export class Player {
     public country: string;
     public dob: string;
     public achievements: string;
-    public active: boolean;
+    public active: string;
     public sport: string;
 
-    constructor(name: string, desc: string, imagePath: string, country: string, dob: string, achievements: string, active: boolean, sport: string) {
+    constructor(name: string, desc: string, imagePath: string, country: string, dob: string, achievements: string, active: string, sport: string) {
         this.name = name;
         this.description = desc;
         this.imagePath = imagePath;

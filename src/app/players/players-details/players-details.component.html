@@ -31,7 +31,7 @@
                 <article class="player-board-profile">
                     <img src="/assets/images/background.jpg" alt="Item" class="player-board-picture">
                     <span class="player-board-name">Status</span>
-                    <span class="player-board-value">{{player.active == true ? 'Active' : 'Inactive'}}</span>
+                    <span class="player-board-value">{{player.active | titlecase}}</span>
                 </article>
 
                 <article class="buttons">

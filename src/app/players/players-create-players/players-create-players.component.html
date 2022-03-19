@@ -83,7 +83,7 @@
       />
       <label class="player-board-name" for="dob">Date of Birth</label>
       <input
-        type="text"
+        type="date"
         id="dob"
         class="player-board-value"
         formControlName="dob"
@@ -129,12 +129,15 @@
         class="player-board-picture"
       />
       <label class="player-board-name" for="active">Status</label>
-      <input
+      <select
         type="text"
         id="active"
         class="player-board-value"
         formControlName="active"
-      />
+      >
+      <option value="active">Active</option>
+      <option value="inactive">Inactive</option>
+    </select>
     </article>
 
     <article class="buttons">
