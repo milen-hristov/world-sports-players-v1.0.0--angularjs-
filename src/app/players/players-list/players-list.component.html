@@ -1,4 +1,8 @@
-<section class="players">
+<article *ngIf="isLoading">
+    <app-loading></app-loading>
+  </article>
+
+<section class="players" *ngIf="!isLoading">
     <h2>Player<span>List</span></h2>
     <section class="players-wrapper">
 

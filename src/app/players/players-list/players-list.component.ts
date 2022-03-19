@@ -11,6 +11,7 @@ import { Player } from '../player.model';
 })
 export class PlayersListComponent implements OnInit {
   players: Player[] | undefined;
+  isLoading = false;
 
   constructor(private playersService: PlayersService) { }
 
@@ -19,6 +20,7 @@ export class PlayersListComponent implements OnInit {
   }
 
   fetchPlayers() {
+    this.isLoading = true;
     this.players = undefined;
     this.playersService.getPlayers()
       .pipe(
@@ -34,6 +36,7 @@ export class PlayersListComponent implements OnInit {
       )
       .subscribe(players => {
         this.players = players;
+        this.isLoading = false;
         console.log(this.players);
       });
   }

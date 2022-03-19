@@ -53,14 +53,6 @@
   margin: 12px;
 }
 
-.loading-text {
-  color: var(--secondary-color);
-  font-weight: 600;
-  font-size: 26px;
-  letter-spacing: 0.64px;
-  margin: 12px;
-}
-
 .user-board-value {
   color: var(--text-color);
   font-weight: 700;
@@ -132,10 +124,6 @@
 
 .buttons .btn-enter {
   background-color: var(--safe-color);
-}
-
-.loading {
-  text-align: center;
 }
 
 .alert-message {
