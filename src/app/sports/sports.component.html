@@ -1,1 +1,65 @@
-<p>sports works!</p>
+<main class="sport">
+  <section>
+    <form [formGroup]="sportForm" (ngSubmit)="onSubmit()">
+      <article class="sport-board-profile">
+        <img
+          src="/assets/images/background.jpg"
+          alt="Item"
+          class="sport-board-picture"
+        />
+        <label class="sport-board-name" for="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          class="sport-board-value"
+          formControlName="name"
+        />
+      </article>
+
+      <article class="sport-board-profile">
+        <img
+          src="/assets/images/background.jpg"
+          alt="Item"
+          class="sport-board-picture"
+        />
+        <label class="sport-board-name" for="confirmationLink"
+          >Confirmation Link</label
+        >
+        <input
+          type="text"
+          id="confirmationLink"
+          class="sport-board-value"
+          formControlName="confirmationLink"
+        />
+      </article>
+
+      <article class="buttons">
+        <section>
+          <button class="btn-back" routerLink="/players">Back</button>
+        </section>
+        <section>
+          <button class="btn-save" type="submit">Save</button>
+        </section>
+      </article>
+    </form>
+  </section>
+
+  <section>
+    <section class="players">
+      <h2>Created <span>Sports</span></h2>
+    </section>
+
+    <section class="sport-board-profile-list-all">
+      <article class="sport-board-profile-list" *ngFor="let sport of sports">
+        <img
+          src="/assets/images/background.jpg"
+          alt="Item"
+          class="sport-board-picture"
+        />
+        <label class="sport-board-name" for="confirmationLink"
+          >{{sport.name}}</label
+        >
+      </article>
+    </section>
+  </section>
+</main>

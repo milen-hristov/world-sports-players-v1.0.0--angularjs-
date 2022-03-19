@@ -6,6 +6,9 @@ import { PlayersService } from '../players.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { User } from 'src/app/auth/user.model';
 import countryListExport from '../../shared/countryList';
+import { Sport } from 'src/app/sports/sport.model';
+import { SportsService } from 'src/app/sports/sports.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-players-create-players',
@@ -18,11 +21,13 @@ export class PlayersCreatePlayersComponent implements OnInit {
   playerForm: FormGroup;
   currentUser: User;
   countryList: { name: string; code: string }[];
+  sports: Sport[] | undefined;
 
   constructor(private route: ActivatedRoute,
     private playersService: PlayersService,
     private router: Router,
-    private authService: AuthService) {
+    private authService: AuthService,
+    private sportsService: SportsService) {
   }
 
   ngOnInit() {
@@ -38,6 +43,8 @@ export class PlayersCreatePlayersComponent implements OnInit {
       });
 
       this.countryList = countryListExport;
+
+      this.fetchSports();
   }
 
   onSubmit() {
@@ -61,6 +68,26 @@ export class PlayersCreatePlayersComponent implements OnInit {
       });
     }
     // this.router.navigate(['../'], {relativeTo: this.route});
+  }
+
+  fetchSports() {
+    this.sports = undefined;
+    this.sportsService.getSports()
+      .pipe(
+        map(responseData => {
+          const postsArray: Sport[] = [];
+          for (const key in responseData) {
+            if (responseData.hasOwnProperty(key)) {
+              postsArray.push({ ...responseData[key], id: key });
+            }
+          }
+          return postsArray;
+        }),
+      )
+      .subscribe(sports => {
+        this.sports = sports;
+        console.log(this.sports);
+      });
   }
 
   private initForm() {

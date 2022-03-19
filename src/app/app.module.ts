@@ -16,6 +16,7 @@ import { LoadingComponent } from './shared/loading/loading.component';
 import { SubstringPipe } from './shared/substring.pipe';
 import { SportsComponent } from './sports/sports.component';
 import { CreateComponent } from './players/create/create.component';
+import { SportsService } from './sports/sports.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { CreateComponent } from './players/create/create.component';
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [PlayersService],
+  providers: [PlayersService, SportsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

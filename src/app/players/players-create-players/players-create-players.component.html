@@ -14,6 +14,7 @@
         formControlName="name"
       />
     </article>
+
     <article class="player-board-profile">
       <img
         src="/assets/images/background.jpg"
@@ -21,28 +22,20 @@
         class="player-board-picture"
       />
       <label class="player-board-name" for="sport">Sport</label>
-      <input
+      <select
         type="text"
         id="sport"
         class="player-board-value"
         formControlName="sport"
-      />
+      >
+      <option
+      *ngFor="let sport of sports"
+      value="{{ sport.name | lowercase }}"
+    >
+      {{ sport.name}}
+    </option>
+     </select>
     </article>
-
-    <!-- <article class="player-board-profile">
-      <img
-        src="/assets/images/background.jpg"
-        alt="Item"
-        class="player-board-picture"
-      />
-      <label class="player-board-name" for="country">Country</label>
-      <input
-        type="text"
-        id="country"
-        class="player-board-value"
-        formControlName="country"
-      />
-    </article> -->
 
     <article class="player-board-profile">
       <img
