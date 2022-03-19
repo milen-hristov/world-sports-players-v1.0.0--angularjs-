@@ -9,7 +9,7 @@
             <article class="player-card-details-wrapper">
                 <h3 class="player-name">{{player.name}}</h3>
                 <p class="player-sport">{{player.sport | titlecase}}</p>
-                <p class="player-desc">{{player.description}}</p>
+                <p class="player-desc">{{player.description | substring:120}}</p>
                 <!-- <button>Read More</button> -->
             </article>
         </article>
