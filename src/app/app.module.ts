@@ -10,10 +10,12 @@ import { PlayersComponent } from './players/players.component';
 import { PlayersListComponent } from './players/players-list/players-list.component';
 import { PlayersDetailsComponent } from './players/players-details/players-details.component';
 import { PlayersService } from './players/players.service';
-import { PlayersCreateComponent } from './players/players-create/players-create.component';
+import { PlayersCreatePlayersComponent } from './players/players-create-players/players-create-players.component';
 import { AuthComponent } from './auth/auth.component';
 import { LoadingComponent } from './shared/loading/loading.component';
 import { SubstringPipe } from './shared/substring.pipe';
+import { SportsComponent } from './sports/sports.component';
+import { CreateComponent } from './players/create/create.component';
 
 @NgModule({
   declarations: [
@@ -22,10 +24,12 @@ import { SubstringPipe } from './shared/substring.pipe';
     PlayersComponent,
     PlayersListComponent,
     PlayersDetailsComponent,
-    PlayersCreateComponent,
+    PlayersCreatePlayersComponent,
     AuthComponent,
     LoadingComponent,
-    SubstringPipe
+    SubstringPipe,
+    SportsComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,

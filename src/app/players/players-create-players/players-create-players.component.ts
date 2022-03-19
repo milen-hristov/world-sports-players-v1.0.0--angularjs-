@@ -8,11 +8,11 @@ import { User } from 'src/app/auth/user.model';
 import countryListExport from '../../shared/countryList';
 
 @Component({
-  selector: 'app-players-create',
-  templateUrl: './players-create.component.html',
-  styleUrls: ['./players-create.component.css']
+  selector: 'app-players-create-players',
+  templateUrl: './players-create-players.component.html',
+  styleUrls: ['./players-create-players.component.css']
 })
-export class PlayersCreateComponent implements OnInit {
+export class PlayersCreatePlayersComponent implements OnInit {
   id: string;
   editMode = false;
   playerForm: FormGroup;
