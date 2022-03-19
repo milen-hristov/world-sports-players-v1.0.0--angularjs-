@@ -96,15 +96,16 @@
 
 .player-board-profile>label,
 .player-board-profile>input,
-.player-board-profile>textarea  {
+.player-board-profile>textarea,
+.player-board-profile>select  {
     opacity: .8;
     font-weight: 600;
     font-size: 16px;
-    margin-left: 3px;
 }
 
 .player-board-profile>textarea,
-.player-board-profile>input {
+.player-board-profile>input,
+.player-board-profile>select {
     padding: 5%;
 }
 

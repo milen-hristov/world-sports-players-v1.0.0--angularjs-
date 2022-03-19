@@ -1,4 +1,4 @@
-const countryListExport: { name: string; code: string }[] = [
+const countryListExport: { name: string, code: string }[] = [
   { name: 'Afghanistan', code: 'AF' },
   { name: 'Aland Islands', code: 'AX' },
   { name: 'Albania', code: 'AL' },
@@ -145,6 +145,7 @@ const countryListExport: { name: string; code: string }[] = [
   { name: 'Moldova, Republic of', code: 'MD' },
   { name: 'Monaco', code: 'MC' },
   { name: 'Mongolia', code: 'MN' },
+  { name: 'Montenegro', code: 'CS' },
   { name: 'Montserrat', code: 'MS' },
   { name: 'Morocco', code: 'MA' },
   { name: 'Mozambique', code: 'MZ' },
@@ -191,7 +192,7 @@ const countryListExport: { name: string; code: string }[] = [
   { name: 'Sao Tome and Principe', code: 'ST' },
   { name: 'Saudi Arabia', code: 'SA' },
   { name: 'Senegal', code: 'SN' },
-  { name: 'Serbia and Montenegro', code: 'CS' },
+  { name: 'Serbia', code: 'CS' },
   { name: 'Seychelles', code: 'SC' },
   { name: 'Sierra Leone', code: 'SL' },
   { name: 'Singapore', code: 'SG' },

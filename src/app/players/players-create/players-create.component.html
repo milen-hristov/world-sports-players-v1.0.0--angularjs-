@@ -1,61 +1,156 @@
 <main class="player">
-    <form [formGroup]="playerForm" (ngSubmit)="onSubmit()">
-        <article class="player-board-profile">
-            <img src="/assets/images/background.jpg" alt="Item" class="player-board-picture">
-            <label class="player-board-name" for="name">Name</label>
-            <input type="text" id="name" class="player-board-value" formControlName="name">
-        </article>
-        <article class="player-board-profile">
-            <img src="/assets/images/background.jpg" alt="Item" class="player-board-picture">
-            <label class="player-board-name" for="sport">Sport</label>
-            <input type="text" id="sport" class="player-board-value" formControlName="sport">
-        </article>
+  <form [formGroup]="playerForm" (ngSubmit)="onSubmit()">
+    <article class="player-board-profile">
+      <img
+        src="/assets/images/background.jpg"
+        alt="Item"
+        class="player-board-picture"
+      />
+      <label class="player-board-name" for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        class="player-board-value"
+        formControlName="name"
+      />
+    </article>
+    <article class="player-board-profile">
+      <img
+        src="/assets/images/background.jpg"
+        alt="Item"
+        class="player-board-picture"
+      />
+      <label class="player-board-name" for="sport">Sport</label>
+      <input
+        type="text"
+        id="sport"
+        class="player-board-value"
+        formControlName="sport"
+      />
+    </article>
 
-        <article class="player-board-profile">
-            <img src="/assets/images/background.jpg" alt="Item" class="player-board-picture">
-            <label class="player-board-name" for="country">Country</label>
-            <input type="text" id="country" class="player-board-value" formControlName="country">
-        </article>
+    <!-- <article class="player-board-profile">
+      <img
+        src="/assets/images/background.jpg"
+        alt="Item"
+        class="player-board-picture"
+      />
+      <label class="player-board-name" for="country">Country</label>
+      <input
+        type="text"
+        id="country"
+        class="player-board-value"
+        formControlName="country"
+      />
+    </article> -->
 
-        <article class="player-board-profile">
-            <img src="/assets/images/background.jpg" alt="Item" class="player-board-picture">
-            <label class="player-board-name" for="imagePath">Image URL</label>
-            <input type="text" id="imagePath" class="player-board-value" formControlName="imagePath">
-        </article>
+    <article class="player-board-profile">
+      <img
+        src="/assets/images/background.jpg"
+        alt="Item"
+        class="player-board-picture"
+      />
+      <label for="country" class="player-board-name">Country</label>
 
-        <article class="player-board-profile">
-            <img src="/assets/images/background.jpg" alt="Item" class="player-board-picture">
-            <label class="player-board-name" for="dob">Date of Birth</label>
-            <input type="text" id="dob" class="player-board-value" formControlName="dob">
-        </article>
+      <select
+        name="country"
+        id="country"
+        formControlName="country"
+        class="player-board-value"
+      >
+        <option
+          *ngFor="let country of countryList"
+          value="{{ country.name | lowercase }}"
+        >
+          {{ country.name | substring: 20 }} [{{ country.code }}]
+        </option>
+      </select>
+    </article>
 
-        <article class="player-board-profile">
-            <img src="/assets/images/background.jpg" alt="Item" class="player-board-picture">
-            <label class="player-board-name" for="achievements">Achievements</label>
-            <textarea type="text" id="achievements" class="player-board-value" formControlName="achievements"
-                rows="7"></textarea>
-        </article>
+    <article class="player-board-profile">
+      <img
+        src="/assets/images/background.jpg"
+        alt="Item"
+        class="player-board-picture"
+      />
+      <label class="player-board-name" for="imagePath">Image URL</label>
+      <input
+        type="text"
+        id="imagePath"
+        class="player-board-value"
+        formControlName="imagePath"
+      />
+    </article>
 
-        <article class="player-board-profile">
-            <img src="/assets/images/background.jpg" alt="Item" class="player-board-picture">
-            <label class="player-board-name" for="description">Description</label>
-            <textarea type="text" id="description" class="player-board-value" formControlName="description"
-                rows="7"></textarea>
-        </article>
+    <article class="player-board-profile">
+      <img
+        src="/assets/images/background.jpg"
+        alt="Item"
+        class="player-board-picture"
+      />
+      <label class="player-board-name" for="dob">Date of Birth</label>
+      <input
+        type="text"
+        id="dob"
+        class="player-board-value"
+        formControlName="dob"
+      />
+    </article>
 
-        <article class="player-board-profile">
-            <img src="/assets/images/background.jpg" alt="Item" class="player-board-picture">
-            <label class="player-board-name" for="active">Status</label>
-            <input type="text" id="active" class="player-board-value" formControlName="active">
-        </article>
+    <article class="player-board-profile">
+      <img
+        src="/assets/images/background.jpg"
+        alt="Item"
+        class="player-board-picture"
+      />
+      <label class="player-board-name" for="achievements">Achievements</label>
+      <textarea
+        type="text"
+        id="achievements"
+        class="player-board-value"
+        formControlName="achievements"
+        rows="7"
+      ></textarea>
+    </article>
 
-        <article class="buttons">
-            <section>
-                <button class="btn-back" routerLink="/players">Back</button>
-            </section>
-            <section>
-                <button class="btn-save" type="submit">Save</button>
-            </section>
-        </article>
-    </form>
+    <article class="player-board-profile">
+      <img
+        src="/assets/images/background.jpg"
+        alt="Item"
+        class="player-board-picture"
+      />
+      <label class="player-board-name" for="description">Description</label>
+      <textarea
+        type="text"
+        id="description"
+        class="player-board-value"
+        formControlName="description"
+        rows="7"
+      ></textarea>
+    </article>
+
+    <article class="player-board-profile">
+      <img
+        src="/assets/images/background.jpg"
+        alt="Item"
+        class="player-board-picture"
+      />
+      <label class="player-board-name" for="active">Status</label>
+      <input
+        type="text"
+        id="active"
+        class="player-board-value"
+        formControlName="active"
+      />
+    </article>
+
+    <article class="buttons">
+      <section>
+        <button class="btn-back" routerLink="/players">Back</button>
+      </section>
+      <section>
+        <button class="btn-save" type="submit">Save</button>
+      </section>
+    </article>
+  </form>
 </main>

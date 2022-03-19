@@ -5,6 +5,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { PlayersService } from '../players.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { User } from 'src/app/auth/user.model';
+import countryListExport from '../../shared/countryList';
 
 @Component({
   selector: 'app-players-create',
@@ -16,6 +17,7 @@ export class PlayersCreateComponent implements OnInit {
   editMode = false;
   playerForm: FormGroup;
   currentUser: User;
+  countryList: { name: string; code: string }[];
 
   constructor(private route: ActivatedRoute,
     private playersService: PlayersService,
@@ -34,6 +36,8 @@ export class PlayersCreateComponent implements OnInit {
         this.editMode = params['id'] != null;
         this.initForm();
       });
+
+      this.countryList = countryListExport;
   }
 
   onSubmit() {
