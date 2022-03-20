@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Player } from './player.model';
 import { environment } from '../../environments/environment';
+import { PlayerLike } from './playerLike.model';
 
 @Injectable()
 export class PlayersService {
@@ -37,6 +38,19 @@ export class PlayersService {
   deletePlayer(id: string) {
     return this.http.delete(
       `${environment.databaseURL}/players/${id}.json`
+    );
+  }
+
+  likePlayer(currentLike: PlayerLike) {
+    return this.http.post<PlayerLike>(
+      `${environment.databaseURL}/likes.json`,
+      currentLike
+    );
+  }
+
+  getPlayerLikes() {
+    return this.http.get<PlayerLike[]>(
+      `${environment.databaseURL}/likes.json`
     );
   }
 }

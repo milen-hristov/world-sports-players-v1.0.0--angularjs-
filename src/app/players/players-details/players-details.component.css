@@ -104,7 +104,8 @@
 
 .buttons .btn-back,
 .buttons .btn-edit,
-.buttons .btn-delete {
+.buttons .btn-delete,
+.buttons .btn-like {
     color: white;
     border: none;
     padding: 15px 20px;
@@ -128,3 +129,21 @@
     background-color: var(--neutral-color);
 }
 
+.buttons .btn-like {
+    background-color: var(--neutral-color);
+}
+
+.player-likes {
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 0.64px;
+}
+
+.player-likes span {
+    color: var(--main-color);
+}
+
+.player-likes-container {
+    text-align: center;
+}

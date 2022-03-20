@@ -1,6 +1,13 @@
-<main class="player">
+<article *ngIf="isLoading">
+    <app-loading></app-loading>
+  </article>
+  
+<main class="player" *ngIf="!isLoading">
     <section class="player-image">
         <img src="{{player.imagePath}}" alt="{{player.name}}">
+        <article class="player-likes-container">
+            <label class="player-likes"><i class="fas fa-star"></i> Likes: <span>{{playerLikes.length}}</span></label>
+        </article>
     </section>
     <section class="player-details">
         <h2>{{player.name}}</h2>
@@ -35,6 +42,8 @@
                 </article>
 
                 <article class="buttons">
+                    <button class="btn-like" (click)="onLikePlayer()" type="button"
+                    *ngIf="!isOwner && !isLiked">Like</button>
                     <section>
                         <button class="btn-delete" (click)="onDeletePlayer()" type="button"
                             *ngIf="isOwner">Delete</button>
