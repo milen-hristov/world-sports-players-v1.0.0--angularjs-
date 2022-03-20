@@ -33,7 +33,7 @@ export class PlayersDetailsComponent implements OnInit {
   ownerID: string;
   currentUserID: string;
   isLoading = false;
-  isLiked = false;
+  isLiked: boolean | undefined;
 
   constructor(
     private playersService: PlayersService,
@@ -45,30 +45,22 @@ export class PlayersDetailsComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       this.id = params["id"];
+      this.authService.user.subscribe((user) => {
+        this.currentUserID = user.id;
+      });
     });
-    console.log('Params');
-    
 
     this.playersService.getPlayer(this.id).subscribe((player) => {
       this.player = player;
       this.ownerID = player.owner;
-      
-      this.authService.user.subscribe((user) => {
-        this.currentUserID = user.id;
-      });
-      
       if (this.ownerID === this.currentUserID) {
         this.isOwner = true;
       } else {
         this.isOwner = false;
       }
-
     });
-    console.log('get player');
+
     this.getAllLikes();
-    
- 
-    console.log('get all likes');
   }
 
   onEditPlayer() {
@@ -96,20 +88,19 @@ export class PlayersDetailsComponent implements OnInit {
         map((responseData) => {
           const playerLikesArr: PlayerLike[] = [];
           for (const key in responseData) {
-            if (responseData.hasOwnProperty(key)) {
               playerLikesArr.push({ ...responseData[key] });
-              if (responseData[key].owner == this.currentUserID) {
-                this.isLiked = true;
-              }
-            }
           }
           return playerLikesArr;
         }),
         map((playerLikesArr) =>
           playerLikesArr.filter((player) => player.id == this.id)
-        )
+        ),
       )
       .subscribe((playerLikesRes) => {
+        let result = playerLikesRes.filter(like => like.owner === this.currentUserID);
+        if (result.length > 0) {
+          this.isLiked = true;
+        }
         this.playerLikes = playerLikesRes;
         this.isLoading = false;
       });
