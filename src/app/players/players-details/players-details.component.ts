@@ -33,6 +33,7 @@ export class PlayersDetailsComponent implements OnInit {
   ownerID: string;
   currentUserID: string;
   isLoading = false;
+  isAuthenticated = false;
   isLiked: boolean | undefined;
 
   constructor(
@@ -47,6 +48,7 @@ export class PlayersDetailsComponent implements OnInit {
       this.id = params["id"];
       this.authService.user.subscribe((user) => {
         this.currentUserID = user.id;
+        this.isAuthenticated = !!user;
       });
     });
 

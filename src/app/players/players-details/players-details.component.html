@@ -43,7 +43,7 @@
 
                 <article class="buttons">
                     <button class="btn-like" (click)="onLikePlayer()" type="button"
-                    *ngIf="!isOwner && !isLiked">Like</button>
+                    *ngIf="!isOwner && !isLiked && isAuthenticated">Like</button>
                     <section>
                         <button class="btn-delete" (click)="onDeletePlayer()" type="button"
                             *ngIf="isOwner">Delete</button>
