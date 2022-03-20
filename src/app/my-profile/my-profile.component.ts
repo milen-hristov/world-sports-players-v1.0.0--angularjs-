@@ -88,14 +88,16 @@ export class MyProfileComponent implements OnInit {
                 }
               }
 
-              const result = favouriteListArr.filter((player) => player.owner == this.currentUser.id)
+              const result = favouriteListArr.filter(
+                (player) => player.owner == this.currentUser.id
+              );
 
               return result;
             }),
             map((responseData) => {
               const favArrIDs = [];
               for (const key in responseData) {
-                favArrIDs.push(responseData[key].id );
+                favArrIDs.push(responseData[key].id);
               }
               return favArrIDs;
             })

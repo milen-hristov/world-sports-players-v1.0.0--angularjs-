@@ -18,6 +18,8 @@ import { SportsComponent } from './sports/sports.component';
 import { CreateComponent } from './players/create/create.component';
 import { SportsService } from './sports/sports.service';
 import { MyProfileComponent } from './my-profile/my-profile.component';
+import { MyCreatedPlayersComponent } from './my-profile/my-created-players/my-created-players.component';
+import { MyFavouritePlayersComponent } from './my-profile/my-favourite-players/my-favourite-players.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
     SubstringPipe,
     SportsComponent,
     CreateComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    MyCreatedPlayersComponent,
+    MyFavouritePlayersComponent,
   ],
   imports: [
     BrowserModule,

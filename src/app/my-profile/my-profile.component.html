@@ -1,24 +1,15 @@
 <article *ngIf="isLoadingCreated">
   <app-loading></app-loading>
 </article>
-
 <section class="players" *ngIf="!isLoadingCreated">
   <h2>Created<span>Players</span> ({{ myPlayers.length }})</h2>
   <section class="players-wrapper">
-    <article
-      class="player-card"
-      *ngFor="let player of myPlayers"
-      [routerLink]="['/players/', player.id]"
+    <app-my-created-players
+      *ngFor="let playerEl of myPlayers"
+      [player]="playerEl"
+      [routerLink]="['/players/', playerEl.id]"
     >
-      <article class="player-card-image">
-        <img [src]="player.imagePath" alt="{{ player.name }}" />
-      </article>
-      <article class="player-card-details-wrapper">
-        <h3 class="player-name">{{ player.name }}</h3>
-        <p class="player-sport">{{ player.sport | titlecase }}</p>
-        <p class="player-desc">{{ player.description | substring: 120 }}</p>
-      </article>
-    </article>
+    </app-my-created-players>
   </section>
 </section>
 
@@ -29,19 +20,11 @@
 <section class="players" *ngIf="!isLoadingMyFav">
   <h2>My<span>Favourites</span> ({{ myFavPlayers.length }})</h2>
   <section class="players-wrapper">
-    <article
-      class="player-card"
-      *ngFor="let player of myFavPlayers"
-      [routerLink]="['/players/', player.id]"
+    <app-my-created-players
+      *ngFor="let playerEl of myFavPlayers"
+      [player]="playerEl"
+      [routerLink]="['/players/', playerEl.id]"
     >
-      <article class="player-card-image">
-        <img [src]="player.imagePath" alt="{{ player.name }}" />
-      </article>
-      <article class="player-card-details-wrapper">
-        <h3 class="player-name">{{ player.name }}</h3>
-        <p class="player-sport">{{ player.sport | titlecase }}</p>
-        <p class="player-desc">{{ player.description | substring: 120 }}</p>
-      </article>
-    </article>
+    </app-my-created-players>
   </section>
 </section>
