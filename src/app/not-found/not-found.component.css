@@ -1,0 +1,12 @@
+.players h2 {
+    padding: 2% 0;
+    font-size: 30px;
+    line-height: 30px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.players h2>span {
+    color: var(--main-color);
+}

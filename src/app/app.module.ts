@@ -20,6 +20,7 @@ import { SportsService } from './sports/sports.service';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { MyCreatedPlayersComponent } from './my-profile/my-created-players/my-created-players.component';
 import { MyFavouritePlayersComponent } from './my-profile/my-favourite-players/my-favourite-players.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { MyFavouritePlayersComponent } from './my-profile/my-favourite-players/m
     MyProfileComponent,
     MyCreatedPlayersComponent,
     MyFavouritePlayersComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { SportsComponent } from './sports/sports.component';
 import { CreateComponent } from './players/create/create.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: '/players', pathMatch: 'full' },
@@ -35,6 +36,7 @@ const routes: Routes = [
   },
   { path: 'auth', component: AuthComponent },
   { path: 'my-profile', component: MyProfileComponent, canActivate: [AuthGuard] },
+  { path: '**', component: NotFoundComponent}
 ];
 
 
