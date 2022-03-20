@@ -147,3 +147,43 @@
 .player-likes-container {
     text-align: center;
 }
+
+.player-heading {
+    display: flex;
+}
+
+.player-info {
+    flex-basis: 85%;
+}
+
+.player-fav {
+    flex-basis: 15%;
+}
+
+.btn-fav {
+    border: none;
+    background-color: transparent;
+    /* outline: none; */
+}
+
+.fas.fa-star.default,
+.fas.fa-star.default a {
+    color: var(--light-color);
+    font-size: 40px;
+}
+
+.fas.fa-star.active,
+.fas.fa-star.active a {
+    color: var(--main-color);
+    font-size: 40px;
+}
+
+.fas.fa-star.default:hover {
+    color: var(--main-color);
+    font-size: 40px;
+}
+
+.fas.fa-star.active:hover {
+    color: var(--light-color);
+    font-size: 40px;
+}

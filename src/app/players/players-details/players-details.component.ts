@@ -4,6 +4,7 @@ import { map } from "rxjs/operators";
 import { AuthService } from "src/app/auth/auth.service";
 
 import { Player } from "../player.model";
+import { PlayerFav } from "../playerFav.model";
 import { PlayerLike } from "../playerLike.model";
 import { PlayersService } from "../players.service";
 
@@ -36,6 +37,10 @@ export class PlayersDetailsComponent implements OnInit {
   isAuthenticated = false;
   isLiked: boolean | undefined;
 
+  isFavourite: boolean | undefined;
+  favouriteList: PlayerLike[] | undefined;
+  isFavID: string;
+
   constructor(
     private playersService: PlayersService,
     private route: ActivatedRoute,
@@ -49,6 +54,8 @@ export class PlayersDetailsComponent implements OnInit {
       this.authService.user.subscribe((user) => {
         this.currentUserID = user.id;
         this.isAuthenticated = !!user;
+
+        this.getAllFavourites();
       });
     });
 
@@ -90,16 +97,18 @@ export class PlayersDetailsComponent implements OnInit {
         map((responseData) => {
           const playerLikesArr: PlayerLike[] = [];
           for (const key in responseData) {
-              playerLikesArr.push({ ...responseData[key] });
+            playerLikesArr.push({ ...responseData[key] });
           }
           return playerLikesArr;
         }),
         map((playerLikesArr) =>
           playerLikesArr.filter((player) => player.id == this.id)
-        ),
+        )
       )
       .subscribe((playerLikesRes) => {
-        let result = playerLikesRes.filter(like => like.owner === this.currentUserID);
+        let result = playerLikesRes.filter(
+          (like) => like.owner === this.currentUserID
+        );
         if (result.length > 0) {
           this.isLiked = true;
         }
@@ -109,7 +118,7 @@ export class PlayersDetailsComponent implements OnInit {
   }
 
   onLikePlayer() {
-    let likeObj:PlayerLike = {
+    let likeObj: PlayerLike = {
       id: this.id,
       owner: this.currentUserID,
     };
@@ -122,5 +131,71 @@ export class PlayersDetailsComponent implements OnInit {
         console.log(err);
       },
     });
+  }
+
+  onFavPlayer() {
+    if (this.isFavourite == false) {
+      console.log("Add player to favourites");
+
+      let favObj: PlayerFav = {
+        id: this.id,
+        owner: this.currentUserID,
+        isFavID: "",
+      };
+
+      this.playersService.addFavPlayer(favObj).subscribe({
+        next: () => {
+          this.getAllFavourites();
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+    } else {
+      console.log("Remove player from favourites");
+      this.playersService.removeFavPlayer(this.isFavID).subscribe({
+        next: () => {
+          this.getAllFavourites();
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+    }
+  }
+
+  getAllFavourites() {
+    this.isLoading = true;
+    this.favouriteList = undefined;
+    this.playersService
+      .getFavouriteList()
+      .pipe(
+        map((responseData) => {
+          const favouriteListArr: PlayerFav[] = [];
+          for (const key in responseData) {
+            if (responseData.hasOwnProperty(key)) {
+              favouriteListArr.push({ ...responseData[key], isFavID: key });
+            }
+          }
+          return favouriteListArr;
+        }),
+        map((favouriteListArr) =>
+          favouriteListArr.filter((player) => player.id == this.id)
+        )
+      )
+      .subscribe((favouriteListRes) => {
+        let result = favouriteListRes.filter(
+          (fav) => fav.owner === this.currentUserID
+        );
+
+        if (result.length > 0) {
+          this.isFavID = result[0].isFavID;
+          this.isFavourite = true;
+        } else {
+          this.isFavourite = false;
+        }
+        this.favouriteList = favouriteListRes;
+        this.isLoading = false;
+      });
   }
 }

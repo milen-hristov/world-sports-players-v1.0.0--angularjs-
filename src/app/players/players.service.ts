@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Player } from './player.model';
 import { environment } from '../../environments/environment';
 import { PlayerLike } from './playerLike.model';
+import { PlayerFav } from './playerFav.model';
 
 @Injectable()
 export class PlayersService {
@@ -51,6 +52,25 @@ export class PlayersService {
   getPlayerLikes() {
     return this.http.get<PlayerLike[]>(
       `${environment.databaseURL}/likes.json`
+    );
+  }
+
+  addFavPlayer(currentFav: PlayerFav) {
+    return this.http.post<PlayerFav>(
+      `${environment.databaseURL}/favourites.json`,
+      currentFav
+    );
+  }
+
+  getFavouriteList() {
+    return this.http.get<PlayerFav[]>(
+      `${environment.databaseURL}/favourites.json`
+    );
+  }
+
+  removeFavPlayer(id: string) {
+    return this.http.delete(
+      `${environment.databaseURL}/favourites/${id}.json`
     );
   }
 }

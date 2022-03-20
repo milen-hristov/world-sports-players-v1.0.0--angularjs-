@@ -6,14 +6,21 @@
     <section class="player-image">
         <img src="{{player.imagePath}}" alt="{{player.name}}">
         <article class="player-likes-container">
-            <label class="player-likes"><i class="fas fa-star"></i> Likes: <span>{{playerLikes.length}}</span></label>
+            <label class="player-likes">  Likes: <span>{{playerLikes.length}} <i class="far fa-thumbs-up"></i></span></label>
         </article>
     </section>
     <section class="player-details">
-        <h2>{{player.name}}</h2>
-        <h3>{{player.sport}}</h3>
-
+        <section class="player-heading">
+            <article class="player-info">
+                <h2>{{player.name}}</h2>
+                <h3>{{player.sport}}</h3>
+            </article>
+            <article class="player-fav" *ngIf="isAuthenticated">
+               <button type="button" (click)="onFavPlayer()" class="btn-fav"> <i class="fas fa-star" [ngClass]="isFavourite == true ? 'active' : 'default'"></i></button>
+            </article>
+        </section>
         <p class="player-details-notes">{{player.description}}</p>
+
 
         <article class="player-board">
             <section class="player-board-profiles">
