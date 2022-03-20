@@ -11,6 +11,9 @@
     >
     </app-my-created-players>
   </section>
+  <article class="no-entries" *ngIf="!myPlayers.length">
+    <h3>No players created.</h3>
+  </article>
 </section>
 
 <article *ngIf="isLoadingMyFav">
@@ -27,4 +30,7 @@
     >
     </app-my-created-players>
   </section>
+  <article class="no-entries" *ngIf="!myFavPlayers.length">
+    <h3>No players added to favourites.</h3>
+  </article>
 </section>
