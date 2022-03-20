@@ -1,0 +1,63 @@
+.footer {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;
+    gap: 30%;
+    background-color: #F7F7F7;
+}
+
+.footer-logo {
+    margin-left: 100px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.fas.fa-globe-americas {
+    margin: 5px;
+    color: var(--main-color);
+}
+
+.footer-logo span {
+    color: var(--main-color);
+}
+
+.footer ul,
+.footer-bottom ul {
+    display: flex;
+}
+
+.footer ul li,
+.footer-bottom ul {
+    list-style: none;
+    margin: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: transform .25s cubic-bezier(.7, .98, .86, .98), box-shadow .25s cubic-bezier(.7, .98, .86, .98);
+    /* cursor: pointer; */
+    align-self: center;
+}
+
+.footer ul li:hover {
+    transform: scale(1.1);
+}
+
+.footer a,
+.footer-bottom a {
+    text-decoration: none;
+    color: var(--random-color);
+}
+
+.fa-github,
+.fa-linkedin {
+    font-size: 20px;
+}
+
+.footer .hover:hover {
+    color: var(--main-color);
+}
+
+.footer-text {
+    cursor: unset;
+}

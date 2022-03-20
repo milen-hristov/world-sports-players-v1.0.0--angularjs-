@@ -21,6 +21,7 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { MyCreatedPlayersComponent } from './my-profile/my-created-players/my-created-players.component';
 import { MyFavouritePlayersComponent } from './my-profile/my-favourite-players/my-favourite-players.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MyCreatedPlayersComponent,
     MyFavouritePlayersComponent,
     NotFoundComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
