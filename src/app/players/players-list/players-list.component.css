@@ -91,3 +91,8 @@
     vertical-align: bottom;
     align-self: stretch;
 } */
+
+.no-entries {
+    text-align: center;
+    text-transform: uppercase;
+}
