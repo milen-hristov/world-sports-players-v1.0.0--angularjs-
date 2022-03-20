@@ -9,6 +9,7 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthGuard } from './auth/auth.guard';
 import { SportsComponent } from './sports/sports.component';
 import { CreateComponent } from './players/create/create.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: '/players', pathMatch: 'full' },
@@ -32,7 +33,8 @@ const routes: Routes = [
       { path: ':id/edit', component: PlayersCreatePlayersComponent },
     ]
   },
-  { path: 'auth', component: AuthComponent }
+  { path: 'auth', component: AuthComponent },
+  { path: 'my-profile', component: MyProfileComponent },
 ];
 
 

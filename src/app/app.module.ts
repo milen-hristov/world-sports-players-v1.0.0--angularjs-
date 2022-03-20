@@ -17,6 +17,7 @@ import { SubstringPipe } from './shared/substring.pipe';
 import { SportsComponent } from './sports/sports.component';
 import { CreateComponent } from './players/create/create.component';
 import { SportsService } from './sports/sports.service';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SportsService } from './sports/sports.service';
     LoadingComponent,
     SubstringPipe,
     SportsComponent,
-    CreateComponent
+    CreateComponent,
+    MyProfileComponent
   ],
   imports: [
     BrowserModule,
