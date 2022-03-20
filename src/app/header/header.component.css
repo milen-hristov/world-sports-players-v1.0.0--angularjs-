@@ -55,12 +55,13 @@
     border-bottom: 2px solid var(--main-color);
 }
 
-.navigation a {
+.navigation a,
+.navigation-bottom a {
     text-decoration: none;
     color: var(--random-color);
 }
 
-.logged-user {
+.logged-user a {
     color: var(--main-color);
 }
 

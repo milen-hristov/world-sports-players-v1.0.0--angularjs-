@@ -1,20 +1,34 @@
 <header>
-    <nav class="navigation">
-
-        <p class="navigation-logo"><a routerLink="/players"><i
-                    class="fas fa-globe-americas"></i>Sports<span>Players</span></a></p>
-        <ul>
-            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/players">Home</a>
-            </li>
-            <li routerLinkActive="active" *ngIf="!isAuthenticated"><a routerLink="/auth">Auth</a></li>
-            <li routerLinkActive="active"><a routerLink="/players/create" *ngIf="isAuthenticated">Create</a></li>
-            <li routerLinkActive="active"><a routerLink="/my-profile" *ngIf="isAuthenticated">My account</a></li>
-            <li><a (click)="onLogout()" *ngIf="isAuthenticated">Logout</a> </li>
-        </ul>
-    </nav>
-    <article class="navigation-bottom">
-        <ul>
-            <li class="logged-user" *ngIf="isAuthenticated"><span>logged as </span><i class="fas fa-user"></i> {{loggedUserEmail}}</li>
-        </ul>
-    </article>
+  <nav class="navigation">
+    <p class="navigation-logo">
+      <a routerLink="/players"
+        ><i class="fas fa-globe-americas"></i>Sports<span>Players</span></a
+      >
+    </p>
+    <ul>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a routerLink="/players">Home</a>
+      </li>
+      <li routerLinkActive="active" *ngIf="!isAuthenticated">
+        <a routerLink="/auth">Auth</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/players/create" *ngIf="isAuthenticated">Create</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/my-profile" *ngIf="isAuthenticated">My account</a>
+      </li>
+      <li><a (click)="onLogout()" *ngIf="isAuthenticated">Logout</a></li>
+    </ul>
+  </nav>
+  <article class="navigation-bottom">
+    <ul>
+      <li class="logged-user" *ngIf="isAuthenticated">
+        <a routerLink="/my-profile">
+          <span>logged as </span><i class="fas fa-user"></i>
+          {{ loggedUserEmail }}
+        </a>
+      </li>
+    </ul>
+  </article>
 </header>
