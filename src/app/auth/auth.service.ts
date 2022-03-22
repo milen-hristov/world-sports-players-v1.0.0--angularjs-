@@ -27,13 +27,20 @@ export class AuthService {
         }
       )
       .pipe(
-        tap((resData) => {
-          this.handleAuthentication(
-            resData.email,
-            resData.localId,
-            resData.idToken,
-            Number(resData.expiresIn)
-          );
+        tap({
+          next: (resData) => {
+            if (resData) {
+              this.handleAuthentication(
+                resData.email,
+                resData.localId,
+                resData.idToken,
+                Number(resData.expiresIn)
+              );
+            }
+          },
+          error: (error) => {
+            this.handleError(error);
+          },
         })
       );
   }
@@ -49,13 +56,20 @@ export class AuthService {
         }
       )
       .pipe(
-        tap((resData) => {
-          this.handleAuthentication(
-            resData.email,
-            resData.localId,
-            resData.idToken,
-            Number(resData.expiresIn)
-          );
+        tap({
+          next: (resData) => {
+            if (resData) {
+              this.handleAuthentication(
+                resData.email,
+                resData.localId,
+                resData.idToken,
+                Number(resData.expiresIn)
+              );
+            }
+          },
+          error: (error) => {
+            this.handleError(error);
+          },
         })
       );
   }
