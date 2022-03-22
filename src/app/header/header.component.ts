@@ -1,24 +1,27 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
 
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from "../auth/auth.service";
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: "app-header",
+  templateUrl: "./header.component.html",
+  styleUrls: ["./header.component.css"],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   private userSubcription: Subscription;
-  loggedUserEmail = '';
+  loggedUserEmail = "";
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.userSubcription = this.authService.user.subscribe(user => {
+    this.userSubcription = this.authService.user.subscribe((user) => {
       this.isAuthenticated = !!user;
-      this.loggedUserEmail = user.email;
+
+      if(this.isAuthenticated) {
+        this.loggedUserEmail = user.email;
+      }
       // console.log(!user);  // not logged in
       // console.log(!!user); // logged in
     });
@@ -31,5 +34,4 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.userSubcription.unsubscribe;
   }
-
 }

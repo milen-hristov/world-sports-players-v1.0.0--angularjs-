@@ -65,20 +65,25 @@
           alt="Item"
           class="user-board-picture"
         />
-        <label class="user-board-name" for="repeatPassword">Repeat Password</label>
+        <label class="user-board-name" for="repeatPassword"
+          >Repeat Password</label
+        >
         <input
-        type="password"
-        id="repeatPassword"
-        class="user-board-value"
-        name="repeatPassword"
-        ngModel
-        required
-        minlength="6"
-        #repeatPassword="ngModel"
+          type="password"
+          id="repeatPassword"
+          class="user-board-value"
+          name="repeatPassword"
+          ngModel
+          required
+          minlength="6"
+          #repeatPassword="ngModel"
         />
       </article>
 
-      <article class="notification-alert" *ngIf="!password.valid && password.touched">
+      <article
+        class="notification-alert"
+        *ngIf="!password.valid && password.touched"
+      >
         <i class="fas fa-info-circle"></i>
         <span>Please enter a password. Min lenght is 6 characters.</span>
       </article>
@@ -91,7 +96,6 @@
         <span>Passwords do not match.</span>
       </article>
 
-   
       <article class="buttons">
         <section>
           <button class="btn-enter" type="submit" [disabled]="!authForm.valid">

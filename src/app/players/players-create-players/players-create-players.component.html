@@ -35,13 +35,13 @@
         class="player-board-value"
         formControlName="sport"
       >
-      <option
-      *ngFor="let sport of sports"
-      value="{{ sport.name | lowercase }}"
-    >
-      {{ sport.name}}
-    </option>
-     </select>
+        <option
+          *ngFor="let sport of sports"
+          value="{{ sport.name | lowercase }}"
+        >
+          {{ sport.name }}
+        </option>
+      </select>
     </article>
     <article class="notification-alert" *ngIf="!sport.valid && sport.touched">
       <i class="fas fa-info-circle"></i>
@@ -55,7 +55,9 @@
         alt="Item"
         class="player-board-picture"
       />
-      <label for="country" class="player-board-name">Country<span>*</span></label>
+      <label for="country" class="player-board-name"
+        >Country<span>*</span></label
+      >
 
       <select
         name="country"
@@ -71,7 +73,10 @@
         </option>
       </select>
     </article>
-    <article class="notification-alert" *ngIf="!country.valid && country.touched">
+    <article
+      class="notification-alert"
+      *ngIf="!country.valid && country.touched"
+    >
       <i class="fas fa-info-circle"></i>
       <span>Please select a country from the list.</span>
     </article>
@@ -82,7 +87,9 @@
         alt="Item"
         class="player-board-picture"
       />
-      <label class="player-board-name" for="imagePath">Image URL<span>*</span></label>
+      <label class="player-board-name" for="imagePath"
+        >Image URL<span>*</span></label
+      >
       <input
         type="url"
         id="imagePath"
@@ -90,7 +97,10 @@
         formControlName="imagePath"
       />
     </article>
-    <article class="notification-alert" *ngIf="!imagePath.valid && imagePath.touched">
+    <article
+      class="notification-alert"
+      *ngIf="!imagePath.valid && imagePath.touched"
+    >
       <i class="fas fa-info-circle"></i>
       <span>Please add player image url.</span>
     </article>
@@ -101,7 +111,9 @@
         alt="Item"
         class="player-board-picture"
       />
-      <label class="player-board-name" for="dob">Date of Birth<span>*</span></label>
+      <label class="player-board-name" for="dob"
+        >Date of Birth<span>*</span></label
+      >
       <input
         type="date"
         id="dob"
@@ -114,14 +126,15 @@
       <span>Please add player's date of birth.</span>
     </article>
 
-
     <article class="player-board-profile">
       <img
         src="/assets/images/background.jpg"
         alt="Item"
         class="player-board-picture"
       />
-      <label class="player-board-name" for="achievements">Achievements (Optional)</label>
+      <label class="player-board-name" for="achievements"
+        >Achievements (Optional)</label
+      >
       <textarea
         type="text"
         id="achievements"
@@ -137,7 +150,9 @@
         alt="Item"
         class="player-board-picture"
       />
-      <label class="player-board-name" for="description">Player Info<span>*</span></label>
+      <label class="player-board-name" for="description"
+        >Player Info<span>*</span></label
+      >
       <textarea
         type="text"
         id="description"
@@ -146,11 +161,13 @@
         rows="3"
       ></textarea>
     </article>
-    <article class="notification-alert" *ngIf="!description.valid && description.touched">
+    <article
+      class="notification-alert"
+      *ngIf="!description.valid && description.touched"
+    >
       <i class="fas fa-info-circle"></i>
       <span>Please add short intro about the player.</span>
     </article>
-
 
     <article class="player-board-profile">
       <img
@@ -165,9 +182,9 @@
         class="player-board-value"
         formControlName="active"
       >
-      <option value="active">Active</option>
-      <option value="inactive">Inactive</option>
-    </select>
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+      </select>
     </article>
     <article class="notification-alert" *ngIf="!active.valid && active.touched">
       <i class="fas fa-info-circle"></i>

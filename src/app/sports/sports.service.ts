@@ -1,17 +1,15 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
-import { Sport } from './sport.model';
-import { environment } from '../../environments/environment';
+import { Sport } from "./sport.model";
+import { environment } from "../../environments/environment";
 
 @Injectable()
 export class SportsService {
   constructor(private http: HttpClient) {}
 
   getSports() {
-    return this.http.get<Sport[]>(
-      `${environment.databaseURL}/sports.json`
-    );
+    return this.http.get<Sport[]>(`${environment.databaseURL}/sports.json`);
   }
 
   addSport(player: Sport) {
@@ -21,16 +19,16 @@ export class SportsService {
     );
   }
 
-//   updatePlayer(id: string, updatedPlayer: Player) {
-//     return this.http.put<Player>(
-//       `${environment.databaseURL}/players/${id}.json`,
-//       updatedPlayer
-//     );
-//   }
+  //   updatePlayer(id: string, updatedPlayer: Player) {
+  //     return this.http.put<Player>(
+  //       `${environment.databaseURL}/players/${id}.json`,
+  //       updatedPlayer
+  //     );
+  //   }
 
-//   deletePlayer(id: string) {
-//     return this.http.delete(
-//       `${environment.databaseURL}/players/${id}.json`
-//     );
-//   }
+  //   deletePlayer(id: string) {
+  //     return this.http.delete(
+  //       `${environment.databaseURL}/players/${id}.json`
+  //     );
+  //   }
 }

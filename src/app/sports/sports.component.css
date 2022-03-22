@@ -61,18 +61,18 @@
   text-align: justify;
 }
 
-.sport-board-profile > label,
-.sport-board-profile > input,
-.sport-board-profile > textarea,
-.sport-board-profile > select {
+.sport-board-profile>label,
+.sport-board-profile>input,
+.sport-board-profile>textarea,
+.sport-board-profile>select {
   opacity: 0.8;
   font-weight: 600;
   font-size: 16px;
 }
 
-.sport-board-profile > textarea,
-.sport-board-profile > input,
-.sport-board-profile > select {
+.sport-board-profile>textarea,
+.sport-board-profile>input,
+.sport-board-profile>select {
   padding: 5%;
 }
 
@@ -111,7 +111,7 @@
   text-transform: uppercase;
 }
 
-.players h2 > span {
+.players h2>span {
   color: var(--main-color);
 }
 
@@ -137,27 +137,27 @@
 }
 
 input.ng-invalid.ng-touched {
-    border: 1px solid var(--danger-color);
+  border: 1px solid var(--danger-color);
 }
 
 .notification-alert {
-    color: var(--danger-color);
-    font-size: 14px;
-    text-align: center;
-    text-transform: uppercase;
-    font-weight: bold;
+  color: var(--danger-color);
+  font-size: 14px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 .alert-message {
-    color: var(--danger-color);
-    font-weight: 600;
-    font-size: 16px;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 0.64px;
-    padding-top: 5%;
+  color: var(--danger-color);
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.64px;
+  padding-top: 5%;
 }
 
 .fa-info-circle {
-    margin-right: 1%;
+  margin-right: 1%;
 }

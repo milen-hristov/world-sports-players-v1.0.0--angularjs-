@@ -3,6 +3,6 @@ export class Sport {
   public name: string;
 
   constructor(name: string) {
-      this.name = name;
+    this.name = name;
   }
 }

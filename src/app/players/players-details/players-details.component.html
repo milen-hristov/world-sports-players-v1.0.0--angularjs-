@@ -1,67 +1,116 @@
 <article *ngIf="isLoading">
-    <app-loading></app-loading>
-  </article>
-  
+  <app-loading></app-loading>
+</article>
+
 <main class="player" *ngIf="!isLoading">
-    <section class="player-image">
-        <img src="{{player.imagePath}}" alt="{{player.name}}">
-        <article class="player-likes-container">
-            <label class="player-likes">  Likes: <span>{{playerLikes?.length}} <i class="far fa-thumbs-up"></i></span></label>
-        </article>
+  <section class="player-image">
+    <img src="{{ player.imagePath }}" alt="{{ player.name }}" />
+    <article class="player-likes-container">
+      <label class="player-likes">
+        Likes:
+        <span>{{ playerLikes?.length }} <i class="far fa-thumbs-up"></i></span
+      ></label>
+    </article>
+  </section>
+  <section class="player-details">
+    <section class="player-heading">
+      <article class="player-info">
+        <h2>{{ player.name }}</h2>
+        <h3>{{ player.sport }}</h3>
+      </article>
+      <article class="player-fav" *ngIf="isAuthenticated">
+        <button type="button" (click)="onFavPlayer()" class="btn-fav">
+          <i
+            class="fas fa-star"
+            [ngClass]="isFavourite == true ? 'active' : 'default'"
+          ></i>
+        </button>
+      </article>
     </section>
-    <section class="player-details">
-        <section class="player-heading">
-            <article class="player-info">
-                <h2>{{player.name}}</h2>
-                <h3>{{player.sport}}</h3>
-            </article>
-            <article class="player-fav" *ngIf="isAuthenticated">
-               <button type="button" (click)="onFavPlayer()" class="btn-fav"> <i class="fas fa-star" [ngClass]="isFavourite == true ? 'active' : 'default'"></i></button>
-            </article>
-        </section>
-        <p class="player-details-notes">{{player.description}}</p>
+    <p class="player-details-notes">{{ player.description }}</p>
 
-
-        <article class="player-board">
-            <section class="player-board-profiles">
-                <article class="player-board-profile">
-                    <img src="/assets/images/background.jpg" alt="Item" class="player-board-picture">
-                    <span class="player-board-name">Country</span>
-                    <span class="player-board-value">{{player.country | titlecase}}<span></span></span>
-                </article>
-
-                <article class="player-board-profile">
-                    <img src="/assets/images/background.jpg" alt="Item" class="player-board-picture">
-                    <span class="player-board-name">Date of Birth</span>
-                    <span class="player-board-value">{{player.dob}}<span></span></span>
-                </article>
-
-                <article class="player-board-profile">
-                    <img src="/assets/images/background.jpg" alt="Item" class="player-board-picture">
-                    <span class="player-board-name">Achievements</span>
-                    <span class="player-board-value">{{player.achievements}}<span></span></span>
-                </article>
-
-                <article class="player-board-profile">
-                    <img src="/assets/images/background.jpg" alt="Item" class="player-board-picture">
-                    <span class="player-board-name">Status</span>
-                    <span class="player-board-value">{{player.active | titlecase}}</span>
-                </article>
-
-                <article class="buttons">
-                    <button class="btn-like" (click)="onLikePlayer()" type="button"
-                    *ngIf="!isOwner && !isLiked && isAuthenticated">Like</button>
-                    <section>
-                        <button class="btn-delete" (click)="onDeletePlayer()" type="button"
-                            *ngIf="isOwner">Delete</button>
-                        <button class="btn-edit" (click)="onEditPlayer()" type="button" *ngIf="isOwner">Edit</button>
-                    </section>
-                    <section>
-                        <button class="btn-back" routerLink="/players" type="button">Back</button>
-                    </section>
-                </article>
-
-            </section>
+    <article class="player-board">
+      <section class="player-board-profiles">
+        <article class="player-board-profile">
+          <img
+            src="/assets/images/background.jpg"
+            alt="Item"
+            class="player-board-picture"
+          />
+          <span class="player-board-name">Country</span>
+          <span class="player-board-value"
+            >{{ player.country | titlecase }}<span></span
+          ></span>
         </article>
-    </section>
+
+        <article class="player-board-profile">
+          <img
+            src="/assets/images/background.jpg"
+            alt="Item"
+            class="player-board-picture"
+          />
+          <span class="player-board-name">Date of Birth</span>
+          <span class="player-board-value">{{ player.dob }}<span></span></span>
+        </article>
+
+        <article class="player-board-profile">
+          <img
+            src="/assets/images/background.jpg"
+            alt="Item"
+            class="player-board-picture"
+          />
+          <span class="player-board-name">Achievements</span>
+          <span class="player-board-value"
+            >{{ player.achievements }}<span></span
+          ></span>
+        </article>
+
+        <article class="player-board-profile">
+          <img
+            src="/assets/images/background.jpg"
+            alt="Item"
+            class="player-board-picture"
+          />
+          <span class="player-board-name">Status</span>
+          <span class="player-board-value">{{
+            player.active | titlecase
+          }}</span>
+        </article>
+
+        <article class="buttons">
+          <button
+            class="btn-like"
+            (click)="onLikePlayer()"
+            type="button"
+            *ngIf="!isOwner && !isLiked && isAuthenticated"
+          >
+            Like
+          </button>
+          <section>
+            <button
+              class="btn-delete"
+              (click)="onDeletePlayer()"
+              type="button"
+              *ngIf="isOwner"
+            >
+              Delete
+            </button>
+            <button
+              class="btn-edit"
+              (click)="onEditPlayer()"
+              type="button"
+              *ngIf="isOwner"
+            >
+              Edit
+            </button>
+          </section>
+          <section>
+            <button class="btn-back" routerLink="/players" type="button">
+              Back
+            </button>
+          </section>
+        </article>
+      </section>
+    </article>
+  </section>
 </main>

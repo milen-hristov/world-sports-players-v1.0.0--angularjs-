@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from "@angular/core";
+import { NgForm } from "@angular/forms";
+import { Router } from "@angular/router";
+import { Observable } from "rxjs";
 
-import { AuthService } from './auth.service';
-import { AuthResponseData } from './authResponseData.interface';
+import { AuthService } from "./auth.service";
+import { AuthResponseData } from "./authResponseData.interface";
 
 @Component({
-  selector: 'app-auth',
-  templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.css'],
+  selector: "app-auth",
+  templateUrl: "./auth.component.html",
+  styleUrls: ["./auth.component.css"],
 })
 export class AuthComponent implements OnInit {
   isLoginMode = true;
@@ -17,9 +17,9 @@ export class AuthComponent implements OnInit {
   error: string = null;
   isSamePassword = true;
   user = {
-    email: '',
-    password: '',
-    repeatPassword: '',
+    email: "",
+    password: "",
+    repeatPassword: "",
   };
   // repeatPasswordValid: boolean;
   // repeatPasswordTouched: boolean;
@@ -59,16 +59,16 @@ export class AuthComponent implements OnInit {
 
     if (this.isLoginMode) {
       authObs = this.authService.login(this.user.email, this.user.password);
-      console.log('login');
+      console.log("login");
     } else {
       authObs = this.authService.signup(this.user.email, this.user.password);
-      console.log('register');
+      console.log("register");
     }
 
     authObs.subscribe({
       next: () => {
         this.isLoading = false;
-        this.router.navigate(['/players']);
+        this.router.navigate(["/players"]);
       },
       error: (errorRes) => {
         this.error = this.authService.handleError(errorRes);

@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { Component, OnInit } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import { map } from "rxjs/operators";
 
-import { AuthService } from '../auth/auth.service';
-import { User } from '../auth/user.model';
-import { Sport } from './sport.model';
-import { SportsService } from './sports.service';
+import { AuthService } from "../auth/auth.service";
+import { User } from "../auth/user.model";
+import { Sport } from "./sport.model";
+import { SportsService } from "./sports.service";
 
 @Component({
-  selector: 'app-sports',
-  templateUrl: './sports.component.html',
-  styleUrls: ['./sports.component.css'],
+  selector: "app-sports",
+  templateUrl: "./sports.component.html",
+  styleUrls: ["./sports.component.css"],
 })
 export class SportsComponent implements OnInit {
   isLoading = false;
@@ -38,14 +38,14 @@ export class SportsComponent implements OnInit {
 
   onSubmit() {
     if (!this.sportForm.valid) {
-      this.error = 'Please fill in all the required (*) fields.';
+      this.error = "Please fill in all the required (*) fields.";
       return;
     }
 
     this.sportsService.addSport(this.sportForm.value).subscribe({
       next: () => {
         this.fetchSports();
-        this.router.navigate(['/players/create/sport']);
+        this.router.navigate(["/players/create/sport"]);
         this.error = null;
       },
       error: (err) => {
@@ -57,8 +57,8 @@ export class SportsComponent implements OnInit {
   }
 
   private initForm() {
-    let sportsName = '';
-    let confirmationLink = '';
+    let sportsName = "";
+    let confirmationLink = "";
     let owner = this.currentUser.id;
 
     this.sportForm = new FormGroup({
@@ -71,9 +71,10 @@ export class SportsComponent implements OnInit {
   fetchSports() {
     this.isLoading = true;
     this.sports = undefined;
-    this.sportsService.getSports()
+    this.sportsService
+      .getSports()
       .pipe(
-        map(responseData => {
+        map((responseData) => {
           const postsArray: Sport[] = [];
           for (const key in responseData) {
             if (responseData.hasOwnProperty(key)) {
@@ -81,14 +82,16 @@ export class SportsComponent implements OnInit {
             }
           }
           return postsArray;
-        }),
+        })
       )
-      .subscribe(sports => {
+      .subscribe((sports) => {
         this.sports = sports;
         console.log(this.sports);
         this.isLoading = false;
       });
   }
 
-  get name() { return this.sportForm.get('name'); }
+  get name() {
+    return this.sportForm.get("name");
+  }
 }

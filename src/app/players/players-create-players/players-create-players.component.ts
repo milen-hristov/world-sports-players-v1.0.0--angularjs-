@@ -114,7 +114,7 @@ export class PlayersCreatePlayersComponent implements OnInit {
       this.playersService.getPlayer(this.id).subscribe((player) => {
         if (player.owner !== this.currentUser.id) {
           // this.error = "You are not authorised to edit player created by different user.";
-          this.router.navigate(["/players",this.id]);
+          this.router.navigate(["/players", this.id]);
         }
       });
 

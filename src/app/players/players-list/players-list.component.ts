@@ -1,19 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { Component, OnInit } from "@angular/core";
+import { map } from "rxjs/operators";
 
-import { PlayersService } from '../players.service';
-import { Player } from '../player.model';
+import { PlayersService } from "../players.service";
+import { Player } from "../player.model";
 
 @Component({
-  selector: 'app-players-list',
-  templateUrl: './players-list.component.html',
-  styleUrls: ['./players-list.component.css']
+  selector: "app-players-list",
+  templateUrl: "./players-list.component.html",
+  styleUrls: ["./players-list.component.css"],
 })
 export class PlayersListComponent implements OnInit {
   players: Player[] | undefined;
   isLoading = false;
 
-  constructor(private playersService: PlayersService) { }
+  constructor(private playersService: PlayersService) {}
 
   ngOnInit() {
     this.fetchPlayers();
@@ -22,9 +22,10 @@ export class PlayersListComponent implements OnInit {
   fetchPlayers() {
     this.isLoading = true;
     this.players = undefined;
-    this.playersService.getPlayers()
+    this.playersService
+      .getPlayers()
       .pipe(
-        map(responseData => {
+        map((responseData) => {
           const postsArray: Player[] = [];
           for (const key in responseData) {
             if (responseData.hasOwnProperty(key)) {
@@ -32,9 +33,9 @@ export class PlayersListComponent implements OnInit {
             }
           }
           return postsArray;
-        }),
+        })
       )
-      .subscribe(players => {
+      .subscribe((players) => {
         this.players = players;
         this.isLoading = false;
         console.log(this.players);
