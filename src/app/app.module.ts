@@ -23,6 +23,7 @@ import { MyFavouritePlayersComponent } from "./my-profile/my-favourite-players/m
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { FooterComponent } from "./footer/footer.component";
 import { PopupComponent } from './shared/popup/popup.component';
+import { HandleError } from "./shared/handleError.service";
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import { PopupComponent } from './shared/popup/popup.component';
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [PlayersService, SportsService],
+  providers: [PlayersService, SportsService, HandleError],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

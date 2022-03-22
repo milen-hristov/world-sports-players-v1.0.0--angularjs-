@@ -9,6 +9,7 @@ import countryListExport from "../../shared/countryList";
 import { Sport } from "src/app/sports/sport.model";
 import { SportsService } from "src/app/sports/sports.service";
 import { map } from "rxjs/operators";
+import { HandleError } from "src/app/shared/handleError.service";
 
 @Component({
   selector: "app-players-create-players",
@@ -29,7 +30,8 @@ export class PlayersCreatePlayersComponent implements OnInit {
     private playersService: PlayersService,
     private router: Router,
     private authService: AuthService,
-    private sportsService: SportsService
+    private sportsService: SportsService,
+    private handleError: HandleError
   ) {}
 
   ngOnInit() {
@@ -71,6 +73,7 @@ export class PlayersCreatePlayersComponent implements OnInit {
           this.router.navigate(["/players"]);
         },
         error: (err) => {
+          this.message = this.handleError.handleErrorPlayer(err);
           console.log(err);
         },
       });

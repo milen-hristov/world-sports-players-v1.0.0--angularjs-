@@ -5,6 +5,7 @@ import { tap } from "rxjs/operators";
 import { BehaviorSubject } from "rxjs";
 
 import { AuthResponseData } from "./authResponseData.interface";
+import { HandleError } from "../shared/handleError.service";
 import { User } from "./user.model";
 import { environment } from "../../environments/environment";
 
@@ -14,7 +15,7 @@ export class AuthService {
 
   private tokenExpirationTimer: any;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private handleError: HandleError) {}
 
   signup(email: string, password: string) {
     return this.http
@@ -39,7 +40,7 @@ export class AuthService {
             }
           },
           error: (error) => {
-            this.handleError(error);
+            this.handleError.handleError(error);
           },
         })
       );
@@ -68,7 +69,7 @@ export class AuthService {
             }
           },
           error: (error) => {
-            this.handleError(error);
+            this.handleError.handleError(error);
           },
         })
       );
@@ -128,26 +129,5 @@ export class AuthService {
     this.tokenExpirationTimer = setTimeout(() => {
       this.logout();
     }, expirationDuration);
-  }
-
-  handleError(errorRes: HttpErrorResponse) {
-    let errorMessage = "An error occurred!";
-    if (!errorRes.error || !errorRes.error.error) {
-      return errorMessage;
-    }
-    switch (errorRes.error.error.message) {
-      case "EMAIL_EXISTS":
-      case "INVALID_EMAIL":
-      case "EMAIL_NOT_FOUND":
-      case "INVALID_PASSWORD":
-      case "MISSING_PASSWORD":
-        errorMessage = "Please check your email & password and try again.";
-        break;
-      case "TOO_MANY_ATTEMPTS_TRY_LATER : Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later.":
-        errorMessage =
-          "Access to this account has been temporarily disabled due to many failed login attempts. Please try again later.";
-        break;
-    }
-    return errorMessage;
   }
 }

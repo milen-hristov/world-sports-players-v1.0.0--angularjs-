@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Observable } from "rxjs";
+import { HandleError } from "../shared/handleError.service";
 
 import { AuthService } from "./auth.service";
 import { AuthResponseData } from "./authResponseData.interface";
@@ -22,7 +23,7 @@ export class AuthComponent implements OnInit {
     repeatPassword: "",
   };
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private handleError: HandleError) {}
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
@@ -67,7 +68,7 @@ export class AuthComponent implements OnInit {
         this.router.navigate(["/players"]);
       },
       error: (errorRes) => {
-        this.message = this.authService.handleError(errorRes);
+        this.message = this.handleError.handleError(errorRes);
         console.log(errorRes);
         // this.message = errorRes.error.error.message;
         this.isLoading = false;
