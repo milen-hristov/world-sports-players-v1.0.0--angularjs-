@@ -9,10 +9,7 @@ import { HeaderComponent } from "./header/header.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { FooterComponent } from "./footer/footer.component";
 import { AuthInterceptorService } from "./auth/auth-interceptor.service";
-import { PlayersModule } from "./players/players.module";
-import { MyProfileModule } from "./my-profile/my-profile.module";
 import { SharedModule } from "./shared.module";
-import { AuthModule } from "./auth/auth.module";
 
 @NgModule({
   declarations: [
@@ -25,10 +22,7 @@ import { AuthModule } from "./auth/auth.module";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    PlayersModule,
-    MyProfileModule,
     SharedModule,
-    AuthModule,
   ],
   providers: [
     {

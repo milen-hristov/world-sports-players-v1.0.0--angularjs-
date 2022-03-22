@@ -16,7 +16,7 @@ import { SharedModule } from "../shared.module";
   imports: [
     RouterModule.forChild([
       {
-        path: "my-profile",
+        path: "",
         component: MyProfileComponent,
         canActivate: [AuthGuard],
       },

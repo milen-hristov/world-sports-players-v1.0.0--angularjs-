@@ -11,7 +11,7 @@ import { PlayersComponent } from "./players.component";
 
 const routes: Routes = [
   {
-    path: "players",
+    path: "",
     component: PlayersComponent,
     children: [
       { path: "", component: PlayersListComponent },
