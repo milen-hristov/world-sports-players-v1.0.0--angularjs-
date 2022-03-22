@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { PlayersService } from '../players.service';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -22,6 +22,7 @@ export class PlayersCreatePlayersComponent implements OnInit {
   currentUser: User;
   countryList: { name: string; code: string }[];
   sports: Sport[] | undefined;
+  error: string = null;
 
   constructor(private route: ActivatedRoute,
     private playersService: PlayersService,
@@ -48,6 +49,11 @@ export class PlayersCreatePlayersComponent implements OnInit {
   }
 
   onSubmit() {
+    if (!this.playerForm.valid) {
+      this.error = 'Please fill in all the required (*) fields.';
+      return;
+    }
+
     if (this.editMode) {
       this.playersService.updatePlayer(this.id, this.playerForm.value).subscribe({
         next: () => {
@@ -97,7 +103,7 @@ export class PlayersCreatePlayersComponent implements OnInit {
     let playerImg = '';
     let playerDOB = '';
     let playerAchievements = '';
-    let playerActive = false;
+    let playerActive = '';
     let playerSport = '';
     let owner = this.currentUser.id;
 
@@ -117,15 +123,23 @@ export class PlayersCreatePlayersComponent implements OnInit {
     }
 
     this.playerForm = new FormGroup({
-      'name': new FormControl(playerName),
-      'country': new FormControl(playerCountry),
-      'description': new FormControl(playerDesc),
-      'imagePath': new FormControl(playerImg),
-      'dob': new FormControl(playerDOB),
-      'achievements': new FormControl(playerAchievements),
-      'active': new FormControl(playerActive),
-      'sport': new FormControl(playerSport),
-      'owner': new FormControl(owner)
+      name: new FormControl(playerName, [Validators.required, Validators.minLength(3)]),
+      country: new FormControl(playerCountry, Validators.required),
+      description: new FormControl(playerDesc, Validators.required),
+      imagePath: new FormControl(playerImg, [Validators.required, Validators.pattern(/^(http|https):/)]),
+      dob: new FormControl(playerDOB, Validators.required),
+      achievements: new FormControl(playerAchievements),
+      active: new FormControl(playerActive, Validators.required),
+      sport: new FormControl(playerSport, Validators.required),
+      owner: new FormControl(owner)
     });
   }
+  
+  get name() { return this.playerForm.get('name'); }
+  get sport() { return this.playerForm.get('sport'); }
+  get country() { return this.playerForm.get('country'); }
+  get description() { return this.playerForm.get('description'); }
+  get imagePath() { return this.playerForm.get('imagePath'); }
+  get dob() { return this.playerForm.get('dob'); }
+  get active() { return this.playerForm.get('active'); }
 }

@@ -4,7 +4,7 @@
     gap: 1%;
     align-items: center;
     justify-content: center;
-  
+
 }
 
 .player-image {
@@ -97,7 +97,7 @@
 .player-board-profile>label,
 .player-board-profile>input,
 .player-board-profile>textarea,
-.player-board-profile>select  {
+.player-board-profile>select {
     opacity: .8;
     font-weight: 600;
     font-size: 16px;
@@ -134,3 +134,31 @@
 .buttons .btn-save {
     background-color: var(--safe-color);
 }
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+    border: 1px solid var(--danger-color);
+}
+
+.notification-alert {
+    color: var(--danger-color);
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.alert-message {
+    color: var(--danger-color);
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.64px;
+    padding-top: 5%;
+}
+
+.fa-info-circle {
+    margin-right: 1%;
+}
+
