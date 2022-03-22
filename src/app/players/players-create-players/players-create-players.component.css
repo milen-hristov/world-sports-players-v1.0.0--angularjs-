@@ -151,3 +151,43 @@ textarea.ng-invalid.ng-touched {
 .fa-info-circle {
     margin-right: 1%;
 }
+
+@media screen and (max-width:800px) {
+    .player {
+        padding: 0;
+    }
+
+    .player-board-profile {
+        display: grid;
+        grid-template-columns: 2fr 4fr;
+    }
+
+    .player-board-picture {
+        display: none;
+    }
+
+    
+    .buttons {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .buttons .btn-back,
+    .buttons .btn-save {
+       padding: 60% 30%;
+    }
+
+}
+
+@media screen and (max-width:600px) {
+
+    .player-board-profile {
+        flex-direction: column;
+    }
+
+    .player-board-name,
+    .player-board-value {
+        width: 100%;
+    }
+
+}

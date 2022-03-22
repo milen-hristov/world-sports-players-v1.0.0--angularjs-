@@ -151,3 +151,60 @@ input.ng-invalid.ng-touched {
 .fa-info-circle {
   margin-right: 1%;
 }
+
+@media screen and (max-width:1000px) {
+
+  .sport-board-profile-list-all {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2%;
+  }
+}
+
+@media screen and (max-width:800px) {
+  .sport {
+    padding: 0;
+  }
+
+  .sport-board-profile {
+    display: grid;
+    grid-template-columns: 2fr 4fr;
+  }
+
+  .sport-board-picture {
+    display: none;
+  }
+
+
+  .buttons {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .buttons .btn-back,
+  .buttons .btn-save {
+    padding: 60% 30%;
+  }
+
+  .sport-board-profile-list {
+    display: flex;
+  }
+
+  .sport-board-name {
+    padding: 3%;
+  }
+
+
+}
+
+@media screen and (max-width:600px) {
+
+  .sport-board-profile {
+    flex-direction: column;
+  }
+
+  .sport-board-name,
+  .sport-board-value {
+    width: 100%;
+  }
+}

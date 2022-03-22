@@ -8,7 +8,7 @@
 }
 
 .navigation-logo {
-    margin-left: 100px;
+    margin-left: 5%;
     padding: 10px;
     font-size: 20px;
     font-weight: bold;
@@ -68,4 +68,46 @@
 .logged-user span {
     text-transform: capitalize;
     color: var(--random-color);
+}
+
+@media screen and (max-width:800px) {
+    .navigation {
+        gap: 10%;
+        flex-direction: column;
+    }
+
+    .navigation-logo {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .navigation ul {
+        width: 100%;
+        justify-content: space-around;
+        text-align: center;
+    }
+
+    .navigation ul li a {
+        font-size: 20px;
+     
+    }
+
+    .navigation ul li {
+        margin: 0;
+        padding: 5% 2% ;
+    }
+
+    .navigation-bottom {
+        justify-content: center;
+        margin-right: 0%;
+    }
+
+    .navigation-bottom ul {
+        margin: 0;
+        font-size: 20px;
+        padding: 2%;
+    }
+
+
 }

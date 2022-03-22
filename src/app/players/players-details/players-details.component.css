@@ -188,3 +188,46 @@
     color: var(--light-color);
     font-size: 40px;
 }
+
+@media screen and (max-width:800px) {
+    .player {
+        flex-direction: column;
+    }
+
+    .player-image {
+        width: 100%;
+        padding-bottom: 5%;
+    }
+
+    .player-details {
+        width: 100%;
+    }
+
+    .buttons {
+        width: 100%;
+    }
+
+    .buttons .btn-back,
+    .buttons .btn-edit,
+    .buttons .btn-delete,
+    .buttons .btn-like {
+       /* width: 25%; */
+       padding: 10% 10%;
+    }
+
+
+    .player-board-profile {
+        display: flex;
+        flex-direction: column;
+        padding: 5%;
+    }
+
+    .player-board-picture {
+        display: none;
+    }
+
+    .player-board-profile>span {
+        font-size: 20px;
+        margin-bottom: 2%;
+    }
+}

@@ -104,3 +104,52 @@
     text-transform: uppercase;
     font-weight: bold;
 }
+
+@media screen and (max-width:1600px) {
+    .players-wrapper {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2%;
+    }
+
+}
+
+@media screen and (max-width:1400px) {
+    .players-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2%;
+    }
+}
+
+@media screen and (max-width:1000px) {
+    .players-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2%;
+    }
+
+    .player-card-details-wrapper {
+        padding-bottom: 15%;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .players-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2%;
+    }
+
+    .player-card-details-wrapper {
+        padding-bottom: 20%;
+    }
+}
+
+
+@media screen and (max-width:600px) {
+    .players-wrapper {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 2%;
+    }
+
+    .player-card-details-wrapper {
+        padding-bottom: 25%;
+    }
+}
