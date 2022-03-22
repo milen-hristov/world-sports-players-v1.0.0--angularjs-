@@ -96,6 +96,7 @@ export class SportsComponent implements OnInit {
         error: (err) => {
           this.message = this.handleError.handleErrorPlayer(err);
           console.log(err);
+          this.isLoading = false;
         },        
       });
   }
