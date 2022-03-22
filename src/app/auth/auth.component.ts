@@ -30,7 +30,6 @@ export class AuthComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.isSamePassword);
   }
 
   onSubmit(form: NgForm) {
@@ -69,8 +68,6 @@ export class AuthComponent implements OnInit {
       },
       error: (errorRes) => {
         this.message = this.handleError.handleError(errorRes);
-        console.log(errorRes);
-        // this.message = errorRes.error.error.message;
         this.isLoading = false;
       },
     });
