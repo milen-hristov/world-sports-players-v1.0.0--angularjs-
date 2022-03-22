@@ -1,19 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, Params } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router, Params } from "@angular/router";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 
-import { PlayersService } from '../players.service';
-import { AuthService } from 'src/app/auth/auth.service';
-import { User } from 'src/app/auth/user.model';
-import countryListExport from '../../shared/countryList';
-import { Sport } from 'src/app/sports/sport.model';
-import { SportsService } from 'src/app/sports/sports.service';
-import { map } from 'rxjs/operators';
+import { PlayersService } from "../players.service";
+import { AuthService } from "src/app/auth/auth.service";
+import { User } from "src/app/auth/user.model";
+import countryListExport from "../../shared/countryList";
+import { Sport } from "src/app/sports/sport.model";
+import { SportsService } from "src/app/sports/sports.service";
+import { map } from "rxjs/operators";
 
 @Component({
-  selector: 'app-players-create-players',
-  templateUrl: './players-create-players.component.html',
-  styleUrls: ['./players-create-players.component.css']
+  selector: "app-players-create-players",
+  templateUrl: "./players-create-players.component.html",
+  styleUrls: ["./players-create-players.component.css"],
 })
 export class PlayersCreatePlayersComponent implements OnInit {
   id: string;
@@ -24,53 +24,55 @@ export class PlayersCreatePlayersComponent implements OnInit {
   sports: Sport[] | undefined;
   error: string = null;
 
-  constructor(private route: ActivatedRoute,
+  constructor(
+    private route: ActivatedRoute,
     private playersService: PlayersService,
     private router: Router,
     private authService: AuthService,
-    private sportsService: SportsService) {
-  }
+    private sportsService: SportsService
+  ) {}
 
   ngOnInit() {
-    this.authService.user.subscribe(user => {
+    this.authService.user.subscribe((user) => {
       this.currentUser = user;
     });
 
-    this.route.params
-      .subscribe((params: Params) => {
-        this.id = params['id'];
-        this.editMode = params['id'] != null;
-        this.initForm();
-      });
+    this.route.params.subscribe((params: Params) => {
+      this.id = params["id"];
+      this.editMode = params["id"] != null;
+      this.initForm();
+    });
 
-      this.countryList = countryListExport;
+    this.countryList = countryListExport;
 
-      this.fetchSports();
+    this.fetchSports();
   }
 
   onSubmit() {
     if (!this.playerForm.valid) {
-      this.error = 'Please fill in all the required (*) fields.';
+      this.error = "Please fill in all the required (*) fields.";
       return;
     }
 
     if (this.editMode) {
-      this.playersService.updatePlayer(this.id, this.playerForm.value).subscribe({
-        next: () => {
-          this.router.navigate(['/players']);
-        },
-        error: (err) => {
-          console.log(err);
-        }
-      });
+      this.playersService
+        .updatePlayer(this.id, this.playerForm.value)
+        .subscribe({
+          next: () => {
+            this.router.navigate(["/players"]);
+          },
+          error: (err) => {
+            console.log(err);
+          },
+        });
     } else {
       this.playersService.addPlayer(this.playerForm.value).subscribe({
         next: () => {
-          this.router.navigate(['/players']);
+          this.router.navigate(["/players"]);
         },
         error: (err) => {
           console.log(err);
-        }
+        },
       });
     }
     // this.router.navigate(['../'], {relativeTo: this.route});
@@ -78,9 +80,10 @@ export class PlayersCreatePlayersComponent implements OnInit {
 
   fetchSports() {
     this.sports = undefined;
-    this.sportsService.getSports()
+    this.sportsService
+      .getSports()
       .pipe(
-        map(responseData => {
+        map((responseData) => {
           const postsArray: Sport[] = [];
           for (const key in responseData) {
             if (responseData.hasOwnProperty(key)) {
@@ -88,26 +91,33 @@ export class PlayersCreatePlayersComponent implements OnInit {
             }
           }
           return postsArray;
-        }),
+        })
       )
-      .subscribe(sports => {
+      .subscribe((sports) => {
         this.sports = sports;
         console.log(this.sports);
       });
   }
 
   private initForm() {
-    let playerName = '';
-    let playerCountry = '';
-    let playerDesc = '';
-    let playerImg = '';
-    let playerDOB = '';
-    let playerAchievements = '';
-    let playerActive = '';
-    let playerSport = '';
+    let playerName = "";
+    let playerCountry = "";
+    let playerDesc = "";
+    let playerImg = "";
+    let playerDOB = "";
+    let playerAchievements = "";
+    let playerActive = "";
+    let playerSport = "";
     let owner = this.currentUser.id;
 
     if (this.editMode) {
+      this.playersService.getPlayer(this.id).subscribe((player) => {
+        if (player.owner !== this.currentUser.id) {
+          // this.error = "You are not authorised to edit player created by different user.";
+          this.router.navigate(["/players",this.id]);
+        }
+      });
+
       this.playersService.getPlayer(this.id).subscribe((player) => {
         this.playerForm.patchValue({
           name: player.name,
@@ -117,29 +127,49 @@ export class PlayersCreatePlayersComponent implements OnInit {
           dob: player.dob,
           achievements: player.achievements,
           active: player.active,
-          sport: player.sport
+          sport: player.sport,
         });
       });
     }
 
     this.playerForm = new FormGroup({
-      name: new FormControl(playerName, [Validators.required, Validators.minLength(3)]),
+      name: new FormControl(playerName, [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
       country: new FormControl(playerCountry, Validators.required),
       description: new FormControl(playerDesc, Validators.required),
-      imagePath: new FormControl(playerImg, [Validators.required, Validators.pattern(/^(http|https):/)]),
+      imagePath: new FormControl(playerImg, [
+        Validators.required,
+        Validators.pattern(/^(http|https):/),
+      ]),
       dob: new FormControl(playerDOB, Validators.required),
       achievements: new FormControl(playerAchievements),
       active: new FormControl(playerActive, Validators.required),
       sport: new FormControl(playerSport, Validators.required),
-      owner: new FormControl(owner)
+      owner: new FormControl(owner),
     });
   }
-  
-  get name() { return this.playerForm.get('name'); }
-  get sport() { return this.playerForm.get('sport'); }
-  get country() { return this.playerForm.get('country'); }
-  get description() { return this.playerForm.get('description'); }
-  get imagePath() { return this.playerForm.get('imagePath'); }
-  get dob() { return this.playerForm.get('dob'); }
-  get active() { return this.playerForm.get('active'); }
+
+  get name() {
+    return this.playerForm.get("name");
+  }
+  get sport() {
+    return this.playerForm.get("sport");
+  }
+  get country() {
+    return this.playerForm.get("country");
+  }
+  get description() {
+    return this.playerForm.get("description");
+  }
+  get imagePath() {
+    return this.playerForm.get("imagePath");
+  }
+  get dob() {
+    return this.playerForm.get("dob");
+  }
+  get active() {
+    return this.playerForm.get("active");
+  }
 }
