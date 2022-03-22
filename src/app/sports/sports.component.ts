@@ -84,10 +84,13 @@ export class SportsComponent implements OnInit {
           return postsArray;
         })
       )
-      .subscribe((sports) => {
-        this.sports = sports;
-        console.log(this.sports);
-        this.isLoading = false;
+      .subscribe({
+        next: (sports) => {
+          this.sports = sports;
+          console.log(this.sports);
+          this.isLoading = false;
+        },
+        error: (err) => console.log(err),        
       });
   }
 

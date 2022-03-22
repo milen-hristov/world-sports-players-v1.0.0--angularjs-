@@ -35,10 +35,13 @@ export class PlayersListComponent implements OnInit {
           return postsArray;
         })
       )
-      .subscribe((players) => {
-        this.players = players;
-        this.isLoading = false;
-        console.log(this.players);
+      .subscribe({
+        next: (players) => {
+          this.players = players;
+          this.isLoading = false;
+          console.log(this.players);
+        },
+        error: (err) => console.log(err),
       });
   }
 }

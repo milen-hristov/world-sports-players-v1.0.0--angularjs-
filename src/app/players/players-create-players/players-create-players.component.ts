@@ -93,9 +93,12 @@ export class PlayersCreatePlayersComponent implements OnInit {
           return postsArray;
         })
       )
-      .subscribe((sports) => {
-        this.sports = sports;
-        console.log(this.sports);
+      .subscribe({
+        next: (sports) => {
+          this.sports = sports;
+          console.log(this.sports);
+        },
+        error: (err) => console.log(err),
       });
   }
 

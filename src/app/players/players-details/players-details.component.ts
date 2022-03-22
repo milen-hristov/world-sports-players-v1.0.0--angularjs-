@@ -51,22 +51,30 @@ export class PlayersDetailsComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       this.id = params["id"];
-      this.authService.user.subscribe((user) => {
-        this.currentUserID = user.id;
-        this.isAuthenticated = !!user;
+      this.authService.user.subscribe({next: (user) => {
+        if (user) {
+          this.currentUserID = user.id;
+          this.isAuthenticated = !!user;
 
-        this.getAllFavourites();
+          this.getAllFavourites();
+        }},
+        error: (err) => console.log(err),
       });
     });
 
-    this.playersService.getPlayer(this.id).subscribe((player) => {
-      this.player = player;
-      this.ownerID = player.owner;
-      if (this.ownerID === this.currentUserID) {
-        this.isOwner = true;
-      } else {
-        this.isOwner = false;
-      }
+    this.playersService.getPlayer(this.id).subscribe({
+      next: (player: Player) => {
+        this.player = player;
+        this.ownerID = player.owner;
+        if (this.ownerID === this.currentUserID) {
+          this.isOwner = true;
+        } else {
+          this.isOwner = false;
+        }
+      },
+      error: (error) => {
+        console.log(error);
+      },
     });
 
     this.getAllLikes();
@@ -105,15 +113,18 @@ export class PlayersDetailsComponent implements OnInit {
           playerLikesArr.filter((player) => player.id == this.id)
         )
       )
-      .subscribe((playerLikesRes) => {
-        let result = playerLikesRes.filter(
-          (like) => like.owner === this.currentUserID
-        );
-        if (result.length > 0) {
-          this.isLiked = true;
-        }
-        this.playerLikes = playerLikesRes;
-        this.isLoading = false;
+      .subscribe({
+        next: (playerLikesRes) => {
+          let result = playerLikesRes.filter(
+            (like) => like.owner === this.currentUserID
+          );
+          if (result.length > 0) {
+            this.isLiked = true;
+          }
+          this.playerLikes = playerLikesRes;
+          this.isLoading = false;
+        },
+        error: (err) => console.log(err),
       });
   }
 
@@ -183,19 +194,22 @@ export class PlayersDetailsComponent implements OnInit {
           favouriteListArr.filter((player) => player.id == this.id)
         )
       )
-      .subscribe((favouriteListRes) => {
-        let result = favouriteListRes.filter(
-          (fav) => fav.owner === this.currentUserID
-        );
+      .subscribe({
+        next: (favouriteListRes) => {
+          let result = favouriteListRes.filter(
+            (fav) => fav.owner === this.currentUserID
+          );
 
-        if (result.length > 0) {
-          this.isFavID = result[0].isFavID;
-          this.isFavourite = true;
-        } else {
-          this.isFavourite = false;
-        }
-        this.favouriteList = favouriteListRes;
-        this.isLoading = false;
+          if (result.length > 0) {
+            this.isFavID = result[0].isFavID;
+            this.isFavourite = true;
+          } else {
+            this.isFavourite = false;
+          }
+          this.favouriteList = favouriteListRes;
+          this.isLoading = false;
+        },
+        error: (err) => console.log(err),
       });
   }
 }
