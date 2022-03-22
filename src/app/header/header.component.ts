@@ -9,9 +9,9 @@ import { AuthService } from "../auth/auth.service";
   styleUrls: ["./header.component.css"],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  isAuthenticated = false;
+  isAuthenticated: boolean = false;
   private userSubcription: Subscription;
-  loggedUserEmail = "";
+  loggedUserEmail: string = "";
 
   constructor(private authService: AuthService) {}
 
@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.userSubcription = this.authService.user.subscribe((user) => {
       this.isAuthenticated = !!user;
 
-      if(this.isAuthenticated) {
+      if (this.isAuthenticated) {
         this.loggedUserEmail = user.email;
       }
       // console.log(!user);  // not logged in
@@ -32,6 +32,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.userSubcription.unsubscribe;
+    this.userSubcription.unsubscribe();
   }
 }

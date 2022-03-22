@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
@@ -13,24 +14,27 @@ import { AuthResponseData } from "./authResponseData.interface";
   styleUrls: ["./auth.component.css"],
 })
 export class AuthComponent implements OnInit {
-  isLoginMode = true;
-  isLoading = false;
+  isLoginMode: boolean = true;
+  isLoading: boolean = false;
   message: string = null;
-  isSamePassword = true;
+  isSamePassword: boolean = true;
   user = {
     email: "",
     password: "",
     repeatPassword: "",
   };
 
-  constructor(private authService: AuthService, private router: Router, private handleError: HandleError) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private handleError: HandleError
+  ) {}
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onSubmit(form: NgForm) {
     if (!form.valid) {
@@ -44,7 +48,7 @@ export class AuthComponent implements OnInit {
     if (!this.isLoginMode) {
       if (this.user.password != this.user.repeatPassword) {
         this.isSamePassword = false;
-        this.message = 'Passwords do not match.'
+        this.message = "Passwords do not match.";
         return;
       }
     }
@@ -66,14 +70,13 @@ export class AuthComponent implements OnInit {
         this.isLoading = false;
         this.router.navigate(["/players"]);
       },
-      error: (errorRes) => {
+      error: (errorRes: HttpErrorResponse) => {
         this.message = this.handleError.handleError(errorRes);
         this.isLoading = false;
       },
     });
 
     form.reset();
-
   }
 
   onHandleMessage() {

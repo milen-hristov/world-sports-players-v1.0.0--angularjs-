@@ -18,7 +18,7 @@ import { HandleError } from "src/app/shared/handleError.service";
 })
 export class PlayersCreatePlayersComponent implements OnInit {
   id: string;
-  editMode = false;
+  editMode: boolean = false;
   playerForm: FormGroup;
   currentUser: User;
   countryList: { name: string; code: string }[];
@@ -123,7 +123,8 @@ export class PlayersCreatePlayersComponent implements OnInit {
     if (this.editMode) {
       this.playersService.getPlayer(this.id).subscribe((player) => {
         if (player.owner !== this.currentUser.id) {
-          this.message = "You are not authorised to edit player created by different user.";
+          this.message =
+            "You are not authorised to edit player created by different user.";
           this.router.navigate(["/players", this.id]);
         }
       });

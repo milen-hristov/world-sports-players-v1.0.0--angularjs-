@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { map } from "rxjs/operators";
@@ -34,8 +35,8 @@ export class PlayersDetailsComponent implements OnInit {
   isOwner: boolean;
   ownerID: string;
   currentUserID: string;
-  isLoading = false;
-  isAuthenticated = false;
+  isLoading: boolean = false;
+  isAuthenticated: boolean = false;
   isLiked: boolean | undefined;
 
   isFavourite: boolean | undefined;
@@ -80,7 +81,7 @@ export class PlayersDetailsComponent implements OnInit {
           this.isOwner = false;
         }
       },
-      error: (err) => {
+      error: (err: HttpErrorResponse) => {
         this.message = this.handleError.handleErrorPlayer(err);
         console.log(err);
       },

@@ -15,7 +15,7 @@ import { SportsService } from "./sports.service";
   styleUrls: ["./sports.component.css"],
 })
 export class SportsComponent implements OnInit {
-  isLoading = false;
+  isLoading: boolean = false;
   sportForm: FormGroup;
   currentUser: User;
   sports: Sport[] | undefined;

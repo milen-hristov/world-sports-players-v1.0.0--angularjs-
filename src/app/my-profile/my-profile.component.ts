@@ -18,8 +18,8 @@ export class MyProfileComponent implements OnInit {
   myPlayers: Player[] | undefined;
   myFavPlayers: Player[] | undefined;
   currentUser: User;
-  isLoadingCreated = false;
-  isLoadingMyFav = false;
+  isLoadingCreated: boolean = false;
+  isLoadingMyFav: boolean = false;
   message: string = null;
 
   constructor(
@@ -64,7 +64,7 @@ export class MyProfileComponent implements OnInit {
           console.log(err);
           this.message = this.handleError.handleErrorPlayer(err);
           this.isLoadingCreated = false;
-        }
+        },
       });
   }
 
@@ -124,7 +124,7 @@ export class MyProfileComponent implements OnInit {
               this.message = this.handleError.handleErrorPlayer(err);
               console.log(err);
               this.isLoadingMyFav = false;
-            }
+            },
           });
       });
   }
