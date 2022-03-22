@@ -22,6 +22,7 @@ import { MyCreatedPlayersComponent } from "./my-profile/my-created-players/my-cr
 import { MyFavouritePlayersComponent } from "./my-profile/my-favourite-players/my-favourite-players.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { FooterComponent } from "./footer/footer.component";
+import { PopupComponent } from './shared/popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { FooterComponent } from "./footer/footer.component";
     MyFavouritePlayersComponent,
     NotFoundComponent,
     FooterComponent,
+    PopupComponent,
   ],
   imports: [
     BrowserModule,

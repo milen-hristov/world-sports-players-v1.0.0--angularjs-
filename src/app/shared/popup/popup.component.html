@@ -1,0 +1,13 @@
+<p>popup works!</p>
+<section class="backdrop" (click)="onClose()"></section>
+<section class="alert-box">
+  <article class="alext-box-header">
+    <p>Alert Message</p>
+  </article>
+  <article class="alext-box-text">
+    <p>{{ message }}</p>
+  </article>
+  <article class="button">
+    <button class="btn-close" (click)="onClose()">Close</button>
+  </article>
+</section>

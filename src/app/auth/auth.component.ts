@@ -21,8 +21,6 @@ export class AuthComponent implements OnInit {
     password: "",
     repeatPassword: "",
   };
-  // repeatPasswordValid: boolean;
-  // repeatPasswordTouched: boolean;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -43,12 +41,10 @@ export class AuthComponent implements OnInit {
     this.user.password = form.value.password;
     this.user.repeatPassword = form.value.repeatPassword;
 
-    // this.repeatPasswordValid = form.controls['repeatPassword'].valid;
-    // this.repeatPasswordTouched = form.controls['repeatPassword'].touched;
-
     if (!this.isLoginMode) {
       if (this.user.password != this.user.repeatPassword) {
         this.isSamePassword = false;
+        this.error = 'Passwords do not match.'
         return;
       }
     }
@@ -79,5 +75,10 @@ export class AuthComponent implements OnInit {
     });
 
     form.reset();
+
+  }
+
+  onHandleError() {
+    this.error = null;
   }
 }

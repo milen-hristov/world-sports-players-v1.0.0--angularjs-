@@ -129,6 +129,10 @@ export class AuthService {
       case "MISSING_PASSWORD":
         errorMessage = "Please check your email & password and try again.";
         break;
+      case "TOO_MANY_ATTEMPTS_TRY_LATER : Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later.":
+        errorMessage =
+          "Access to this account has been temporarily disabled due to many failed login attempts. Please try again later.";
+        break;
     }
     return errorMessage;
   }
