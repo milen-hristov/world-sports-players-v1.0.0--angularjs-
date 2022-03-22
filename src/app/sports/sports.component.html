@@ -1,3 +1,6 @@
+<article class="alert-message" *ngIf="error">
+  <p>{{ error }}</p>
+</article>
 <main class="sport">
   <section>
     <form [formGroup]="sportForm" (ngSubmit)="onSubmit()">
@@ -7,13 +10,17 @@
           alt="Item"
           class="sport-board-picture"
         />
-        <label class="sport-board-name" for="name">Name</label>
+        <label class="sport-board-name" for="name">Name<span>*</span></label>
         <input
           type="text"
           id="name"
           class="sport-board-value"
           formControlName="name"
         />
+      </article>
+      <article class="notification-alert" *ngIf="!name.valid && name.touched">
+        <i class="fas fa-info-circle"></i>
+        <span>Player Name is required. Min lenght is 3 characters.</span>
       </article>
 
       <article class="sport-board-profile">

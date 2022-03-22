@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 
@@ -18,6 +18,7 @@ export class SportsComponent implements OnInit {
   sportForm: FormGroup;
   currentUser: User;
   sports: Sport[] | undefined;
+  error: string = null;
 
   constructor(
     private sportsService: SportsService,
@@ -36,10 +37,16 @@ export class SportsComponent implements OnInit {
   }
 
   onSubmit() {
+    if (!this.sportForm.valid) {
+      this.error = 'Please fill in all the required (*) fields.';
+      return;
+    }
+
     this.sportsService.addSport(this.sportForm.value).subscribe({
       next: () => {
         this.fetchSports();
         this.router.navigate(['/players/create/sport']);
+        this.error = null;
       },
       error: (err) => {
         console.log(err);
@@ -55,7 +62,7 @@ export class SportsComponent implements OnInit {
     let owner = this.currentUser.id;
 
     this.sportForm = new FormGroup({
-      name: new FormControl(sportsName),
+      name: new FormControl(sportsName, Validators.required),
       confirmationLink: new FormControl(confirmationLink),
       owner: new FormControl(owner),
     });
@@ -82,4 +89,6 @@ export class SportsComponent implements OnInit {
         this.isLoading = false;
       });
   }
+
+  get name() { return this.sportForm.get('name'); }
 }
