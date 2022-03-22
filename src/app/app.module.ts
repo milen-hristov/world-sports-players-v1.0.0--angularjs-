@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
 
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./header/header.component";
@@ -22,8 +23,9 @@ import { MyCreatedPlayersComponent } from "./my-profile/my-created-players/my-cr
 import { MyFavouritePlayersComponent } from "./my-profile/my-favourite-players/my-favourite-players.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { FooterComponent } from "./footer/footer.component";
-import { PopupComponent } from './shared/popup/popup.component';
+import { PopupComponent } from "./shared/popup/popup.component";
 import { HandleError } from "./shared/handleError.service";
+import { AuthInterceptorService } from "./auth/auth-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -52,7 +54,16 @@ import { HandleError } from "./shared/handleError.service";
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [PlayersService, SportsService, HandleError],
+  providers: [
+    PlayersService,
+    SportsService,
+    HandleError,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

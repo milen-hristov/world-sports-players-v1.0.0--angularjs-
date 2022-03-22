@@ -1,7 +1,9 @@
 <article *ngIf="isLoading">
   <app-loading></app-loading>
 </article>
-
+<article class="alert-message" *ngIf="message">
+  <p>{{ message }}</p>
+</article>
 <section class="players" *ngIf="!isLoading">
   <h2>Player<span>List</span></h2>
   <section class="players-wrapper">
@@ -21,7 +23,7 @@
       </article>
     </article>
   </section>
-  <article class="no-entries" *ngIf="!players.length">
+  <article class="no-entries" *ngIf="!players?.length">
     <h3>No players added. Be first to create a player.</h3>
   </article>
 </section>

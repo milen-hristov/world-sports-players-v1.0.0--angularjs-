@@ -3,6 +3,7 @@ import { map } from "rxjs/operators";
 
 import { PlayersService } from "../players.service";
 import { Player } from "../player.model";
+import { HandleError } from "src/app/shared/handleError.service";
 
 @Component({
   selector: "app-players-list",
@@ -12,8 +13,9 @@ import { Player } from "../player.model";
 export class PlayersListComponent implements OnInit {
   players: Player[] | undefined;
   isLoading = false;
+  message: string = null;
 
-  constructor(private playersService: PlayersService) {}
+  constructor(private playersService: PlayersService, private handleError: HandleError) {}
 
   ngOnInit() {
     this.fetchPlayers();
@@ -41,7 +43,11 @@ export class PlayersListComponent implements OnInit {
           this.isLoading = false;
           console.log(this.players);
         },
-        error: (err) => console.log(err),
+        error: (err) => {
+          this.message = this.handleError.handleErrorPlayer(err);
+          this.isLoading = false;
+          console.log(err);
+        }
       });
   }
 }
