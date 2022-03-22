@@ -1,0 +1,9 @@
+.alert-message {
+    color: var(--danger-color);
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.64px;
+    padding-top: 5%;
+}

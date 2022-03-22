@@ -64,6 +64,7 @@ export class PlayersCreatePlayersComponent implements OnInit {
             this.router.navigate(["/players"]);
           },
           error: (err) => {
+            this.message = this.handleError.handleErrorPlayer(err);
             console.log(err);
           },
         });
@@ -101,7 +102,10 @@ export class PlayersCreatePlayersComponent implements OnInit {
           this.sports = sports;
           console.log(this.sports);
         },
-        error: (err) => console.log(err),
+        error: (err) => {
+          this.message = this.handleError.handleErrorPlayer(err);
+          console.log(err);
+        },
       });
   }
 
@@ -119,7 +123,7 @@ export class PlayersCreatePlayersComponent implements OnInit {
     if (this.editMode) {
       this.playersService.getPlayer(this.id).subscribe((player) => {
         if (player.owner !== this.currentUser.id) {
-          // this.message = "You are not authorised to edit player created by different user.";
+          this.message = "You are not authorised to edit player created by different user.";
           this.router.navigate(["/players", this.id]);
         }
       });

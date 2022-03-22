@@ -6,6 +6,7 @@ import { Player } from "../players/player.model";
 import { PlayerFav } from "../players/playerFav.model";
 import { AuthService } from "../auth/auth.service";
 import { User } from "../auth/user.model";
+import { HandleError } from "../shared/handleError.service";
 
 @Component({
   selector: "app-my-profile",
@@ -19,10 +20,12 @@ export class MyProfileComponent implements OnInit {
   currentUser: User;
   isLoadingCreated = false;
   isLoadingMyFav = false;
+  message: string = null;
 
   constructor(
     private playersService: PlayersService,
-    private authService: AuthService
+    private authService: AuthService,
+    private handleError: HandleError
   ) {}
 
   ngOnInit() {
@@ -52,9 +55,16 @@ export class MyProfileComponent implements OnInit {
           playersArr.filter((player) => player.owner == this.currentUser.id)
         )
       )
-      .subscribe((players) => {
-        this.myPlayers = players;
-        this.isLoadingCreated = false;
+      .subscribe({
+        next: (players) => {
+          this.myPlayers = players;
+          this.isLoadingCreated = false;
+        },
+        error: (err) => {
+          console.log(err);
+          this.message = this.handleError.handleErrorPlayer(err);
+          this.isLoadingCreated = false;
+        }
       });
   }
 
@@ -102,12 +112,19 @@ export class MyProfileComponent implements OnInit {
               return favArrIDs;
             })
           )
-          .subscribe((favouriteListRes) => {
-            let result = this.allPlayers.filter((x) =>
-              favouriteListRes.includes(x.id)
-            );
-            this.myFavPlayers = result;
-            this.isLoadingMyFav = false;
+          .subscribe({
+            next: (favouriteListRes) => {
+              let result = this.allPlayers.filter((x) =>
+                favouriteListRes.includes(x.id)
+              );
+              this.myFavPlayers = result;
+              this.isLoadingMyFav = false;
+            },
+            error: (err) => {
+              this.message = this.handleError.handleErrorPlayer(err);
+              console.log(err);
+              this.isLoadingMyFav = false;
+            }
           });
       });
   }

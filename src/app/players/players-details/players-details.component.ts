@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { map } from "rxjs/operators";
 import { AuthService } from "src/app/auth/auth.service";
+import { HandleError } from "src/app/shared/handleError.service";
 
 import { Player } from "../player.model";
 import { PlayerFav } from "../playerFav.model";
@@ -40,25 +41,32 @@ export class PlayersDetailsComponent implements OnInit {
   isFavourite: boolean | undefined;
   favouriteList: PlayerLike[] | undefined;
   isFavID: string;
+  message: string = null;
 
   constructor(
     private playersService: PlayersService,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private handleError: HandleError
   ) {}
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       this.id = params["id"];
-      this.authService.user.subscribe({next: (user) => {
-        if (user) {
-          this.currentUserID = user.id;
-          this.isAuthenticated = !!user;
+      this.authService.user.subscribe({
+        next: (user) => {
+          if (user) {
+            this.currentUserID = user.id;
+            this.isAuthenticated = !!user;
 
-          this.getAllFavourites();
-        }},
-        error: (err) => console.log(err),
+            this.getAllFavourites();
+          }
+        },
+        error: (err) => {
+          this.message = this.handleError.handleErrorPlayer(err);
+          console.log(err);
+        },
       });
     });
 
@@ -72,8 +80,9 @@ export class PlayersDetailsComponent implements OnInit {
           this.isOwner = false;
         }
       },
-      error: (error) => {
-        console.log(error);
+      error: (err) => {
+        this.message = this.handleError.handleErrorPlayer(err);
+        console.log(err);
       },
     });
 
@@ -91,6 +100,7 @@ export class PlayersDetailsComponent implements OnInit {
         this.router.navigate(["/players"]);
       },
       error: (err) => {
+        this.message = this.handleError.handleErrorPlayer(err);
         console.log(err);
       },
     });
@@ -124,7 +134,11 @@ export class PlayersDetailsComponent implements OnInit {
           this.playerLikes = playerLikesRes;
           this.isLoading = false;
         },
-        error: (err) => console.log(err),
+        error: (err) => {
+          this.message = this.handleError.handleErrorPlayer(err);
+          console.log(err);
+          this.isLoading = false;
+        },
       });
   }
 
@@ -139,6 +153,7 @@ export class PlayersDetailsComponent implements OnInit {
         this.getAllLikes();
       },
       error: (err) => {
+        this.message = this.handleError.handleErrorPlayer(err);
         console.log(err);
       },
     });
@@ -159,6 +174,7 @@ export class PlayersDetailsComponent implements OnInit {
           this.getAllFavourites();
         },
         error: (err) => {
+          this.message = this.handleError.handleErrorPlayer(err);
           console.log(err);
         },
       });
@@ -169,6 +185,7 @@ export class PlayersDetailsComponent implements OnInit {
           this.getAllFavourites();
         },
         error: (err) => {
+          this.message = this.handleError.handleErrorPlayer(err);
           console.log(err);
         },
       });
@@ -209,7 +226,11 @@ export class PlayersDetailsComponent implements OnInit {
           this.favouriteList = favouriteListRes;
           this.isLoading = false;
         },
-        error: (err) => console.log(err),
+        error: (err) => {
+          this.message = this.handleError.handleErrorPlayer(err);
+          console.log(err);
+          this.isLoading = false;
+        },
       });
   }
 }

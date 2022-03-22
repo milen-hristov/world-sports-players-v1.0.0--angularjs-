@@ -1,6 +1,5 @@
-<article class="alert-message" *ngIf="message">
-  <p>{{ message }}</p>
-</article>
+<app-alert-message *ngIf="message" [message]="message"></app-alert-message>
+
 <main class="player">
   <form [formGroup]="playerForm" (ngSubmit)="onSubmit()">
     <article class="player-board-profile">

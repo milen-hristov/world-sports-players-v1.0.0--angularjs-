@@ -1,10 +1,8 @@
+<app-alert-message *ngIf="message" [message]="message"></app-alert-message>
+
+<!-- <app-popup *ngIf="message" [message]="message" (closePopup)="onHandleMessage()"></app-popup> -->
+
 <main>
-  <article class="user-board-name alert-message" *ngIf="message">
-    <p>{{ message }}</p>
-  </article>
-
-  <app-popup *ngIf="message" [message]="message" (closePopup)="onHandleMessage()"></app-popup>
-
   <section class="users" *ngIf="!isLoading">
     <h2>{{ isLoginMode ? "Login" : "Sign Up" }}<span>Now</span></h2>
     <section class="buttons">
@@ -90,10 +88,7 @@
         <i class="fas fa-info-circle"></i>
         <span>Please enter a password. Min lenght is 6 characters.</span>
       </article>
-      <!-- <article class="notification-alert" *ngIf="!repeatPasswordValid && repeatPasswordTouched">
-        <i class="fas fa-info-circle"></i>
-        <span>Please enter a password. Min lenght is 6 characters.</span>
-      </article> -->
+
       <article class="notification-alert" *ngIf="!isSamePassword">
         <i class="fas fa-info-circle"></i>
         <span>Passwords do not match.</span>

@@ -18,17 +18,4 @@ export class SportsService {
       player
     );
   }
-
-  //   updatePlayer(id: string, updatedPlayer: Player) {
-  //     return this.http.put<Player>(
-  //       `${environment.databaseURL}/players/${id}.json`,
-  //       updatedPlayer
-  //     );
-  //   }
-
-  //   deletePlayer(id: string) {
-  //     return this.http.delete(
-  //       `${environment.databaseURL}/players/${id}.json`
-  //     );
-  //   }
 }

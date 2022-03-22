@@ -1,6 +1,9 @@
+<app-alert-message *ngIf="message" [message]="message"></app-alert-message>
+
 <article *ngIf="isLoadingCreated">
   <app-loading></app-loading>
 </article>
+
 <section class="players" *ngIf="!isLoadingCreated">
   <h2>Created<span>Players</span> ({{ myPlayers.length }})</h2>
   <section class="players-wrapper">

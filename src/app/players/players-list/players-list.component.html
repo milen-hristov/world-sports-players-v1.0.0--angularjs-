@@ -1,9 +1,9 @@
+<app-alert-message *ngIf="message" [message]="message"></app-alert-message>
+
 <article *ngIf="isLoading">
   <app-loading></app-loading>
 </article>
-<article class="alert-message" *ngIf="message">
-  <p>{{ message }}</p>
-</article>
+
 <section class="players" *ngIf="!isLoading">
   <h2>Player<span>List</span></h2>
   <section class="players-wrapper">

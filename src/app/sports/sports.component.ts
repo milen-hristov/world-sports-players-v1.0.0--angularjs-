@@ -5,6 +5,7 @@ import { map } from "rxjs/operators";
 
 import { AuthService } from "../auth/auth.service";
 import { User } from "../auth/user.model";
+import { HandleError } from "../shared/handleError.service";
 import { Sport } from "./sport.model";
 import { SportsService } from "./sports.service";
 
@@ -23,7 +24,8 @@ export class SportsComponent implements OnInit {
   constructor(
     private sportsService: SportsService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private handleError: HandleError
   ) {}
 
   ngOnInit() {
@@ -49,6 +51,7 @@ export class SportsComponent implements OnInit {
         this.message = null;
       },
       error: (err) => {
+        this.message = this.handleError.handleErrorPlayer(err);
         console.log(err);
       },
     });
@@ -90,7 +93,10 @@ export class SportsComponent implements OnInit {
           console.log(this.sports);
           this.isLoading = false;
         },
-        error: (err) => console.log(err),        
+        error: (err) => {
+          this.message = this.handleError.handleErrorPlayer(err);
+          console.log(err);
+        },        
       });
   }
 

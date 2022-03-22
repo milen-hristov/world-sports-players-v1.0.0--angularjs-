@@ -26,6 +26,7 @@ import { FooterComponent } from "./footer/footer.component";
 import { PopupComponent } from "./shared/popup/popup.component";
 import { HandleError } from "./shared/handleError.service";
 import { AuthInterceptorService } from "./auth/auth-interceptor.service";
+import { AlertMessageComponent } from './shared/alert-message/alert-message.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { AuthInterceptorService } from "./auth/auth-interceptor.service";
     NotFoundComponent,
     FooterComponent,
     PopupComponent,
+    AlertMessageComponent,
   ],
   imports: [
     BrowserModule,
