@@ -14,6 +14,7 @@ import { SportsService } from './sports.service';
   styleUrls: ['./sports.component.css'],
 })
 export class SportsComponent implements OnInit {
+  isLoading = false;
   sportForm: FormGroup;
   currentUser: User;
   sports: Sport[] | undefined;
@@ -61,6 +62,7 @@ export class SportsComponent implements OnInit {
   }
 
   fetchSports() {
+    this.isLoading = true;
     this.sports = undefined;
     this.sportsService.getSports()
       .pipe(
@@ -77,6 +79,7 @@ export class SportsComponent implements OnInit {
       .subscribe(sports => {
         this.sports = sports;
         console.log(this.sports);
+        this.isLoading = false;
       });
   }
 }
