@@ -6,7 +6,7 @@ import { environment } from "../../environments/environment";
 import { PlayerLike } from "./playerLike.model";
 import { PlayerFav } from "./playerFav.model";
 
-@Injectable()
+@Injectable({ providedIn: "root" })
 export class PlayersService {
   constructor(private http: HttpClient) {}
 
