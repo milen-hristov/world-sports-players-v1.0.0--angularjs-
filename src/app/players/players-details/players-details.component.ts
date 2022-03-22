@@ -162,7 +162,7 @@ export class PlayersDetailsComponent implements OnInit {
 
   onFavPlayer() {
     if (this.isFavourite == false) {
-      console.log("Add player to favourites");
+      // console.log("Add player to favourites");
 
       let favObj: PlayerFav = {
         id: this.id,
@@ -180,7 +180,7 @@ export class PlayersDetailsComponent implements OnInit {
         },
       });
     } else {
-      console.log("Remove player from favourites");
+      // console.log("Remove player from favourites");
       this.playersService.removeFavPlayer(this.isFavID).subscribe({
         next: () => {
           this.getAllFavourites();

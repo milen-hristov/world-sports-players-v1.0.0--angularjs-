@@ -90,7 +90,7 @@ export class SportsComponent implements OnInit {
       .subscribe({
         next: (sports) => {
           this.sports = sports;
-          console.log(this.sports);
+          // console.log(this.sports);
           this.isLoading = false;
         },
         error: (err) => {

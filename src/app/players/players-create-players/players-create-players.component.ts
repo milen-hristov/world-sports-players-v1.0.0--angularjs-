@@ -100,7 +100,7 @@ export class PlayersCreatePlayersComponent implements OnInit {
       .subscribe({
         next: (sports) => {
           this.sports = sports;
-          console.log(this.sports);
+          // console.log(this.sports);
         },
         error: (err) => {
           this.message = this.handleError.handleErrorPlayer(err);

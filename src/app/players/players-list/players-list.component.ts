@@ -41,7 +41,7 @@ export class PlayersListComponent implements OnInit {
         next: (players) => {
           this.players = players;
           this.isLoading = false;
-          console.log(this.players);
+          // console.log(this.players);
         },
         error: (err) => {
           this.message = this.handleError.handleErrorPlayer(err);

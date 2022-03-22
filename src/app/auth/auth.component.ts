@@ -59,10 +59,10 @@ export class AuthComponent implements OnInit {
 
     if (this.isLoginMode) {
       authObs = this.authService.login(this.user.email, this.user.password);
-      console.log("login");
+      // console.log("login");
     } else {
       authObs = this.authService.signup(this.user.email, this.user.password);
-      console.log("register");
+      // console.log("register");
     }
 
     authObs.subscribe({
