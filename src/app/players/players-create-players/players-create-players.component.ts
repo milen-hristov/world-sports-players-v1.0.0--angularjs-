@@ -22,7 +22,7 @@ export class PlayersCreatePlayersComponent implements OnInit {
   currentUser: User;
   countryList: { name: string; code: string }[];
   sports: Sport[] | undefined;
-  error: string = null;
+  message: string = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -50,7 +50,7 @@ export class PlayersCreatePlayersComponent implements OnInit {
 
   onSubmit() {
     if (!this.playerForm.valid) {
-      this.error = "Please fill in all the required (*) fields.";
+      this.message = "Please fill in all the required (*) fields.";
       return;
     }
 
@@ -113,7 +113,7 @@ export class PlayersCreatePlayersComponent implements OnInit {
     if (this.editMode) {
       this.playersService.getPlayer(this.id).subscribe((player) => {
         if (player.owner !== this.currentUser.id) {
-          // this.error = "You are not authorised to edit player created by different user.";
+          // this.message = "You are not authorised to edit player created by different user.";
           this.router.navigate(["/players", this.id]);
         }
       });

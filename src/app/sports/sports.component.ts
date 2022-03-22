@@ -18,7 +18,7 @@ export class SportsComponent implements OnInit {
   sportForm: FormGroup;
   currentUser: User;
   sports: Sport[] | undefined;
-  error: string = null;
+  message: string = null;
 
   constructor(
     private sportsService: SportsService,
@@ -38,7 +38,7 @@ export class SportsComponent implements OnInit {
 
   onSubmit() {
     if (!this.sportForm.valid) {
-      this.error = "Please fill in all the required (*) fields.";
+      this.message = "Please fill in all the required (*) fields.";
       return;
     }
 
@@ -46,7 +46,7 @@ export class SportsComponent implements OnInit {
       next: () => {
         this.fetchSports();
         this.router.navigate(["/players/create/sport"]);
-        this.error = null;
+        this.message = null;
       },
       error: (err) => {
         console.log(err);

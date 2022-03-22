@@ -14,7 +14,7 @@ import { AuthResponseData } from "./authResponseData.interface";
 export class AuthComponent implements OnInit {
   isLoginMode = true;
   isLoading = false;
-  error: string = null;
+  message: string = null;
   isSamePassword = true;
   user = {
     email: "",
@@ -44,7 +44,7 @@ export class AuthComponent implements OnInit {
     if (!this.isLoginMode) {
       if (this.user.password != this.user.repeatPassword) {
         this.isSamePassword = false;
-        this.error = 'Passwords do not match.'
+        this.message = 'Passwords do not match.'
         return;
       }
     }
@@ -67,9 +67,9 @@ export class AuthComponent implements OnInit {
         this.router.navigate(["/players"]);
       },
       error: (errorRes) => {
-        this.error = this.authService.handleError(errorRes);
+        this.message = this.authService.handleError(errorRes);
         console.log(errorRes);
-        // this.error = errorRes.error.error.message;
+        // this.message = errorRes.error.error.message;
         this.isLoading = false;
       },
     });
@@ -78,7 +78,7 @@ export class AuthComponent implements OnInit {
 
   }
 
-  onHandleError() {
-    this.error = null;
+  onHandleMessage() {
+    this.message = null;
   }
 }

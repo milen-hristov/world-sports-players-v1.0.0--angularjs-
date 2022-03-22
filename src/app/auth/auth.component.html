@@ -1,9 +1,9 @@
 <main>
-  <article class="user-board-name alert-message" *ngIf="error">
-    <p>{{ error }}</p>
+  <article class="user-board-name alert-message" *ngIf="message">
+    <p>{{ message }}</p>
   </article>
 
-  <app-popup *ngIf="error" [message]="error" (closePopup)="onHandleError()"></app-popup>
+  <app-popup *ngIf="message" [message]="message" (closePopup)="onHandleMessage()"></app-popup>
 
   <section class="users" *ngIf="!isLoading">
     <h2>{{ isLoginMode ? "Login" : "Sign Up" }}<span>Now</span></h2>
