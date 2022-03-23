@@ -114,6 +114,7 @@ export class PostsDetailsComponent implements OnInit, OnDestroy {
     this.postsService.deletePost(this.id).subscribe({
       next: () => {
         this.router.navigate(["/blog/posts"]);
+        this.postsService.postModified.next(true);
         this.isLoading = false;
       },
       error: (err) => {
@@ -123,7 +124,7 @@ export class PostsDetailsComponent implements OnInit, OnDestroy {
       },
     });
   }
-  
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }

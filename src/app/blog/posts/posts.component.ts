@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
 import { map } from "rxjs/operators";
 
 import { HandleError } from "src/app/shared/handleError.service";
@@ -10,7 +11,9 @@ import { Post } from "../post.model";
   templateUrl: "./posts.component.html",
   styleUrls: ["./posts.component.css"],
 })
-export class PostsComponent implements OnInit {
+export class PostsComponent implements OnInit, OnDestroy {
+  subscription: Subscription;
+  isModified = false;
   posts: Post[] | undefined;
   isLoading = false;
   message: string = null;
@@ -22,6 +25,11 @@ export class PostsComponent implements OnInit {
 
   ngOnInit() {
     this.fetchPosts();
+
+    this.subscription = this.postsService.postModified.subscribe((res) => {
+      this.isModified = res;
+      this.fetchPosts();
+    });
   }
 
   onClickPost(id) {
@@ -56,5 +64,9 @@ export class PostsComponent implements OnInit {
           console.log(err);
         },
       });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

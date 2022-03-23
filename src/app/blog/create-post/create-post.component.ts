@@ -48,6 +48,7 @@ export class CreatePostComponent implements OnInit {
       this.postsService.updatePost(this.id, this.postsForm.value).subscribe({
         next: () => {
           this.router.navigate(["/blog/posts"]);
+          this.postsService.postModified.next(true);
         },
         error: (err) => {
           this.message = this.handleError.handleErrorPlayer(err);

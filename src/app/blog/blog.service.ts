@@ -10,6 +10,7 @@ export class PostsService {
   constructor(private http: HttpClient) {}
 
   postChanged = new Subject<string>();
+  postModified= new Subject<boolean>();
 
   getPosts() {
     return this.http.get<Post[]>(`${environment.databaseURL}/posts.json`);
