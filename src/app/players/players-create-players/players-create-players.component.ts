@@ -126,20 +126,18 @@ export class PlayersCreatePlayersComponent implements OnInit {
           this.message =
             "You are not authorised to edit player created by different user.";
           this.router.navigate(["/players", this.id]);
+        } else {
+          this.playerForm.patchValue({
+            name: player.name,
+            country: player.country,
+            description: player.description,
+            imagePath: player.imagePath,
+            dob: player.dob,
+            achievements: player.achievements,
+            active: player.active,
+            sport: player.sport,
+          });
         }
-      });
-
-      this.playersService.getPlayer(this.id).subscribe((player) => {
-        this.playerForm.patchValue({
-          name: player.name,
-          country: player.country,
-          description: player.description,
-          imagePath: player.imagePath,
-          dob: player.dob,
-          achievements: player.achievements,
-          active: player.active,
-          sport: player.sport,
-        });
       });
     }
 
