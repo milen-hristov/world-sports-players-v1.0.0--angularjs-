@@ -82,14 +82,13 @@ export class CreatePostComponent implements OnInit {
           this.message =
             "You are not authorised to edit player created by different user.";
           this.router.navigate(["/blog/posts", this.id]);
+        } else {
+          this.postsForm.patchValue({
+            name: post.name,
+            info: post.info,
+            imagePath: post.imagePath,
+          });
         }
-      });
-      this.postsService.getPost(this.id).subscribe((post) => {
-        this.postsForm.patchValue({
-          name: post.name,
-          info: post.info,
-          imagePath: post.imagePath,
-        });
       });
     }
     this.postsForm = new FormGroup({

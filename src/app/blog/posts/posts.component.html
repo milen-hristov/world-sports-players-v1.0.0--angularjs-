@@ -18,7 +18,7 @@
           <img [src]="post.imagePath" alt="{{ post.name }}" />
         </article>
         <article class="post-card-details-wrapper">
-          <h3 class="post-name">{{ post.name | substring: 20 }}</h3>
+          <h3 class="post-name">{{ post.name | substring: 100}}</h3>
           <p class="post-info">
             <i class="fas fa-calendar-alt"></i
             ><span>{{ post.date | date: "medium" }}</span>
