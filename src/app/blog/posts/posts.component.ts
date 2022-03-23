@@ -1,3 +1,4 @@
+import { animate, query, stagger, style, transition, trigger } from "@angular/animations";
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
 import { map } from "rxjs/operators";
@@ -10,6 +11,21 @@ import { Post } from "../post.model";
   selector: "app-posts",
   templateUrl: "./posts.component.html",
   styleUrls: ["./posts.component.css"],
+  animations: [
+    trigger('fade', [
+      transition('void => *', [
+        query(':enter', [
+          style({
+            opacity: '0'
+          }),
+          stagger(30, [
+            animate('300ms ease-in', style({ opacity: 1 }))
+          ])
+        ])
+      ]),
+      transition('* => void', animate('300ms ease-out', style({ opacity: 0 })))
+    ])
+  ]
 })
 export class PostsComponent implements OnInit, OnDestroy {
   subscription: Subscription;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { map } from "rxjs/operators";
+import { trigger, transition, query, style, stagger, animate } from "@angular/animations";
 
 import { PlayersService } from "../players/players.service";
 import { Player } from "../players/player.model";
@@ -12,6 +13,21 @@ import { HandleError } from "../shared/handleError.service";
   selector: "app-my-profile",
   templateUrl: "./my-profile.component.html",
   styleUrls: ["./my-profile.component.css"],
+  animations: [
+    trigger('fade', [
+      transition('void => *', [
+        query(':enter', [
+          style({
+            opacity: '0'
+          }),
+          stagger(30, [
+            animate('300ms ease-in', style({ opacity: 1 }))
+          ])
+        ])
+      ]),
+      transition('* => void', animate('300ms ease-out', style({ opacity: 0 })))
+    ])
+  ]
 })
 export class MyProfileComponent implements OnInit {
   allPlayers: Player[] | undefined;

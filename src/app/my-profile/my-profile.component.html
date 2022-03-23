@@ -6,7 +6,7 @@
 
 <section class="players" *ngIf="!isLoadingCreated">
   <h2>Created<span>Players</span> ({{ myPlayers.length }})</h2>
-  <section class="players-wrapper">
+  <section class="players-wrapper" [@fade]="myPlayers.length">
     <app-my-created-players
       *ngFor="let playerEl of myPlayers"
       [player]="playerEl"
@@ -25,7 +25,7 @@
 
 <section class="players" *ngIf="!isLoadingMyFav">
   <h2>My<span>Favourites</span> ({{ myFavPlayers.length }})</h2>
-  <section class="players-wrapper">
+  <section class="players-wrapper" [@fade]="myFavPlayers.length">
     <app-my-created-players
       *ngFor="let playerEl of myFavPlayers"
       [player]="playerEl"

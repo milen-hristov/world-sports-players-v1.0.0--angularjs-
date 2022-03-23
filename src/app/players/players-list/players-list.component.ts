@@ -4,11 +4,27 @@ import { map } from "rxjs/operators";
 import { PlayersService } from "../players.service";
 import { Player } from "../player.model";
 import { HandleError } from "src/app/shared/handleError.service";
+import { animate, query, stagger, style, transition, trigger } from "@angular/animations";
 
 @Component({
   selector: "app-players-list",
   templateUrl: "./players-list.component.html",
   styleUrls: ["./players-list.component.css"],
+  animations: [
+    trigger('fade', [
+      transition('void => *', [
+        query(':enter', [
+          style({
+            opacity: '0'
+          }),
+          stagger(30, [
+            animate('300ms ease-in', style({ opacity: 1 }))
+          ])
+        ])
+      ]),
+      transition('* => void', animate('300ms ease-out', style({ opacity: 0 })))
+    ])
+  ]
 })
 export class PlayersListComponent implements OnInit {
   players: Player[] | undefined;

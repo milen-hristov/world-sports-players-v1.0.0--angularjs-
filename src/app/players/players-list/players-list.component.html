@@ -6,7 +6,7 @@
 
 <section class="players" *ngIf="!isLoading">
   <h2>Player<span>List</span></h2>
-  <section class="players-wrapper">
+  <section class="players-wrapper" [@fade]="players.length">
     <article
       class="player-card"
       *ngFor="let player of players"
