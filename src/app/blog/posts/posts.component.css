@@ -9,37 +9,20 @@
 
 .posts-wrapper {
     display: grid;
-    /* grid-template-columns: repeat(3, 1fr); */
+    grid-template-columns: repeat(3, 1fr);
     gap: 2%;
-    /* width: 50%; */
-}
-
-.expand-posts-wrapper {
-    width: 100%;
-    grid-template-columns: repeat(5, 1fr);
-}
-
-.squize-posts-wrapper {
-    width: 40%;
-    grid-template-columns: repeat(2, 1fr);
+    height: 60vh;
+    overflow-y: scroll;
+    width: 46%;
 }
 
 .post-details {
-    /* width: 40%; */
+    width: 37%;
     margin-left: 4%;
     align-self: center;
 }
 
-.squize-post-details {
-    width: 0%;
-}
-
-.expand-post-details {
-    width: 40%;
-}
-
 .post-card {
-    overflow: hidden;
     -webkit-box-shadow: 0px 0px 6px 0px #000000;
     box-shadow: 0px 0px 6px 0px #000000;
     cursor: pointer;
@@ -49,21 +32,7 @@
     width: 100%;
     height: 200px;
     object-fit: cover;
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    /* -webkit-filter: grayscale(100%); */
-    /* filter: grayscale(100%); */
-    -webkit-transition: .3s ease-in-out;
-    transition: .3s ease-in-out;
 }
-
-.post-card img:hover {
-    -webkit-transform: scale(1.05);
-    transform: scale(1.05);
-    /* -webkit-filter: grayscale(0);
-	filter: grayscale(0); */
-}
-
 
 .post-name h3 {
     color: var(--main-color);
@@ -127,51 +96,59 @@
     margin: 0 2%;
 }
 
-
-@media screen and (max-width:1600px) {
-    .posts-wrapper {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2%;
-    }
-}
-
 @media screen and (max-width:1400px) {
     .posts-wrapper {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2%;
+        grid-template-columns: repeat(2, 1fr);
+        height: 80vh;
+    }
+
+    .post-details {
+        width: 50%;
     }
 }
 
 @media screen and (max-width:1000px) {
     .posts-wrapper {
         grid-template-columns: repeat(2, 1fr);
-        gap: 2%;
     }
 
     .post-card-details-wrapper {
         padding-bottom: 15%;
     }
+
+    .post-details {
+        width: 52%;
+    }
 }
 
 @media screen and (max-width:800px) {
     .posts-wrapper {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2%;
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+        overflow-x: hidden;
+        height: 100vh;
     }
 
     .post-card-details-wrapper {
         padding-bottom: 20%;
+    }
+
+    .post-details {
+        width: 74%;
     }
 }
 
 
 @media screen and (max-width:600px) {
     .posts-wrapper {
+        width: 30%;
         grid-template-columns: repeat(1, 1fr);
-        gap: 2%;
     }
 
     .post-card-details-wrapper {
         padding-bottom: 25%;
     }
+
+
 }

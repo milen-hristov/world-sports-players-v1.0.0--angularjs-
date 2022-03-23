@@ -92,46 +92,40 @@
 
 
 
-/* to recheck */
-@media screen and (max-width:800px) {
+@media screen and (max-width:1000px) {
     .post {
         flex-direction: column;
     }
 
-    .post-image {
-        width: 100%;
-        padding-bottom: 5%;
-    }
-
-    .post-details {
-        /* width: 100%; */
-    }
-
-    .buttons {
-        width: 100%;
+    .post-details h2 {
+        font-size: 26px;
     }
 
     .buttons .btn-back,
     .buttons .btn-edit,
-    .buttons .btn-delete,
-    .buttons .btn-like {
-        /* width: 25%; */
-        padding: 10% 10%;
+    .buttons .btn-delete {
+        padding: 6%;
+    }
+}
+
+@media screen and (max-width:800px) {
+
+    .buttons .btn-back,
+    .buttons .btn-edit,
+    .buttons .btn-delete {
+        padding: 4%;
     }
 
+    .post-details h2 {
+        font-size: 20px;
+    }
+}
 
-    .post-board-profile {
+
+@media screen and (max-width:600px) {
+    .buttons {
         display: flex;
         flex-direction: column;
-        padding: 5%;
-    }
-
-    .post-board-picture {
-        display: none;
-    }
-
-    .post-board-profile>span {
-        font-size: 20px;
-        margin-bottom: 2%;
+        width: 100%;
     }
 }

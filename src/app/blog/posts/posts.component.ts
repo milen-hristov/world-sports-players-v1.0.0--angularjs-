@@ -38,7 +38,6 @@ export class PostsComponent implements OnInit, OnDestroy {
   posts: Post[] | undefined;
   isLoading = false;
   message: string = null;
-  isOpen: boolean = false;
 
   constructor(
     private postsService: PostsService,
@@ -50,13 +49,11 @@ export class PostsComponent implements OnInit, OnDestroy {
 
     this.subscription = this.postsService.postModified.subscribe((res) => {
       this.isModified = res;
-      this.isOpen = false;
       this.fetchPosts();
     });
   }
 
   onClickPost(id) {
-    this.isOpen = true;
     this.postsService.postChanged.next(id);
   }
 

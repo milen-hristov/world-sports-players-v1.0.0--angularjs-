@@ -10,7 +10,6 @@
     <section
       class="posts-wrapper"
       [@fade]="posts.length"
-      [ngClass]="isOpen == true ? 'squize-posts-wrapper' : 'expand-posts-wrapper'"
     >
       <article
         class="post-card"
@@ -36,7 +35,6 @@
 
     <section
       class="post-details"
-      [ngClass]="!isOpen == true ? 'squize-post-details' : 'expand-post-details'"
     >
       <router-outlet></router-outlet>
     </section>
