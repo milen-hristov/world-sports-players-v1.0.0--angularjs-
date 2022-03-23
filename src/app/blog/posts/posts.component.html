@@ -12,19 +12,20 @@
         class="post-card"
         *ngFor="let post of posts"
         [routerLink]="[post.id]"
+        (click)="onClickPost(post.id)"
       >
-        <article class="post-card-details-wrapper">
-          <h3 class="post-name">Title: {{ post.name }}</h3>
-          <p class="post-info">
-            Posted on: <span>{{ post.date | date: "medium" }}</span>
-          </p>
-          <p class="post-info">
-            Created by: <span>{{ post.ownerEmail }}</span>
-          </p>
-          <p class="post-desc">{{ post.info | substring: 120 }}</p>
-        </article>
         <article class="post-card-image">
           <img [src]="post.imagePath" alt="{{ post.name }}" />
+        </article>
+        <article class="post-card-details-wrapper">
+          <h3 class="post-name">{{ post.name | substring: 20 }}</h3>
+          <p class="post-info">
+            <i class="fas fa-calendar-alt"></i
+            ><span>{{ post.date | date: "medium" }}</span>
+          </p>
+          <p class="post-info">
+            <i class="fas fa-marker"></i> <span>{{ post.ownerEmail }}</span>
+          </p>
         </article>
       </article>
     </section>

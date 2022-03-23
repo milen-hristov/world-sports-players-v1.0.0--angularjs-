@@ -1,6 +1,8 @@
 import { HttpErrorResponse } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Params, Router } from "@angular/router";
+import { Subscription } from "rxjs";
+
 import { AuthService } from "src/app/auth/auth.service";
 import { HandleError } from "src/app/shared/handleError.service";
 import { PostsService } from "../blog.service";
@@ -12,7 +14,8 @@ import { Post } from "../post.model";
   templateUrl: "./posts-details.component.html",
   styleUrls: ["./posts-details.component.css"],
 })
-export class PostsDetailsComponent implements OnInit {
+export class PostsDetailsComponent implements OnInit, OnDestroy {
+  subscription: Subscription;
   post: Post = {
     id: "",
     name: "",
@@ -30,7 +33,6 @@ export class PostsDetailsComponent implements OnInit {
   isLoading: boolean = false;
   isAuthenticated: boolean = false;
   message: string = null;
-  // isHidden: boolean = true;
 
   constructor(
     private postsService: PostsService,
@@ -41,6 +43,31 @@ export class PostsDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.subscription = this.postsService.postChanged.subscribe(
+      (res) => {
+        this.id = res;
+
+        this.isLoading = true;
+        this.postsService.getPost(this.id).subscribe({
+          next: (post: Post) => {
+            this.post = post;
+            this.ownerID = post.ownerId;
+            if (this.ownerID === this.currentUserID) {
+              this.isOwner = true;
+            } else {
+              this.isOwner = false;
+            }
+            this.isLoading = false;
+          },
+          error: (err: HttpErrorResponse) => {
+            this.message = this.handleError.handleErrorPlayer(err);
+            this.isLoading = false;
+            console.log(err);
+          },
+        });
+      }
+    );
+
     this.route.params.subscribe((params: Params) => {
       this.id = params["id"];
       this.authService.user.subscribe({
@@ -96,8 +123,8 @@ export class PostsDetailsComponent implements OnInit {
       },
     });
   }
-
-  // onHidePost() {
-  //   this.isHidden = false;
-  // }
+  
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }

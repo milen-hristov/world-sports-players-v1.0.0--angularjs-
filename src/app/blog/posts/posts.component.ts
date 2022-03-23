@@ -14,7 +14,6 @@ export class PostsComponent implements OnInit {
   posts: Post[] | undefined;
   isLoading = false;
   message: string = null;
-  // isHidden: boolean = false;
 
   constructor(
     private postsService: PostsService,
@@ -23,6 +22,10 @@ export class PostsComponent implements OnInit {
 
   ngOnInit() {
     this.fetchPosts();
+  }
+
+  onClickPost(id) {
+    this.postsService.postChanged.next(id);
   }
 
   fetchPosts() {
