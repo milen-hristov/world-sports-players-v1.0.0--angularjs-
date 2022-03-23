@@ -1,7 +1,13 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Params, Router } from "@angular/router";
-import { trigger, transition, style, animate, group, keyframes, state } from "@angular/animations";
+import {
+  trigger,
+  transition,
+  style,
+  animate,
+  state,
+} from "@angular/animations";
 import { Subscription } from "rxjs";
 
 import { AuthService } from "src/app/auth/auth.service";
@@ -149,6 +155,10 @@ export class PostsDetailsComponent implements OnInit, OnDestroy {
         console.log(err);
       },
     });
+  }
+
+  onHidePost() {
+    this.postsService.postModified.next(false);
   }
 
   ngOnDestroy() {

@@ -1,4 +1,11 @@
-import { animate, query, stagger, style, transition, trigger } from "@angular/animations";
+import {
+  animate,
+  query,
+  stagger,
+  style,
+  transition,
+  trigger,
+} from "@angular/animations";
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
 import { map } from "rxjs/operators";
@@ -12,20 +19,18 @@ import { Post } from "../post.model";
   templateUrl: "./posts.component.html",
   styleUrls: ["./posts.component.css"],
   animations: [
-    trigger('fade', [
-      transition('void => *', [
-        query(':enter', [
+    trigger("fade", [
+      transition("void => *", [
+        query(":enter", [
           style({
-            opacity: '0'
+            opacity: "0",
           }),
-          stagger(30, [
-            animate('300ms ease-in', style({ opacity: 1 }))
-          ])
-        ])
+          stagger(30, [animate("300ms ease-in", style({ opacity: 1 }))]),
+        ]),
       ]),
-      transition('* => void', animate('300ms ease-out', style({ opacity: 0 })))
-    ])
-  ]
+      transition("* => void", animate("300ms ease-out", style({ opacity: 0 }))),
+    ]),
+  ],
 })
 export class PostsComponent implements OnInit, OnDestroy {
   subscription: Subscription;
@@ -33,6 +38,7 @@ export class PostsComponent implements OnInit, OnDestroy {
   posts: Post[] | undefined;
   isLoading = false;
   message: string = null;
+  isOpen: boolean = false;
 
   constructor(
     private postsService: PostsService,
@@ -44,11 +50,13 @@ export class PostsComponent implements OnInit, OnDestroy {
 
     this.subscription = this.postsService.postModified.subscribe((res) => {
       this.isModified = res;
+      this.isOpen = false;
       this.fetchPosts();
     });
   }
 
   onClickPost(id) {
+    this.isOpen = true;
     this.postsService.postChanged.next(id);
   }
 

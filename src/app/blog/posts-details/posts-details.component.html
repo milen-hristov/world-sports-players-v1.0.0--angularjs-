@@ -7,7 +7,7 @@
 <main class="post" *ngIf="!isLoading">
   <section class="post-details" [@postIntro]>
     <section class="post-heading">
-      <article class="post-info" >
+      <article class="post-info">
         <h2>{{ post.name }}</h2>
         <h3>by {{ post.ownerEmail }}</h3>
         <h4>{{ post.date | date: "fullDate" }}</h4>
@@ -38,7 +38,12 @@
         >
           Edit
         </button>
-        <button class="btn-back" routerLink="/blog/posts" type="button">
+        <button
+          class="btn-back"
+          (click)="onHidePost()"
+          routerLink="/blog/posts"
+          type="button"
+        >
           Hide
         </button>
       </article>

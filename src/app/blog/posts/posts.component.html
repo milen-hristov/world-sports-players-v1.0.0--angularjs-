@@ -7,7 +7,11 @@
 <section class="posts" *ngIf="!isLoading">
   <h2>All<span>Posts</span></h2>
   <section class="post-container">
-    <section class="posts-wrapper" [@fade]="posts.length" >
+    <section
+      class="posts-wrapper"
+      [@fade]="posts.length"
+      [ngClass]="isOpen == true ? 'squize-posts-wrapper' : 'expand-posts-wrapper'"
+    >
       <article
         class="post-card"
         *ngFor="let post of posts"
@@ -18,7 +22,7 @@
           <img [src]="post.imagePath" alt="{{ post.name }}" />
         </article>
         <article class="post-card-details-wrapper">
-          <h3 class="post-name">{{ post.name | substring: 100}}</h3>
+          <h3 class="post-name">{{ post.name | substring: 100 }}</h3>
           <p class="post-info">
             <i class="fas fa-calendar-alt"></i
             ><span>{{ post.date | date: "medium" }}</span>
@@ -29,7 +33,11 @@
         </article>
       </article>
     </section>
-    <section class="post-details">
+
+    <section
+      class="post-details"
+      [ngClass]="!isOpen == true ? 'squize-post-details' : 'expand-post-details'"
+    >
       <router-outlet></router-outlet>
     </section>
   </section>

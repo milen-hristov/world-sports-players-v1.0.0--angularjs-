@@ -9,15 +9,33 @@
 
 .posts-wrapper {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    /* grid-template-columns: repeat(3, 1fr); */
     gap: 2%;
-    width: 50%;
+    /* width: 50%; */
+}
+
+.expand-posts-wrapper {
+    width: 100%;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.squize-posts-wrapper {
+    width: 40%;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .post-details {
-    width: 40%;
+    /* width: 40%; */
     margin-left: 4%;
     align-self: center;
+}
+
+.squize-post-details {
+    width: 0%;
+}
+
+.expand-post-details {
+    width: 40%;
 }
 
 .post-card {
