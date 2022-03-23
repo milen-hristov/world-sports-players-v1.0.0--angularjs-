@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Params, Router } from "@angular/router";
-import { trigger, transition, style, animate } from "@angular/animations";
+import { trigger, transition, style, animate, group, keyframes, state } from "@angular/animations";
 import { Subscription } from "rxjs";
 
 import { AuthService } from "src/app/auth/auth.service";
@@ -15,12 +15,30 @@ import { Post } from "../post.model";
   templateUrl: "./posts-details.component.html",
   styleUrls: ["./posts-details.component.css"],
   animations: [
-    trigger("fade", [
+    trigger("postIntro", [
+      state(
+        "in",
+        style({
+          opacity: 1,
+          transform: "translateX(0)",
+        })
+      ),
       transition("void => *", [
-        style({ opacity: "0" }),
-        animate("300ms ease-in", style({ opacity: 1 })),
+        style({
+          opacity: 0,
+          transform: "translateX(-100px)",
+        }),
+        animate(300),
       ]),
-      transition("* => void", animate("300ms ease-out", style({ opacity: 0 }))),
+      transition("* => void", [
+        animate(
+          300,
+          style({
+            transform: "translateX(100px)",
+            opacity: 0,
+          })
+        ),
+      ]),
     ]),
   ],
 })
