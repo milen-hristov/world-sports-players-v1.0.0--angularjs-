@@ -76,7 +76,7 @@
     flex-direction: column;
     align-items: center;
     position: relative;
-    top: -20px;
+    /* top: -20px; */
     padding: 5%;
     background-color: white;
 }
@@ -104,13 +104,16 @@
         grid-template-columns: repeat(4, 1fr);
         gap: 2%;
     }
-
 }
 
 @media screen and (max-width:1400px) {
     .players-wrapper {
         grid-template-columns: repeat(3, 1fr);
         gap: 2%;
+    }
+
+    .player-card img {
+        height: 300px;
     }
 }
 
@@ -123,27 +126,45 @@
     .player-card-details-wrapper {
         padding-bottom: 15%;
     }
+
+    .player-card img {
+        height: 200px;
+    }
 }
 
-@media screen and (max-width:800px) {
+@media screen and (max-width:900px) {
     .players-wrapper {
-        grid-template-columns: repeat(2, 1fr);
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+        /* grid-template-columns: repeat(2, 1fr); */
         gap: 2%;
     }
 
     .player-card-details-wrapper {
         padding-bottom: 20%;
     }
+
+    .player-card img {
+        height: 100px;
+    }
+  
+    .players h2 {
+        font-size: 24px;
+    }
+
+    .player-card-details-wrapper .player-desc {
+        font-size: 12px;
+    }
 }
 
 
 @media screen and (max-width:600px) {
-    .players-wrapper {
-        grid-template-columns: repeat(1, 1fr);
-        gap: 2%;
-    }
-
     .player-card-details-wrapper {
         padding-bottom: 25%;
+    }
+
+    .player-card img {
+        height: 50px;
     }
 }

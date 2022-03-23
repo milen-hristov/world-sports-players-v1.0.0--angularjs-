@@ -56,4 +56,8 @@
     .navigation ul li {
         font-size: 26px;
     }
+
+    .players{
+        width: 95%;
+    }
 }

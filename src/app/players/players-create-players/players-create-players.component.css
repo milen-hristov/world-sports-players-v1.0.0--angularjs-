@@ -103,6 +103,10 @@
     font-size: 16px;
 }
 
+textarea {
+    resize: none;
+}
+
 .player-board-profile>textarea,
 .player-board-profile>input,
 .player-board-profile>select {

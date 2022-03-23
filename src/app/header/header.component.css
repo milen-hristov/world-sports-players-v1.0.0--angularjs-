@@ -72,7 +72,6 @@
 
 @media screen and (max-width:800px) {
     .navigation {
-        gap: 10%;
         flex-direction: column;
     }
 
@@ -84,18 +83,18 @@
 
     .navigation ul {
         width: 100%;
-        justify-content: space-around;
+        /* justify-content: space-around; */
         text-align: center;
+        flex-direction: column;
     }
 
     .navigation ul li a {
-        font-size: 20px;
-     
+        font-size: 16px;
     }
 
     .navigation ul li {
         margin: 0;
-        padding: 5% 2% ;
+        padding: 2%;
     }
 
     .navigation-bottom {
@@ -105,9 +104,9 @@
 
     .navigation-bottom ul {
         margin: 0;
-        font-size: 20px;
+        font-size: 14px;
         padding: 2%;
     }
-
+    
 
 }

@@ -70,6 +70,10 @@
   font-size: 16px;
 }
 
+textarea {
+  resize: none;
+}
+
 .sport-board-profile>textarea,
 .sport-board-profile>input,
 .sport-board-profile>select {

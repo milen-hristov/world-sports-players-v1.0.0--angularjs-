@@ -107,6 +107,7 @@
 
 @media screen and (max-width:1600px) {
     .players-wrapper {
+        width: 95%;
         grid-template-columns: repeat(4, 1fr);
         gap: 2%;
     }
@@ -133,23 +134,13 @@
 
 @media screen and (max-width:800px) {
     .players-wrapper {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2%;
+        /* grid-template-columns: repeat(2, 1fr);
+        gap: 2%; */
+        display: flex;
+        flex-direction: column;
     }
 
     .player-card-details-wrapper {
         padding-bottom: 20%;
-    }
-}
-
-
-@media screen and (max-width:600px) {
-    .players-wrapper {
-        grid-template-columns: repeat(1, 1fr);
-        gap: 2%;
-    }
-
-    .player-card-details-wrapper {
-        padding-bottom: 25%;
     }
 }
