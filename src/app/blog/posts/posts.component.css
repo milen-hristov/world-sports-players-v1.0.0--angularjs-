@@ -81,6 +81,7 @@
     color: var(--text-color);
     font-weight: bold;
     padding: 1% 0;
+    margin: 2%;
 }
 
 .post-card-details-wrapper .post-info span {
@@ -95,6 +96,7 @@
     align-items: left;
     background-color: white;
     padding: 2%;
+    margin-bottom: 10%;
 }
 
 .no-entries {
