@@ -1,1 +1,38 @@
-<p>posts works!</p>
+<app-alert-message *ngIf="message" [message]="message"></app-alert-message>
+
+<article *ngIf="isLoading">
+  <app-loading></app-loading>
+</article>
+
+<section class="posts" *ngIf="!isLoading">
+  <h2>All<span>Posts</span></h2>
+  <section class="post-container">
+    <section class="posts-wrapper">
+      <article
+        class="post-card"
+        *ngFor="let post of posts"
+        [routerLink]="[post.id]"
+      >
+        <article class="post-card-details-wrapper">
+          <h3 class="post-name">Title: {{ post.name }}</h3>
+          <p class="post-info">
+            Posted on: <span>{{ post.date | date: "medium" }}</span>
+          </p>
+          <p class="post-info">
+            Created by: <span>{{ post.ownerEmail }}</span>
+          </p>
+          <p class="post-desc">{{ post.info | substring: 120 }}</p>
+        </article>
+        <article class="post-card-image">
+          <img [src]="post.imagePath" alt="{{ post.name }}" />
+        </article>
+      </article>
+    </section>
+    <section class="post-details">
+      <router-outlet></router-outlet>
+    </section>
+  </section>
+  <article class="no-entries" *ngIf="!posts?.length">
+    <h3>No posts added. Be first to create a post.</h3>
+  </article>
+</section>

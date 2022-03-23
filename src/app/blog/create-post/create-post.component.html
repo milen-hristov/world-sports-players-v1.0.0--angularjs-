@@ -1,1 +1,83 @@
-<p>create-post works!</p>
+
+<app-alert-message *ngIf="message" [message]="message"></app-alert-message>
+
+<main class="post">
+  <form [formGroup]="postsForm" (ngSubmit)="onSubmit()">
+  <article class="post-board-profile">
+      <img
+        src="/assets/images/background.jpg"
+        alt="Item"
+        class="post-board-picture"
+      />
+      <label class="post-board-name" for="name">Title<span>*</span></label>
+      <input
+        type="text"
+        id="name"
+        class="post-board-value"
+        formControlName="name"
+      />
+    </article>
+    <article class="notification-alert" *ngIf="!name.valid && name.touched">
+      <i class="fas fa-info-circle"></i>
+      <span>Title is required. Min lenght is 6 characters.</span>
+    </article>
+
+    <article class="post-board-profile">
+        <img
+          src="/assets/images/background.jpg"
+          alt="Item"
+          class="post-board-picture"
+        />
+        <label class="post-board-name" for="info"
+          >Add your text<span>*</span></label
+        >
+        <textarea
+          type="text"
+          id="info"
+          class="post-board-value"
+          formControlName="info"
+          rows="7"
+        ></textarea>
+      </article>
+      <article
+        class="notification-alert"
+        *ngIf="!info.valid && info.touched"
+      >
+        <i class="fas fa-info-circle"></i>
+        <span>Please add your text. Max length 1500 characters.</span>
+      </article>
+
+      <article class="post-board-profile">
+        <img
+          src="/assets/images/background.jpg"
+          alt="Item"
+          class="post-board-picture"
+        />
+        <label class="post-board-name" for="imagePath"
+          >Image URL<span>*</span></label
+        >
+        <input
+          type="url"
+          id="imagePath"
+          class="post-board-value"
+          formControlName="imagePath"
+        />
+      </article>
+      <article
+        class="notification-alert"
+        *ngIf="!imagePath.valid && imagePath.touched"
+      >
+        <i class="fas fa-info-circle"></i>
+        <span>Please add post image url.</span>
+      </article>
+
+    <article class="buttons">
+      <section>
+        <button class="btn-back" routerLink="/blog/posts">Back</button>
+      </section>
+      <section>
+        <button class="btn-save" type="submit">Save</button>
+      </section>
+    </article>
+  </form>
+</main>

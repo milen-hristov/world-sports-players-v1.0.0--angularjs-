@@ -1,0 +1,137 @@
+.post {
+    display: flex;
+    flex-direction: column;
+    gap: 1%;
+    -webkit-box-shadow: 0px 0px 6px 0px #000000;
+    box-shadow: 0px 0px 6px 0px #000000;
+}
+
+.post-image {
+    width: 100%;
+    max-height: 500px;
+    overflow: hidden;
+    border-radius: 84% 16% 83% 17% / 12% 87% 13% 88%;
+}
+
+.post-image img {
+    width: 100%;
+}
+
+.post-details {
+    width: 100%;
+}
+
+.post-details h2,
+.post-details h3 {
+    text-align: left;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.post-details h2 {
+    text-transform: uppercase;
+    font-size: 40px;
+    color: var(--main-color);
+}
+
+.post-details h3 {
+    color: var(--secondary-color);
+}
+
+.post-details-notes {
+    padding: 2% 5%;
+    text-align: justify;
+}
+
+.post-board {
+    width: 96%;
+    border-radius: 12px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttons .btn-back,
+.buttons .btn-edit,
+.buttons .btn-delete {
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 15px;
+    margin: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.buttons .btn-back {
+    background-color: var(--text-color);
+}
+
+.buttons .btn-delete {
+    background-color: var(--danger-color);
+}
+
+.buttons .btn-edit {
+    background-color: var(--neutral-color);
+}
+
+.post-info {
+    padding: 2% 5%;
+    background-color: aliceblue;
+    text-align: left;
+}
+
+.post-info h4 {
+    font-weight: normal;
+    padding-top: 2%;
+}
+
+
+
+/* to recheck */
+@media screen and (max-width:800px) {
+    .post {
+        flex-direction: column;
+    }
+
+    .post-image {
+        width: 100%;
+        padding-bottom: 5%;
+    }
+
+    .post-details {
+        /* width: 100%; */
+    }
+
+    .buttons {
+        width: 100%;
+    }
+
+    .buttons .btn-back,
+    .buttons .btn-edit,
+    .buttons .btn-delete,
+    .buttons .btn-like {
+        /* width: 25%; */
+        padding: 10% 10%;
+    }
+
+
+    .post-board-profile {
+        display: flex;
+        flex-direction: column;
+        padding: 5%;
+    }
+
+    .post-board-picture {
+        display: none;
+    }
+
+    .post-board-profile>span {
+        font-size: 20px;
+        margin-bottom: 2%;
+    }
+}

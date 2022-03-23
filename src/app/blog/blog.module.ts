@@ -7,9 +7,15 @@ import { BlogComponent } from "./blog.component";
 import { AuthGuard } from "../auth/auth.guard";
 import { PostsComponent } from "./posts/posts.component";
 import { CreatePostComponent } from "./create-post/create-post.component";
+import { PostsDetailsComponent } from "./posts-details/posts-details.component";
 
 @NgModule({
-  declarations: [BlogComponent, PostsComponent, CreatePostComponent],
+  declarations: [
+    BlogComponent,
+    PostsComponent,
+    CreatePostComponent,
+    PostsDetailsComponent,
+  ],
   imports: [
     RouterModule,
     SharedModule,
@@ -20,7 +26,14 @@ import { CreatePostComponent } from "./create-post/create-post.component";
         component: BlogComponent,
         canActivate: [AuthGuard],
         children: [
-          { path: "posts", component: PostsComponent },
+          {
+            path: "posts",
+            component: PostsComponent,
+            children: [
+              { path: ":id", component: PostsDetailsComponent },
+              { path: ":id/edit", component: CreatePostComponent },
+            ],
+          },
           { path: "create", component: CreatePostComponent },
         ],
       },
