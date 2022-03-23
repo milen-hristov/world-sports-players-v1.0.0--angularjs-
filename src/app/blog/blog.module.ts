@@ -21,6 +21,7 @@ import { PostsDetailsComponent } from "./posts-details/posts-details.component";
     SharedModule,
     ReactiveFormsModule,
     RouterModule.forChild([
+      { path: "", redirectTo: "/blog/posts", pathMatch: "full" },
       {
         path: "",
         component: BlogComponent,
