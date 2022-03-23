@@ -16,6 +16,9 @@
         <a routerLink="/players/create" *ngIf="isAuthenticated">Create</a>
       </li>
       <li routerLinkActive="active">
+        <a routerLink="/blog" *ngIf="isAuthenticated">Blog</a>
+      </li>
+      <li routerLinkActive="active">
         <a routerLink="/my-profile" *ngIf="isAuthenticated">My account</a>
       </li>
       <li><a (click)="onLogout()" *ngIf="isAuthenticated">Logout</a></li>

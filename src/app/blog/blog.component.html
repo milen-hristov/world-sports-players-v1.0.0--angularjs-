@@ -1,0 +1,17 @@
+<p>blog works!</p>
+<header>
+  <section class="posts">
+    <h2>Blog<span><i class="fas fa-globe-americas"></i></span></h2>
+  </section>
+  <nav class="navigation">
+    <ul>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a routerLink="posts">Posts</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="create">Create</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<router-outlet></router-outlet>
