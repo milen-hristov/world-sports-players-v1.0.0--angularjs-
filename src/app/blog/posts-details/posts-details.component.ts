@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Params, Router } from "@angular/router";
+import { trigger, transition, style, animate } from "@angular/animations";
 import { Subscription } from "rxjs";
 
 import { AuthService } from "src/app/auth/auth.service";
@@ -13,6 +14,15 @@ import { Post } from "../post.model";
   selector: "app-posts-details",
   templateUrl: "./posts-details.component.html",
   styleUrls: ["./posts-details.component.css"],
+  animations: [
+    trigger("fade", [
+      transition("void => *", [
+        style({ opacity: "0" }),
+        animate("300ms ease-in", style({ opacity: 1 })),
+      ]),
+      transition("* => void", animate("300ms ease-out", style({ opacity: 0 }))),
+    ]),
+  ],
 })
 export class PostsDetailsComponent implements OnInit, OnDestroy {
   subscription: Subscription;
@@ -43,30 +53,28 @@ export class PostsDetailsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.subscription = this.postsService.postChanged.subscribe(
-      (res) => {
-        this.id = res;
+    this.subscription = this.postsService.postChanged.subscribe((res) => {
+      this.id = res;
 
-        this.isLoading = true;
-        this.postsService.getPost(this.id).subscribe({
-          next: (post: Post) => {
-            this.post = post;
-            this.ownerID = post.ownerId;
-            if (this.ownerID === this.currentUserID) {
-              this.isOwner = true;
-            } else {
-              this.isOwner = false;
-            }
-            this.isLoading = false;
-          },
-          error: (err: HttpErrorResponse) => {
-            this.message = this.handleError.handleErrorPlayer(err);
-            this.isLoading = false;
-            console.log(err);
-          },
-        });
-      }
-    );
+      this.isLoading = true;
+      this.postsService.getPost(this.id).subscribe({
+        next: (post: Post) => {
+          this.post = post;
+          this.ownerID = post.ownerId;
+          if (this.ownerID === this.currentUserID) {
+            this.isOwner = true;
+          } else {
+            this.isOwner = false;
+          }
+          this.isLoading = false;
+        },
+        error: (err: HttpErrorResponse) => {
+          this.message = this.handleError.handleErrorPlayer(err);
+          this.isLoading = false;
+          console.log(err);
+        },
+      });
+    });
 
     this.route.params.subscribe((params: Params) => {
       this.id = params["id"];

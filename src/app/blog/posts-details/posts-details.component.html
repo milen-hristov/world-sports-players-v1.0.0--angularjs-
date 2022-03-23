@@ -5,9 +5,9 @@
 </article>
 
 <main class="post" *ngIf="!isLoading">
-  <section class="post-details">
+  <section class="post-details" [@fade]="post">
     <section class="post-heading">
-      <article class="post-info">
+      <article class="post-info" >
         <h2>{{ post.name }}</h2>
         <h3>by {{ post.ownerEmail }}</h3>
         <h4>{{ post.date | date: "fullDate" }}</h4>
