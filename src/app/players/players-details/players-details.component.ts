@@ -1,4 +1,3 @@
-import { trigger, transition, style, animate } from "@angular/animations";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Params, Router } from "@angular/router";
@@ -15,15 +14,6 @@ import { PlayersService } from "../players.service";
   selector: "app-players-details",
   templateUrl: "./players-details.component.html",
   styleUrls: ["./players-details.component.css"],
-  animations: [
-    trigger('fade', [
-      transition('void => *', [
-        style({ opacity:'0' }),
-        animate('300ms ease-in', style({ opacity: 1 }))
-      ]),
-      transition('* => void', animate('300ms ease-out', style({ opacity: 0 })))
-    ])
-  ]
 })
 export class PlayersDetailsComponent implements OnInit {
   player: Player = {

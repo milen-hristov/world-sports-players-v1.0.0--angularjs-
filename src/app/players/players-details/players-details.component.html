@@ -4,7 +4,7 @@
   <app-loading></app-loading>
 </article>
 
-<main class="player" *ngIf="!isLoading" [@fade]="player">
+<main class="player" *ngIf="!isLoading">
   <section class="player-image">
     <img src="{{ player.imagePath }}" alt="{{ player.name }}" />
     <article class="player-likes-container">
