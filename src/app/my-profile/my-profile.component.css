@@ -1,6 +1,5 @@
 .players {
     padding: 0 5%;
-    margin-bottom: 5%;
 }
 
 .players-wrapper {
@@ -36,11 +35,6 @@
 	filter: grayscale(0); */
 }
 
-.player-name h3 {
-    color: var(--main-color);
-    font-weight: bold;
-}
-
 .players h2 {
     padding: 2% 0;
     font-size: 30px;
@@ -56,6 +50,8 @@
 
 .player-card-details-wrapper .player-name {
     color: var(--main-color);
+    text-align: center;
+    font-weight: bold;
 }
 
 .player-card-details-wrapper .player-desc {
@@ -76,7 +72,7 @@
     flex-direction: column;
     align-items: center;
     position: relative;
-    /* top: -20px; */
+    top: -20px;
     padding: 5%;
     background-color: white;
 }
@@ -98,22 +94,26 @@
     text-transform: uppercase;
 }
 
+.notification-alert {
+    color: var(--danger-color);
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}
 
 @media screen and (max-width:1600px) {
     .players-wrapper {
         grid-template-columns: repeat(4, 1fr);
         gap: 2%;
     }
+
 }
 
 @media screen and (max-width:1400px) {
     .players-wrapper {
         grid-template-columns: repeat(3, 1fr);
         gap: 2%;
-    }
-
-    .player-card img {
-        height: 300px;
     }
 }
 
@@ -126,45 +126,48 @@
     .player-card-details-wrapper {
         padding-bottom: 15%;
     }
-
-    .player-card img {
-        height: 200px;
-    }
 }
 
-@media screen and (max-width:900px) {
+@media screen and (max-width:800px) {
     .players-wrapper {
-        width: 95%;
         display: flex;
-        flex-direction: column;
-        /* grid-template-columns: repeat(2, 1fr); */
-        gap: 2%;
+        flex-wrap: wrap;
+        width: 100%;
     }
 
-    .player-card-details-wrapper {
-        padding-bottom: 20%;
+    .player-card {
+        width: 45%;
+        margin: 2%;
     }
 
-    .player-card img {
-        height: 100px;
-    }
-  
-    .players h2 {
-        font-size: 24px;
+    .player-desc {
+        display: none;
     }
 
-    .player-card-details-wrapper .player-desc {
+    .player-card-details-wrapper .player-name {
+        font-size: 14px;
+    }
+
+    .player-card-details-wrapper .player-sport {
         font-size: 12px;
     }
-}
-
-
-@media screen and (max-width:600px) {
-    .player-card-details-wrapper {
-        padding-bottom: 25%;
-    }
 
     .player-card img {
-        height: 50px;
+        height: 400px;
+    }
+
+    .player-card-details-wrapper {
+        top: 0;
+        padding-bottom: 3%;
+    }
+
+    .players h2 {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width:550px) {
+      .player-card img {
+        height: 120px;
     }
 }

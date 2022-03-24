@@ -7,12 +7,21 @@
 <section class="players" *ngIf="!isLoadingCreated">
   <h2>Created<span>Players</span> ({{ myPlayers.length }})</h2>
   <section class="players-wrapper" [@fade]="myPlayers.length">
-    <app-my-created-players
-      *ngFor="let playerEl of myPlayers"
-      [player]="playerEl"
-      [routerLink]="['/players/', playerEl.id]"
-    >
-    </app-my-created-players>
+    <article
+    class="player-card"
+    *ngFor="let player of myPlayers"
+    [routerLink]="[player.id]"
+  >
+    <article class="player-card-image">
+      <img [src]="player.imagePath" alt="{{ player.name }}" />
+    </article>
+    <article class="player-card-details-wrapper">
+      <h3 class="player-name">{{ player.name }}</h3>
+      <p class="player-sport">{{ player.sport | titlecase }}</p>
+      <p class="player-desc">{{ player.description | substring: 120 }}</p>
+      <!-- <button>Read More</button> -->
+    </article>
+  </article>
   </section>
   <article class="no-entries" *ngIf="!myPlayers.length">
     <h3>No players created.</h3>
@@ -26,12 +35,21 @@
 <section class="players" *ngIf="!isLoadingMyFav">
   <h2>My<span>Favourites</span> ({{ myFavPlayers.length }})</h2>
   <section class="players-wrapper" [@fade]="myFavPlayers.length">
-    <app-my-favourite-players
-      *ngFor="let playerEl of myFavPlayers"
-      [player]="playerEl"
-      [routerLink]="['/players/', playerEl.id]"
-    >
-    </app-my-favourite-players>
+    <article
+    class="player-card"
+    *ngFor="let player of myFavPlayers"
+    [routerLink]="[player.id]"
+  >
+    <article class="player-card-image">
+      <img [src]="player.imagePath" alt="{{ player.name }}" />
+    </article>
+    <article class="player-card-details-wrapper">
+      <h3 class="player-name">{{ player.name }}</h3>
+      <p class="player-sport">{{ player.sport | titlecase }}</p>
+      <p class="player-desc">{{ player.description | substring: 120 }}</p>
+      <!-- <button>Read More</button> -->
+    </article>
+  </article>
   </section>
   <article class="no-entries" *ngIf="!myFavPlayers.length">
     <h3>No players added to favourites.</h3>
