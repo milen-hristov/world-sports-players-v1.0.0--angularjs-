@@ -68,57 +68,70 @@
 
 @media screen and (max-width:1400px) {
     .posts-wrapper {
-        grid-template-columns: repeat(2, 1fr);
-        height: 80vh;
-    }
-
-    .post-details {
-        width: 50%;
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
 @media screen and (max-width:1000px) {
     .posts-wrapper {
-        grid-template-columns: repeat(2, 1fr);
+       display: flex;
+       flex-wrap: wrap;
     }
 
-    .post-card-details-wrapper {
-        padding-bottom: 15%;
+    .post-card {
+        width: 30%;
+        margin: 1%;
     }
 
-    .post-details {
-        width: 52%;
+    .post-card-details-wrapper .post-name {
+        font-size: 18px;
+    }
+    
+    .post-card-details-wrapper .post-info-time,
+    .post-card-details-wrapper .post-info-owner {
+        font-size: 14px;
+    }
+
+    .post-card img {
+        height: 200px;
     }
 }
 
 @media screen and (max-width:800px) {
-    .posts-wrapper {
-        display: flex;
-        flex-direction: column;
-        width: 20%;
-        overflow-x: hidden;
-        height: 100vh;
+    .post-card {
+        width: 45%;
     }
 
-    .post-card-details-wrapper {
-        padding-bottom: 20%;
+    .post-card-details-wrapper .post-name {
+        font-size: 16px;
+    }
+    
+    .post-card-details-wrapper .post-info-time,
+    .post-card-details-wrapper .post-info-owner {
+        font-size: 12px;
     }
 
-    .post-details {
-        width: 74%;
+    .post-card img {
+        height: 150px;
     }
 }
 
 
 @media screen and (max-width:600px) {
-    .posts-wrapper {
-        width: 30%;
-        grid-template-columns: repeat(1, 1fr);
+    .post-card {
+        width: 47%;
     }
 
-    .post-card-details-wrapper {
-        padding-bottom: 25%;
+    .post-card-details-wrapper .post-name {
+        font-size: 12px;
+    }
+    
+    .post-card-details-wrapper .post-info-time,
+    .post-card-details-wrapper .post-info-owner {
+        font-size: 8px;
     }
 
-
+    .post-card img {
+        height: 100px;
+    }
 }
