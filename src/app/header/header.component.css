@@ -78,7 +78,17 @@
     display: none;
 }
 
-@media screen and (max-width:850px) {
+@media screen and (max-width:1400px) {
+    .navigation {
+        gap: 5%;
+    }
+
+    .navigation-logo {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width:900px) {
 
     .navigation {
         flex-direction: column;
