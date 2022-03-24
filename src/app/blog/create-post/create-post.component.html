@@ -1,9 +1,8 @@
-
 <app-alert-message *ngIf="message" [message]="message"></app-alert-message>
 
 <main class="post">
   <form [formGroup]="postsForm" (ngSubmit)="onSubmit()">
-  <article class="post-board-profile">
+    <article class="post-board-profile">
       <img
         src="/assets/images/background.jpg"
         alt="Item"
@@ -23,53 +22,48 @@
     </article>
 
     <article class="post-board-profile">
-        <img
-          src="/assets/images/background.jpg"
-          alt="Item"
-          class="post-board-picture"
-        />
-        <label class="post-board-name" for="info"
-          >Add your text<span>*</span></label
-        >
-        <textarea
-          type="text"
-          id="info"
-          class="post-board-value"
-          formControlName="info"
-          rows="7"
-        ></textarea>
-      </article>
-      <article
-        class="notification-alert"
-        *ngIf="!info.valid && info.touched"
-      >
-        <i class="fas fa-info-circle"></i>
-        <span>Please add your text. Max length 1500 characters.</span>
-      </article>
+      <img
+        src="/assets/images/background.jpg"
+        alt="Item"
+        class="post-board-picture"
+      />
+      <label class="post-board-name" for="info">Text<span>*</span></label>
+      <textarea
+        type="text"
+        id="info"
+        class="post-board-value"
+        formControlName="info"
+        rows="7"
+      ></textarea>
+    </article>
+    <article class="notification-alert" *ngIf="!info.valid && info.touched">
+      <i class="fas fa-info-circle"></i>
+      <span>Please add your text. Max length 1500 characters.</span>
+    </article>
 
-      <article class="post-board-profile">
-        <img
-          src="/assets/images/background.jpg"
-          alt="Item"
-          class="post-board-picture"
-        />
-        <label class="post-board-name" for="imagePath"
-          >Image URL<span>*</span></label
-        >
-        <input
-          type="url"
-          id="imagePath"
-          class="post-board-value"
-          formControlName="imagePath"
-        />
-      </article>
-      <article
-        class="notification-alert"
-        *ngIf="!imagePath.valid && imagePath.touched"
+    <article class="post-board-profile">
+      <img
+        src="/assets/images/background.jpg"
+        alt="Item"
+        class="post-board-picture"
+      />
+      <label class="post-board-name" for="imagePath"
+        >Image URL<span>*</span></label
       >
-        <i class="fas fa-info-circle"></i>
-        <span>Please add post image url.</span>
-      </article>
+      <input
+        type="url"
+        id="imagePath"
+        class="post-board-value"
+        formControlName="imagePath"
+      />
+    </article>
+    <article
+      class="notification-alert"
+      *ngIf="!imagePath.valid && imagePath.touched"
+    >
+      <i class="fas fa-info-circle"></i>
+      <span>Please add post image url.</span>
+    </article>
 
     <article class="buttons">
       <section>
