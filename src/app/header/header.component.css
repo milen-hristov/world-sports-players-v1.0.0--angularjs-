@@ -1,10 +1,10 @@
 .navigation {
     display: flex;
+    flex-direction: row;
     align-items: baseline;
     justify-content: space-around;
-    gap: 30%;
+    gap: 20%;
     background-color: #F7F7F7;
-
 }
 
 .navigation-logo {
@@ -70,7 +70,12 @@
     color: var(--random-color);
 }
 
-@media screen and (max-width:800px) {
+.fas.fa-bars {
+    display: none;
+}
+
+@media screen and (max-width:850px) {
+
     .navigation {
         flex-direction: column;
     }
@@ -81,21 +86,6 @@
         text-align: center;
     }
 
-    .navigation ul {
-        width: 100%;
-        /* justify-content: space-around; */
-        text-align: center;
-        flex-direction: column;
-    }
-
-    .navigation ul li a {
-        font-size: 16px;
-    }
-
-    .navigation ul li {
-        margin: 0;
-        padding: 2%;
-    }
 
     .navigation-bottom {
         justify-content: center;
@@ -107,6 +97,67 @@
         font-size: 14px;
         padding: 2%;
     }
-    
 
+    .menu {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        cursor: pointer;
+        padding: 2%;
+        margin-left: 13%;
+    }
+
+    .menu-title {
+        text-align: center;
+        color: var(--main-color);
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .fas.fa-bars {
+        display: flex;
+        align-items: center;
+    }
+
+    .menu-dropdown {
+        display: flex;
+        flex-direction: column;
+        background: #F7F7F7;
+        z-index: 100;
+        transition: 0.9s padding;
+    }
+
+    .menu-dropdown>* {
+        overflow: hidden;
+        height: 30px;
+        padding: 5px 10px;
+        background: rgba(0, 0, 0, 0);
+        white-space: nowrap;
+        transition:
+            0.5s height cubic-bezier(.73, .32, .34, 1.5),
+            0.5s padding cubic-bezier(.73, .32, .34, 1.5),
+            0.5s margin cubic-bezier(.73, .32, .34, 1.5),
+            0.5s 0.2s color,
+            0.2s background-color;
+    }
+
+    .menu-dropdown>*:hover {
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+    .menu:not(:hover)>.menu-dropdown>* {
+        visibility: hidden;
+        height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin: 0;
+        color: rgba(25, 25, 25, 0);
+        transition:
+            0.5s 0.1s height,
+            0.5s 0.1s padding,
+            0.5s 0.1s margin,
+            0.3s color,
+            0.6s visibility;
+        z-index: 99;
+    }
 }

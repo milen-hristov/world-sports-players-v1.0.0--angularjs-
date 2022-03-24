@@ -5,24 +5,30 @@
         ><i class="fas fa-globe-americas"></i>Sports<span>Players</span></a
       >
     </p>
-    <ul>
-      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        <a routerLink="/players">Home</a>
-      </li>
-      <li routerLinkActive="active" *ngIf="!isAuthenticated">
-        <a routerLink="/auth">Auth</a>
-      </li>
-      <li routerLinkActive="active">
-        <a routerLink="/players/create" *ngIf="isAuthenticated">Create</a>
-      </li>
-      <li routerLinkActive="active">
-        <a routerLink="/blog" *ngIf="isAuthenticated">Blog</a>
-      </li>
-      <li routerLinkActive="active">
-        <a routerLink="/my-profile" *ngIf="isAuthenticated">My account</a>
-      </li>
-      <li><a (click)="onLogout()" *ngIf="isAuthenticated">Logout</a></li>
-    </ul>
+    <article class="menu">
+      <h2 class="menu-title"><i class="fas fa-bars"></i></h2>
+      <ul class="menu-dropdown">
+        <li
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a routerLink="/players">Home</a>
+        </li>
+        <li routerLinkActive="active" *ngIf="!isAuthenticated">
+          <a routerLink="/auth">Auth</a>
+        </li>
+        <li *ngIf="isAuthenticated" routerLinkActive="active">
+          <a routerLink="/players/create">Create</a>
+        </li>
+        <li *ngIf="isAuthenticated" routerLinkActive="active">
+          <a routerLink="/blog">Blog</a>
+        </li>
+        <li *ngIf="isAuthenticated" routerLinkActive="active">
+          <a routerLink="/my-profile">My account</a>
+        </li>
+        <li *ngIf="isAuthenticated"><a (click)="onLogout()">Logout</a></li>
+      </ul>
+    </article>
   </nav>
   <article class="navigation-bottom">
     <ul>
