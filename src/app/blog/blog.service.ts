@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Subject } from "rxjs";
 
 import { Post } from "./post.model";
+import { Comment } from "./comment.model";
 import { environment } from "../../environments/environment";
 
 @Injectable({ providedIn: "root" })
@@ -33,5 +34,13 @@ export class PostsService {
 
   deletePost(id: string) {
     return this.http.delete(`${environment.databaseURL}/posts/${id}.json`);
+  }
+
+  addComment(comment: Comment) {
+    return this.http.post<Comment>(`${environment.databaseURL}/comments.json`, comment);
+  }
+
+  getComments() {
+    return this.http.get<Comment[]>(`${environment.databaseURL}/comments.json`);
   }
 }

@@ -3,6 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .post-details {
@@ -66,7 +67,8 @@
 
 .buttons .btn-back,
 .buttons .btn-edit,
-.buttons .btn-delete {
+.buttons .btn-delete,
+.buttons .btn-save {
     color: white;
     border: none;
     padding: 15px 20px;
@@ -82,6 +84,10 @@
     background-color: var(--text-color);
 }
 
+.buttons .btn-save {
+    background-color: var(--safe-color);
+}
+
 .buttons .btn-delete {
     background-color: var(--danger-color);
 }
@@ -90,6 +96,75 @@
     background-color: var(--neutral-color);
 }
 
+.post-board-profile {
+    display: grid;
+    grid-template-columns: 1fr 1fr 3fr;
+    align-items: center;
+    padding: 10px 30px 10px 10px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 7px -1px rgba(51, 51, 51, 0.23);
+    /* cursor: pointer; */
+    transition: transform .25s cubic-bezier(.7, .98, .86, .98), box-shadow .25s cubic-bezier(.7, .98, .86, .98);
+    background-color: #fff;
+    margin: 2%;
+}
+
+.post-board-picture {
+    max-width: 100%;
+    width: 60px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px #ebeef3, 0 0 0 22px #f3f4f6;
+}
+
+.post-board-name {
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.64px;
+    padding: 2%;
+}
+
+.post-board-value {
+    color: var(--text-color);
+    font-size: 16px;
+    text-align: justify;
+    padding: 2%;
+}
+
+.notification-alert {
+    color: var(--danger-color);
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+textarea {
+    resize: none;
+}
+
+.comment-section {
+    width: 40%;
+}
+
+.comment-board-profile {
+    padding: 10px 30px 10px 10px;
+    box-shadow: 0 5px 7px -1px rgba(51, 51, 51, 0.23);
+    transition: transform .25s cubic-bezier(.7, .98, .86, .98), box-shadow .25s cubic-bezier(.7, .98, .86, .98);
+    background-color: #fff;
+    margin: 2%;
+}
+
+.comment-full {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-board-info-left {
+    display: flex;
+    flex-direction: column;
+}
 
 @media screen and (max-width:1000px) {
 
@@ -102,6 +177,7 @@
         font-size: 18px;
     }
 
+    .comment-section,
     .post-details {
         width: 80%;
     }
@@ -123,6 +199,7 @@
         padding: 2% 0;
     }
 
+    .comment-section,
     .post-details {
         width: 90%;
     }
@@ -138,8 +215,8 @@
 
     .buttons .btn-edit,
     .buttons .btn-delete {
-       width: 60%;
-       padding: 20px 0;
+        width: 60%;
+        padding: 20px 0;
     }
 
 }
@@ -149,12 +226,14 @@
         font-size: 18px;
     }
 
+    .post-board-name,
     .post-info-time,
     .post-info-owner {
         font-size: 12px;
         padding: 3% 0;
     }
 
+    .comment-section,
     .post-details {
         width: 96%;
     }

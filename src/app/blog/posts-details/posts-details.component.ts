@@ -8,13 +8,15 @@ import {
   animate,
   state,
 } from "@angular/animations";
-import { Subscription } from "rxjs";
+import { map, Subscription } from "rxjs";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 import { AuthService } from "src/app/auth/auth.service";
 import { HandleError } from "src/app/shared/handleError.service";
 import { PostsService } from "../blog.service";
 
 import { Post } from "../post.model";
+import { Comment } from "../comment.model";
 
 @Component({
   selector: "app-posts-details",
@@ -64,9 +66,13 @@ export class PostsDetailsComponent implements OnInit, OnDestroy {
   isOwner: boolean;
   ownerID: string;
   currentUserID: string;
+  currentUserEmail: string;
   isLoading: boolean = false;
   isAuthenticated: boolean = false;
   message: string = null;
+  commentForm: FormGroup;
+  comments: Comment[] | undefined;
+  isCommented: boolean = false;
 
   constructor(
     private postsService: PostsService,
@@ -106,6 +112,7 @@ export class PostsDetailsComponent implements OnInit, OnDestroy {
         next: (user) => {
           if (user) {
             this.currentUserID = user.id;
+            this.currentUserEmail = user.email;
             this.isAuthenticated = !!user;
           }
         },
@@ -134,6 +141,9 @@ export class PostsDetailsComponent implements OnInit, OnDestroy {
         console.log(err);
       },
     });
+
+    this.initForm();
+    this.getAllComments();
   }
 
   onEditPost() {
@@ -159,6 +169,77 @@ export class PostsDetailsComponent implements OnInit, OnDestroy {
 
   onHidePost() {
     this.postsService.postModified.next(false);
+  }
+
+  private initForm() {
+    let info = "";
+    let date = new Date();
+    let postId = this.id;
+    let ownerId = this.currentUserID;
+    let ownerEmail = this.currentUserEmail;
+
+    this.commentForm = new FormGroup({
+      info: new FormControl(info, [Validators.required]),
+      date: new FormControl(date),
+      ownerId: new FormControl(ownerId),
+      ownerEmail: new FormControl(ownerEmail),
+      postId: new FormControl(postId),
+    });
+  }
+
+  onCommentPost() {
+    if (!this.commentForm.valid) {
+      this.message = "Please fill in all the required (*) fields.";
+      return;
+    }
+
+    this.postsService.addComment(this.commentForm.value).subscribe({
+      next: () => {
+        this.getAllComments();
+      },
+      error: (err) => {
+        this.message = this.handleError.handleErrorPlayer(err);
+        console.log(err);
+      },
+    });
+
+    this.commentForm.reset();
+  }
+
+  getAllComments() {
+    this.isLoading = true;
+    this.comments = undefined;
+    this.postsService
+      .getComments()
+      .pipe(
+        map((responseData) => {
+          const commentsArr: Comment[] = [];
+          for (const key in responseData) {
+            commentsArr.push({ ...responseData[key] });
+          }
+          return commentsArr;
+        })
+      )
+      .subscribe({
+        next: (commentsRes) => {
+          let filtered = commentsRes.filter((post) => post.postId == this.id);
+
+          if (filtered.length > 0) {
+            this.isCommented = true;
+          }
+          this.comments = filtered;
+          this.isLoading = false;
+        },
+        error: (err) => {
+          this.message = this.handleError.handleErrorPlayer(err);
+          console.log(err);
+          this.isLoading = false;
+        },
+      });
+  }
+
+  get info() {
+    return this.commentForm.get("info");
   }
 
   ngOnDestroy() {

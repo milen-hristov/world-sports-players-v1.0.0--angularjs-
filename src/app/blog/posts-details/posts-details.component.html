@@ -54,4 +54,67 @@
       </article>
     </section>
   </section>
+
+  <section class="comment-section">
+    <article class="post-info">
+      <h2 class="post-info-name">Comments</h2>
+    </article>
+
+    <article class="comment-board-profile" *ngFor="let comment of comments">
+      <section class="comment-full">
+        <article class="comment-board-info-left">
+          <p class="post-info-owner">From: {{ comment.ownerEmail }}</p>
+          <p class="post-info-time">{{ comment.date | dateAgo }}</p>
+        </article>
+        <article class="comment-board-info-right">
+          <p class="post-details-notes">{{ comment.info }}</p>
+        </article>
+
+      </section>
+    </article>
+    
+    <section *ngIf="!isCommented">
+        <p class="post-details-notes">
+          No comments yet. Be first to share your thoughts.
+        </p>
+    </section>
+  </section>
+
+  <app-alert-message *ngIf="message" [message]="message"></app-alert-message>
+  <section class="comment-section">
+    <article class="post-info">
+      <h2 class="post-info-name">Add your comment</h2>
+    </article>
+
+    <form [formGroup]="commentForm" (ngSubmit)="onCommentPost()">
+      <article class="post-board-profile">
+        <img
+          src="/assets/images/background.jpg"
+          alt="Item"
+          class="post-board-picture"
+        />
+        <label class="post-board-name" for="info">Comment<span>*</span></label>
+        <textarea
+          type="text"
+          id="info"
+          class="post-board-value"
+          formControlName="info"
+          rows="4"
+        ></textarea>
+      </article>
+      <article class="notification-alert" *ngIf="!info.valid && info.touched">
+        <i class="fas fa-info-circle"></i>
+        <span>Please add your comment.</span>
+      </article>
+
+      <article class="buttons">
+        <section>
+          <button class="btn-back" routerLink="/blog/posts">Back</button>
+        </section>
+        <section>
+          <button class="btn-save" type="submit">Save</button>
+        </section>
+      </article>
+    </form>
+  </section>
 </main>
