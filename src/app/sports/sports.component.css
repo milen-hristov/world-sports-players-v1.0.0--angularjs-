@@ -166,49 +166,33 @@ input.ng-invalid.ng-touched {
 }
 
 @media screen and (max-width:800px) {
-  .sport {
-    padding: 0;
+  .sport-board-profile-list-all {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .sport-board-profile-list {
+    width: 45%;
   }
 
   .sport-board-profile {
     display: grid;
-    grid-template-columns: 2fr 4fr;
-  }
-
-  .sport-board-picture {
-    display: none;
-  }
-
-
-  .buttons {
-    width: 100%;
-    justify-content: space-around;
-  }
-
-  .buttons .btn-back,
-  .buttons .btn-save {
-    padding: 60% 30%;
-  }
-
-  .sport-board-profile-list {
-    display: flex;
+    grid-template-columns: 1fr 2fr;
   }
 
   .sport-board-name {
-    padding: 3%;
+    font-size: 12px;
   }
 
-
-}
-
-@media screen and (max-width:600px) {
-
-  .sport-board-profile {
-    flex-direction: column;
+  .sport-board-profile>label,
+  .sport-board-profile>input,
+  .sport-board-profile>textarea,
+  .sport-board-profile>select {
+    font-size: 12px;
   }
+  
 
-  .sport-board-name,
-  .sport-board-value {
-    width: 100%;
+  .sport-board-profile img {
+    display: none;
   }
 }
