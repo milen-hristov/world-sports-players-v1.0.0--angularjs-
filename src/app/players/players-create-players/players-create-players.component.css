@@ -163,14 +163,13 @@ textarea.ng-invalid.ng-touched {
 
     .player-board-profile {
         display: grid;
-        grid-template-columns: 2fr 4fr;
+        grid-template-columns: 1fr 2fr;
     }
 
     .player-board-picture {
         display: none;
     }
 
-    
     .buttons {
         width: 100%;
         justify-content: space-around;
@@ -178,20 +177,15 @@ textarea.ng-invalid.ng-touched {
 
     .buttons .btn-back,
     .buttons .btn-save {
-       padding: 60% 30%;
+        padding: 60% 30%;
     }
 
-}
-
-@media screen and (max-width:600px) {
-
-    .player-board-profile {
-        flex-direction: column;
+    .player-board-profile>label,
+    .player-board-profile>input,
+    .player-board-profile>textarea,
+    .player-board-profile>select {
+        font-size: 12px;
     }
 
-    .player-board-name,
-    .player-board-value {
-        width: 100%;
-    }
 
 }
