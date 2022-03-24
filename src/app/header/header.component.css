@@ -59,6 +59,9 @@
 .navigation-bottom a {
     text-decoration: none;
     color: var(--random-color);
+    display: block;
+    padding: 20px 10px;
+    margin: 0 10px;
 }
 
 .logged-user a {
@@ -82,10 +85,10 @@
 
     .navigation-logo {
         margin-left: 0;
+        padding: 0;
         width: 100%;
         text-align: center;
     }
-
 
     .navigation-bottom {
         justify-content: center;
@@ -95,23 +98,11 @@
     .navigation-bottom ul {
         margin: 0;
         font-size: 14px;
-        padding: 2%;
     }
 
-    .menu {
-        display: flex;
-        flex-direction: column;
-        align-self: center;
-        cursor: pointer;
-        padding: 2%;
-        margin-left: 13%;
-    }
-
-    .menu-title {
-        text-align: center;
-        color: var(--main-color);
-        font-weight: bold;
-        text-transform: uppercase;
+    .navigation a,
+    .navigation-bottom a {
+        font-size: 16px;
     }
 
     .fas.fa-bars {
@@ -119,18 +110,36 @@
         align-items: center;
     }
 
+    .menu {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        margin-bottom: 2%;
+        margin-left: 2%;
+        width: 95%;
+        text-align: center;
+    }
+
+    .menu-title {
+        color: var(--main-color);
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
     .menu-dropdown {
         display: flex;
         flex-direction: column;
+        align-items: center;
         background: #F7F7F7;
-        z-index: 100;
-        transition: 0.9s padding;
+        text-align: center;
+    }
+
+    .menu-dropdown li {
+        width: 100%;
     }
 
     .menu-dropdown>* {
         overflow: hidden;
-        height: 30px;
-        padding: 5px 10px;
         background: rgba(0, 0, 0, 0);
         white-space: nowrap;
         transition:
