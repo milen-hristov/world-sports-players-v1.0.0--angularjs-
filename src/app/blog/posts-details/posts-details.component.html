@@ -8,45 +8,50 @@
   <section class="post-details" [@postIntro]>
     <section class="post-heading">
       <article class="post-info">
-        <h2>{{ post.name }}</h2>
-        <h3>by {{ post.ownerEmail }}</h3>
-        <h4>{{ post.date | date: "fullDate" }}</h4>
-        <section class="post-image">
+        <h2 class="post-info-name">{{ post.name }}</h2>
+      </article>
+      <h3 class="post-info-owner">by {{ post.ownerEmail }}</h3>
+      <h4 class="post-info-time">{{ post.date | date: "fullDate" }}</h4>
+
+      <article class="post-body">
+        <section class="post-body-image">
           <img src="{{ post.imagePath }}" alt="{{ post.name }}" />
+        </section>
+        <section class="post-body-text">
+          <p class="post-details-notes">{{ post.info }}</p>
+        </section>
+      </article>
+
+      <article class="buttons">
+        <section>
+          <button
+            class="btn-delete"
+            (click)="onDeletePost()"
+            type="button"
+            *ngIf="isOwner"
+          >
+            Delete
+          </button>
+          <button
+            class="btn-edit"
+            (click)="onEditPost()"
+            type="button"
+            *ngIf="isOwner"
+          >
+            Edit
+          </button>
+        </section>
+        <section>
+          <button
+            class="btn-back"
+            (click)="onHidePost()"
+            routerLink="/blog/posts"
+            type="button"
+          >
+            Hide
+          </button>
         </section>
       </article>
     </section>
-    <article class="post-heading">
-      <p class="post-details-notes">{{ post.info }}</p>
-    </article>
-
-    <article class="post-board">
-      <article class="buttons">
-        <button
-          class="btn-delete"
-          (click)="onDeletePost()"
-          type="button"
-          *ngIf="isOwner"
-        >
-          Delete
-        </button>
-        <button
-          class="btn-edit"
-          (click)="onEditPost()"
-          type="button"
-          *ngIf="isOwner"
-        >
-          Edit
-        </button>
-        <button
-          class="btn-back"
-          (click)="onHidePost()"
-          routerLink="/blog/posts"
-          type="button"
-        >
-          Hide
-        </button>
-      </article>
-    </article>
   </section>
 </main>

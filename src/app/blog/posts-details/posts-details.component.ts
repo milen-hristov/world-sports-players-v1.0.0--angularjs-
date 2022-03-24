@@ -26,21 +26,21 @@ import { Post } from "../post.model";
         "in",
         style({
           opacity: 1,
-          transform: "translateX(0)",
+          transform: "translatey(0)",
         })
       ),
       transition("void => *", [
         style({
           opacity: 0,
-          transform: "translateX(-100px)",
+          transform: "translatey(-100px)",
         }),
-        animate(300),
+        animate(1000),
       ]),
       transition("* => void", [
         animate(
-          300,
+          1000,
           style({
-            transform: "translateX(100px)",
+            transform: "translatey(100px)",
             opacity: 0,
           })
         ),

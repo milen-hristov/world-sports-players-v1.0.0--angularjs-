@@ -21,24 +21,19 @@
           <img [src]="post.imagePath" alt="{{ post.name }}" />
         </article>
         <article class="post-card-details-wrapper">
-          <h3 class="post-name">{{ post.name | substring: 100 }}</h3>
-          <p class="post-info">
+          <p class="post-info-time">
             <i class="fas fa-calendar-alt"></i
-            ><span>{{ post.date | date: "medium" }}</span>
-          </p>
-          <p class="post-info-owner">
-            <i class="fas fa-marker"></i> <span>{{ post.ownerEmail }}</span>
-          </p>
+              >
+              <span>{{ post.date | dateAgo }}</span>
+            </p>
+            <p class="post-info-owner">
+              <i class="fas fa-marker"></i> <span>{{ post.ownerEmail }}</span>
+            </p>
+            <h3 class="post-name">{{ post.name | substring: 100 }}</h3>
         </article>
       </article>
     </section>
 
-    <section
-      class="post-details"
-    >
-      <router-outlet></router-outlet>
-    </section>
-  </section>
   <article class="no-entries" *ngIf="!posts?.length">
     <h3>No posts added. Be first to create a post.</h3>
   </article>

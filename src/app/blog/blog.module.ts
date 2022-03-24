@@ -30,12 +30,10 @@ import { PostsDetailsComponent } from "./posts-details/posts-details.component";
           {
             path: "posts",
             component: PostsComponent,
-            children: [
-              { path: ":id", component: PostsDetailsComponent },
-              { path: ":id/edit", component: CreatePostComponent },
-            ],
           },
           { path: "create", component: CreatePostComponent },
+          { path: "posts/:id", component: PostsDetailsComponent },
+          { path: "posts/:id/edit", component: CreatePostComponent },
         ],
       },
     ]),
