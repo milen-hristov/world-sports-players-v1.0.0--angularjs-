@@ -212,9 +212,8 @@
     .buttons .btn-delete,
     .buttons .btn-like {
        /* width: 25%; */
-       padding: 10% 10%;
+       padding: 8%;
     }
-
 
     .player-board-profile {
         display: flex;
@@ -227,7 +226,20 @@
     }
 
     .player-board-profile>span {
-        font-size: 20px;
+        font-size: 12px;
         margin-bottom: 2%;
     }
+
+    .player-details h2 {
+        font-size: 16px;
+    }
+    
+    .player-details h3 {
+        font-size: 14px;
+    }
+
+    .player-details-notes {
+        font-size: 14px;
+    }
+    
 }

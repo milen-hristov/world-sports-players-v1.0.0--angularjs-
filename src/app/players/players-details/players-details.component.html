@@ -18,7 +18,7 @@
     <section class="player-heading">
       <article class="player-info">
         <h2>{{ player.name }}</h2>
-        <h3>{{ player.sport }}</h3>
+        <h3>{{ player.sport | titlecase }}</h3>
       </article>
       <article class="player-fav" *ngIf="isAuthenticated">
         <button type="button" (click)="onFavPlayer()" class="btn-fav">
