@@ -16,14 +16,13 @@
 }
 
 .post-body-image {
-    width: 45%;
     max-height: 500px;
     overflow: hidden;
+    border-radius: 84% 16% 83% 17% / 12% 87% 13% 88%;
 }
 
 .post-body-image img {
     width: 100%;
-    border-radius: 84% 16% 83% 17% / 12% 87% 13% 88%;
 }
 
 .post-info-owner {
@@ -49,10 +48,7 @@
 
 .post-body {
     display: flex;
-}
-
-.post-body-text {
-    width: 50%;
+    flex-direction: column;
 }
 
 .post-details-notes {
@@ -95,51 +91,66 @@
 }
 
 
-/* .post-info h4 {
-    font-weight: normal;
-    padding-top: 2%;
-} */
-
-
-
 @media screen and (max-width:1000px) {
-    .post {
-        flex-direction: column;
-    }
 
-    .post-details h2 {
+    .post-info-name {
         font-size: 26px;
     }
 
-    .buttons .btn-back,
-    .buttons .btn-edit,
-    .buttons .btn-delete {
-        padding: 6%;
+    .post-info-time,
+    .post-info-owner {
+        font-size: 18px;
+    }
+
+    .post-details {
+        width: 80%;
+    }
+
+    .post-details-notes {
+        font-size: 18px;
     }
 }
 
 @media screen and (max-width:800px) {
 
+    .post-info-name {
+        font-size: 20px;
+    }
+
+    .post-info-time,
+    .post-info-owner {
+        font-size: 14px;
+        padding: 2% 0;
+    }
+
+    .post-details {
+        width: 90%;
+    }
+
+    .post-details-notes {
+        font-size: 16px;
+    }
+
     .buttons .btn-back,
     .buttons .btn-edit,
     .buttons .btn-delete {
-        padding: 4%;
+        padding: 10px 15px;
     }
 
-    .post-details h2 {
-        font-size: 20px;
-    }
 }
 
-
 @media screen and (max-width:600px) {
-    .buttons {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
+    .post-info-name {
+        font-size: 18px;
     }
 
-    h3 {
-        font-size: 10px;
+    .post-info-time,
+    .post-info-owner {
+        font-size: 12px;
+        padding: 3% 0;
+    }
+
+    .post-details {
+        width: 96%;
     }
 }
