@@ -26,12 +26,12 @@
 <section class="players" *ngIf="!isLoadingMyFav">
   <h2>My<span>Favourites</span> ({{ myFavPlayers.length }})</h2>
   <section class="players-wrapper" [@fade]="myFavPlayers.length">
-    <app-my-created-players
+    <app-my-favourite-players
       *ngFor="let playerEl of myFavPlayers"
       [player]="playerEl"
       [routerLink]="['/players/', playerEl.id]"
     >
-    </app-my-created-players>
+    </app-my-favourite-players>
   </section>
   <article class="no-entries" *ngIf="!myFavPlayers.length">
     <h3>No players added to favourites.</h3>
