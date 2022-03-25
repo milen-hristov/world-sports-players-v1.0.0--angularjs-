@@ -12,6 +12,7 @@
         Likes:
         <span>{{ playerLikes?.length }} <i class="far fa-thumbs-up"></i></span
       ></label>
+      <p *ngIf="isLiked" class="liked"> You have already liked this.</p>
     </article>
   </section>
   <section class="player-details">

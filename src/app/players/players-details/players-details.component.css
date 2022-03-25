@@ -189,6 +189,10 @@
     font-size: 40px;
 }
 
+.liked {
+    font-family: var(--font-blog);
+}
+
 @media screen and (max-width:800px) {
     .player {
         flex-direction: column;
