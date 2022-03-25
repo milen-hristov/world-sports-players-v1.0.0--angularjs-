@@ -9,7 +9,7 @@
   <section class="post-container">
     <section
       class="posts-wrapper"
-      [@fade]="posts.length"
+      [@fade] *ngIf="posts.length > 0"
     >
       <article
         class="post-card"
