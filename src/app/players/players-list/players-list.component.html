@@ -5,6 +5,18 @@
 </article>
 
 <section class="players" *ngIf="!isLoading">
+
+
+  <h2>Search<span>Player</span></h2>
+  <form [formGroup]="searchForm" class="search-form">
+    <article class="search-text">
+      <input class="search-input" type="text" id="searchedText" formControlName="searchedText" />
+      <span class="hovertext" data-hover="Search by name, sport, and country">
+        <i class="fas fa-info-circle"></i>
+      </span>
+    </article>
+  </form>
+
   <h2>Player<span>List</span></h2>
   <section class="players-wrapper" [@fade] *ngIf="players.length > 0">
     <article

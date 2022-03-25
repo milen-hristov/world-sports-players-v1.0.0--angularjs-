@@ -102,12 +102,61 @@
     font-weight: bold;
 }
 
+.search-form {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.search-text {
+    display: flex;
+    align-items: baseline;
+}
+
+.search-text>input {
+    padding: 8% 10%;
+    margin-right: 5%;
+}
+
+.fa-info-circle {
+    font-size: 20px;
+}
+
+.hovertext-mobile {
+    display: none;
+}
+
+.hovertext {
+    position: relative;
+}
+
+.hovertext:before {
+    content: attr(data-hover);
+    visibility: hidden;
+    opacity: 0;
+    width: 140px;
+    background-color: var(--text-color);
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 0;
+    transition: opacity 1s ease-in-out;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 110%;
+}
+
+.hovertext:hover:before {
+    opacity: 1;
+    visibility: visible;
+}
+
 @media screen and (max-width:1600px) {
     .players-wrapper {
         grid-template-columns: repeat(4, 1fr);
         gap: 2%;
     }
-
 }
 
 @media screen and (max-width:1400px) {
@@ -159,5 +208,17 @@
     .player-card-details-wrapper {
         top: 0;
         padding-bottom: 3%;
+    }
+
+    .hovertext {
+        display: none;
+    }
+
+    .hovertext:before {
+        display: none;
+    }
+
+    .hovertext:hover:before {
+        display: none;
     }
 }
