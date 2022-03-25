@@ -10,7 +10,7 @@
     <article
     class="player-card"
     *ngFor="let player of myPlayers"
-    [routerLink]="[player.id]"
+    [routerLink]="['/players/', player.id]"
   >
     <article class="player-card-image">
       <img [src]="player.imagePath" alt="{{ player.name }}" />
@@ -38,7 +38,7 @@
     <article
     class="player-card"
     *ngFor="let player of myFavPlayers"
-    [routerLink]="[player.id]"
+    [routerLink]="['/players/', player.id]"
   >
     <article class="player-card-image">
       <img [src]="player.imagePath" alt="{{ player.name }}" />
