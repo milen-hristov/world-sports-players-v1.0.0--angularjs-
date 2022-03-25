@@ -10,7 +10,7 @@ import { HeaderComponent } from "./header/header.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { FooterComponent } from "./footer/footer.component";
 import { AuthInterceptorService } from "./auth/auth-interceptor.service";
-import { SharedModule } from "./shared.module";
+import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
   declarations: [

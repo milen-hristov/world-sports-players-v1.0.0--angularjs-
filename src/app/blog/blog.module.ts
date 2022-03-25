@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { ReactiveFormsModule } from "@angular/forms";
 
-import { SharedModule } from "../shared.module";
+import { SharedModule } from "../shared/shared.module";
 import { BlogComponent } from "./blog.component";
 import { AuthGuard } from "../auth/auth.guard";
 import { PostsComponent } from "./posts/posts.component";

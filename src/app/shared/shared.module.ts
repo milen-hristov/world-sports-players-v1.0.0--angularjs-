@@ -1,12 +1,12 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { DropdownDirective } from "./dropdown.directive";
+import { DropdownDirective } from "../dropdown.directive";
 
-import { AlertMessageComponent } from "./shared/alert-message/alert-message.component";
-import { DateAsAgoPipe } from "./shared/dateAgo.pipe";
-import { LoadingComponent } from "./shared/loading/loading.component";
-import { PopupComponent } from "./shared/popup/popup.component";
-import { SubstringPipe } from "./shared/substring.pipe";
+import { AlertMessageComponent } from "./alert-message/alert-message.component";
+import { DateAsAgoPipe } from "./dateAgo.pipe";
+import { LoadingComponent } from "./loading/loading.component";
+import { PopupComponent } from "./popup/popup.component";
+import { SubstringPipe } from "./substring.pipe";
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import { SubstringPipe } from "./shared/substring.pipe";
     DateAsAgoPipe,
     PopupComponent,
     AlertMessageComponent,
-    DropdownDirective
+    DropdownDirective,
   ],
   imports: [CommonModule],
   exports: [

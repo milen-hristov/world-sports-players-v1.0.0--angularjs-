@@ -3,7 +3,7 @@ import { AuthGuard } from "../auth/auth.guard";
 import { RouterModule } from "@angular/router";
 
 import { MyProfileComponent } from "./my-profile.component";
-import { SharedModule } from "../shared.module";
+import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
   declarations: [
