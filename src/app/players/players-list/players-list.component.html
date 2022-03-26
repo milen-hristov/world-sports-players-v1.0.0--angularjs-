@@ -5,12 +5,31 @@
 </article>
 
 <section class="players" *ngIf="!isLoading">
-
+  <section class="intro">
+    <article class="intro-image-container">
+      <img class="intro-image" src="../../../assets/images/cover.png" alt="" />
+    </article>
+    <article class="intro-text-container">
+      <h1 class="intro-heading">Welcome to Sports<span> Players</span></h1>
+      <p class="intro-text">
+        This database contains a listing of a number of athletes. The
+        information contained in this archive has been gathered from a number of
+        sources, with the bulk of material researched and compiled by our users.
+        Log in and be part of our community by contributing valuable
+        information.
+      </p>
+    </article>
+  </section>
 
   <h2>Search<span>Player</span></h2>
   <form [formGroup]="searchForm" class="search-form">
     <article class="search-text">
-      <input class="search-input" type="text" id="searchedText" formControlName="searchedText" />
+      <input
+        class="search-input"
+        type="text"
+        id="searchedText"
+        formControlName="searchedText"
+      />
       <span class="hovertext" data-hover="Search by name, sport, and country">
         <i class="fas fa-info-circle"></i>
       </span>

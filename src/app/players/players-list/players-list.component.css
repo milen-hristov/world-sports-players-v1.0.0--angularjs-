@@ -152,10 +152,62 @@
     visibility: visible;
 }
 
+.intro {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin: 2% 0;
+}
+
+.intro-image-container,
+.intro-text-container {
+    width: 25%;
+}
+
+.intro-image-container img {
+    width: 100%;
+}
+
+.intro-heading {
+    font-size: 70px;
+    text-transform: uppercase;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+.intro-heading>span {
+    font-size: 80px;
+    color: var(--main-color);
+}
+
+.intro-text {
+    font-size: 18px;
+    font-family: var(--font-blog);
+    text-align: justify;
+}
+
+
 @media screen and (max-width:1600px) {
     .players-wrapper {
         grid-template-columns: repeat(4, 1fr);
         gap: 2%;
+    }
+
+    .intro-image-container,
+    .intro-text-container {
+        width: 30%;
+    }
+
+    .intro-heading {
+        font-size: 60px;
+    }
+
+    .intro-heading>span {
+        font-size: 70px;
+    }
+
+    .intro-text {
+        font-size: 18px;
     }
 }
 
@@ -163,6 +215,18 @@
     .players-wrapper {
         grid-template-columns: repeat(3, 1fr);
         gap: 2%;
+    }
+
+    .intro-heading {
+        font-size: 40px;
+    }
+
+    .intro-heading>span {
+        font-size: 50px;
+    }
+
+    .intro-text {
+        font-size: 14px;
     }
 }
 
@@ -174,6 +238,23 @@
 
     .player-card-details-wrapper {
         padding-bottom: 15%;
+    }
+
+    .intro-image-container,
+    .intro-text-container {
+        width: 35%;
+    }
+
+    .intro-heading {
+        font-size: 30px;
+    }
+
+    .intro-heading>span {
+        font-size: 40px;
+    }
+
+    .intro-text {
+        font-size: 12px;
     }
 }
 
@@ -221,4 +302,38 @@
     .hovertext:hover:before {
         display: none;
     }
+
+    .intro {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .intro-text-container {
+        width: 100%;
+    }
+
+    .intro-image-container {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .intro-image-container img {
+        height: 200px;
+        object-fit: contain;
+    }
+
+    .intro-heading {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .intro-heading>span {
+        font-size: 22px;
+    }
+
+    .intro-text {
+        font-size: 14px;
+        text-align: center;
+    }
+
 }
