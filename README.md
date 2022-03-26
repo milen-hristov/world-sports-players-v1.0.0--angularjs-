@@ -1,27 +1,32 @@
-# SportsPlayers
+# Getting Started with SportsPlayers v1.0.0
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
 
-## Development server
+## What is SportsPlayers?
+An app is designed for users who would be able to maintain a collection of world sports players. Users are able to contribute by adding new records, creating articles in the blog section and comment them. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## The app has:
+a. Public Part (Accessible without authentication)
+- Login/Register of users
+- Access to already created players, search by player name, country or sport
+- Players details page - player image, name, country, date of birth, achievements, short info, etc.
 
-## Code scaffolding
+b. Private Part (Available for Registered Users)
+- Create new players
+- Edit/Delete players for creators of player in question
+- Like players (if not the creator of player in question)
+- Create new sports
+- Read and create new articles for the blog section
+- Edit/Delete articles for creators of the article in question
+- Comment on articles
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Deployment
+The project is deployed on:
 
-## Build
+- Firebase (Front-end):
+https://world-sports-players.web.app/
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Firebase (Back-end):
+a. Authentication
+b. Realtime Database
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
