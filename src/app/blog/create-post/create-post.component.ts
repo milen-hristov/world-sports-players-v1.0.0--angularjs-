@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Params, Router } from "@angular/router";
+import { Subscription } from "rxjs";
 
 import { AuthService } from "src/app/auth/auth.service";
 import { User } from "src/app/auth/user.model";
@@ -18,6 +19,8 @@ export class CreatePostComponent implements OnInit {
   postsForm: FormGroup;
   currentUser: User;
   message: string = null;
+  subscription: Subscription;
+  imageUrl: string = "default";
 
   constructor(
     private route: ActivatedRoute,
@@ -36,6 +39,13 @@ export class CreatePostComponent implements OnInit {
       this.id = params["id"];
       this.editMode = params["id"] != null;
       this.initForm();
+    });
+
+    this.subscription = this.postsService.imagePathChanged.subscribe((res) => {
+      this.imageUrl = res;
+      this.postsForm.patchValue({
+        imagePath: this.imageUrl,
+      });
     });
   }
 
@@ -118,5 +128,9 @@ export class CreatePostComponent implements OnInit {
   }
   get imagePath() {
     return this.postsForm.get("imagePath");
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

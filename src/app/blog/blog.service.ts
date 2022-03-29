@@ -12,6 +12,7 @@ export class PostsService {
 
   postChanged = new Subject<string>();
   postModified= new Subject<boolean>();
+  imagePathChanged = new Subject<string>();
 
   getPosts() {
     return this.http.get<Post[]>(`${environment.databaseURL}/posts.json`);

@@ -1,20 +1,15 @@
-<div class="text-center">
-    <input class="form-control" type="file" 
-            (change)="onChange($event)">
+<article class="post-board-profile">
+    <label class="post-board-name" for="imagePathUpload"
+      >Upload image<span>*</span></label
+    >
+    <input
+      type="file"
+      id="imagePathUpload"
+      class="post-board-value"
+      (change)="onChange($event)"
+    />
+  </article>
   
-    <button (click)="onUpload()" 
-        class="btn btn-success">
-        Upload
-    </button>
-</div>
-  
-<!--Flag variable is used here-->
-<div class="container" *ngIf="loading">
-    <h3>Loading ...</h3>
-</div>
-
-<!-- {/* upload image */}
-<article className="form-group-image">
-    <label className="upload-image-field btn-save" htmlFor="upload-image">Upload stadium image</label>
-    <input className="upload-image-input" type="file" id='upload-image' onChange={(e) => onFileChange(e.target.files)} accept="image/png, image/gif, image/jpeg" required />
-</article> -->
+<article class="post-board-name" *ngIf="loading">
+    <h3>Loading...</h3>
+</article>

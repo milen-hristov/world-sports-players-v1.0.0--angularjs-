@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { FileUploadService } from './file-upload.service';
+import { PostsService } from "src/app/blog/blog.service";
+import { FileUploadService } from "./file-upload.service";
 
 @Component({
   selector: "app-upload-image",
@@ -7,36 +8,25 @@ import { FileUploadService } from './file-upload.service';
   styleUrls: ["./upload-image.component.css"],
 })
 export class UploadImageComponent implements OnInit {
-  // Variable to store shortLink from api response
-  shortLink: string = "";
-  loading: boolean = false; // Flag variable
-  file: File = null; // Variable to store file
+  loading: boolean = false;
+  file: File = null;
 
-  // Inject service
-  constructor(private fileUploadService: FileUploadService) {}
+  constructor(
+    private fileUploadService: FileUploadService,
+    private postService: PostsService
+  ) {}
 
   ngOnInit(): void {}
 
-  // On file Select
   onChange(event) {
-    this.file = event.target.files[0];
-  }
+    this.file = <File>event.target.files[0];
 
-  // OnClick of button Upload
-  onUpload() {
     this.loading = !this.loading;
-    console.log(this.file);
     this.fileUploadService.upload(this.file).subscribe((event: any) => {
       if (typeof event === "object") {
-        // Short link via api response
-        this.shortLink = event.link;
-
-        this.loading = false; // Flag variable
-
-        console.log(event.url);
-        
+        this.loading = false;
+        this.postService.imagePathChanged.next(event.url);
       }
     });
   }
 }
-
