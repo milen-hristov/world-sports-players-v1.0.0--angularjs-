@@ -57,6 +57,9 @@
         formControlName="imagePath"
       />
     </article>
+
+    <app-upload-image></app-upload-image>
+
     <article
       class="notification-alert"
       *ngIf="!imagePath.valid && imagePath.touched"

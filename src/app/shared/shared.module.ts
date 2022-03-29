@@ -7,6 +7,7 @@ import { DateAsAgoPipe } from "./dateAgo.pipe";
 import { LoadingComponent } from "./loading/loading.component";
 import { PopupComponent } from "./popup/popup.component";
 import { SubstringPipe } from "./substring.pipe";
+import { UploadImageComponent } from './upload-image/upload-image.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { SubstringPipe } from "./substring.pipe";
     PopupComponent,
     AlertMessageComponent,
     DropdownDirective,
+    UploadImageComponent,
   ],
   imports: [CommonModule],
   exports: [
@@ -25,7 +27,8 @@ import { SubstringPipe } from "./substring.pipe";
     PopupComponent,
     AlertMessageComponent,
     CommonModule,
-    DropdownDirective
+    DropdownDirective,
+    UploadImageComponent,
   ],
 })
 export class SharedModule {}
