@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router, Params } from "@angular/router";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { Subscription } from "rxjs";
 
 import { PlayersService } from "../players.service";
 import { AuthService } from "src/app/auth/auth.service";
@@ -10,6 +11,7 @@ import { Sport } from "src/app/sports/sport.model";
 import { SportsService } from "src/app/sports/sports.service";
 import { map } from "rxjs/operators";
 import { HandleError } from "src/app/shared/handleError.service";
+import { FileUploadService } from "src/app/shared/upload-image/file-upload.service";
 
 @Component({
   selector: "app-players-create-players",
@@ -24,6 +26,8 @@ export class PlayersCreatePlayersComponent implements OnInit {
   countryList: { name: string; code: string }[];
   sports: Sport[] | undefined;
   message: string = null;
+  subscription: Subscription;
+  imageUrl: string = "default";
 
   constructor(
     private route: ActivatedRoute,
@@ -31,7 +35,8 @@ export class PlayersCreatePlayersComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private sportsService: SportsService,
-    private handleError: HandleError
+    private handleError: HandleError,
+    private fileUploadService: FileUploadService
   ) {}
 
   ngOnInit() {
@@ -48,6 +53,13 @@ export class PlayersCreatePlayersComponent implements OnInit {
     this.countryList = countryListExport;
 
     this.fetchSports();
+
+    this.subscription = this.fileUploadService.imagePathChanged.subscribe((res) => {
+      this.imageUrl = res;
+      this.playerForm.patchValue({
+        imagePath: this.imageUrl,
+      });
+    });
   }
 
   onSubmit() {
