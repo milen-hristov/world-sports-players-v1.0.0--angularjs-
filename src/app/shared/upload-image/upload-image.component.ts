@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PostsService } from "src/app/blog/blog.service";
+import { PlayersService } from "src/app/players/players.service";
 import { FileUploadService } from "./file-upload.service";
 
 @Component({
@@ -13,7 +14,6 @@ export class UploadImageComponent implements OnInit {
 
   constructor(
     private fileUploadService: FileUploadService,
-    private postService: PostsService
   ) {}
 
   ngOnInit(): void {}
@@ -25,7 +25,7 @@ export class UploadImageComponent implements OnInit {
     this.fileUploadService.upload(this.file).subscribe((event: any) => {
       if (typeof event === "object") {
         this.loading = false;
-        this.postService.imagePathChanged.next(event.url);
+        this.fileUploadService.imagePathChanged.next(event.url);
       }
     });
   }

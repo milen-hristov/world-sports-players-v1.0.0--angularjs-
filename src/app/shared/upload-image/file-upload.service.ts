@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable, Subject } from "rxjs";
 
 import { environment } from "src/environments/environment";
 
@@ -10,6 +10,8 @@ import { environment } from "src/environments/environment";
 export class FileUploadService {
   baseApiUrl = environment.cloudinary;
   cloudinaryPreset = environment.cloudinaryPreset;
+
+  imagePathChanged = new Subject<string>();
 
   constructor(private http: HttpClient) {}
 

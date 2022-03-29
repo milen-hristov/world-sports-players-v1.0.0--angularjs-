@@ -6,6 +6,7 @@ import { Subscription } from "rxjs";
 import { AuthService } from "src/app/auth/auth.service";
 import { User } from "src/app/auth/user.model";
 import { HandleError } from "src/app/shared/handleError.service";
+import { FileUploadService } from "src/app/shared/upload-image/file-upload.service";
 import { PostsService } from "../blog.service";
 
 @Component({
@@ -27,7 +28,8 @@ export class CreatePostComponent implements OnInit {
     private postsService: PostsService,
     private router: Router,
     private authService: AuthService,
-    private handleError: HandleError
+    private handleError: HandleError,
+    private fileUploadService: FileUploadService
   ) {}
 
   ngOnInit() {
@@ -41,7 +43,7 @@ export class CreatePostComponent implements OnInit {
       this.initForm();
     });
 
-    this.subscription = this.postsService.imagePathChanged.subscribe((res) => {
+    this.subscription = this.fileUploadService.imagePathChanged.subscribe((res) => {
       this.imageUrl = res;
       this.postsForm.patchValue({
         imagePath: this.imageUrl,
