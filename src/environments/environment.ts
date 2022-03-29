@@ -8,6 +8,8 @@ export const environment = {
   signUpURL: 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser',
   loginURL: 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword',
   firebaseAPIKey: 'AIzaSyAC_KYuN2griSvbgLJ78CUjOoQjoP_C1iw',
+  cloudinary: 'https://api.cloudinary.com/v1_1/milenski',
+  cloudinaryPreset: 'lgdsusaw',
 };
 
 /*
