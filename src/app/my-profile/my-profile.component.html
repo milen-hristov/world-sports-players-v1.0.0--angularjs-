@@ -5,23 +5,44 @@
 </article>
 
 <section class="players" *ngIf="!isLoadingCreated">
-  <h2>Created<span>Players</span> ({{ myPlayers.length }})</h2>
-  <section class="players-wrapper"[@fade] *ngIf="myPlayers.length > 0">
-    <article
-    class="player-card"
-    *ngFor="let player of myPlayers"
-    [routerLink]="['/players/', player.id]"
-  >
-    <article class="player-card-image">
-      <img [src]="player.imagePath" alt="{{ player.name }}" />
-    </article>
-    <article class="player-card-details-wrapper">
-      <h3 class="player-name">{{ player.name }}</h3>
-      <p class="player-sport">{{ player.sport | titlecase }}</p>
-      <p class="player-desc">{{ player.description | substring: 120 }}</p>
-      <!-- <button>Read More</button> -->
-    </article>
-  </article>
+  <h2>
+    Created<span>Players</span> ({{ myPlayers.length }})
+    <button
+      type="button"
+      (click)="onShowLessCreatedPlayers()"
+      *ngIf="!showLessCreatedPlayers"
+      class="button-hide"
+    >
+    <i class="fas fa-chevron-circle-up"></i>
+    </button>
+    <button
+      type="button"
+      (click)="onShowLessCreatedPlayers()"
+      *ngIf="showLessCreatedPlayers"
+      class="button-hide"
+    >
+      <i class="fas fa-chevron-circle-down"></i>
+    </button>
+  </h2>
+
+  <section [ngClass]="showLessCreatedPlayers == true ? 'show-less' : ''">
+    <section class="players-wrapper" [@fade] *ngIf="myPlayers.length > 0">
+      <article
+        class="player-card"
+        *ngFor="let player of myPlayers"
+        [routerLink]="['/players/', player.id]"
+      >
+        <article class="player-card-image">
+          <img [src]="player.imagePath" alt="{{ player.name }}" />
+        </article>
+        <article class="player-card-details-wrapper">
+          <h3 class="player-name">{{ player.name }}</h3>
+          <p class="player-sport">{{ player.sport | titlecase }}</p>
+          <p class="player-desc">{{ player.description | substring: 120 }}</p>
+          <!-- <button>Read More</button> -->
+        </article>
+      </article>
+    </section>
   </section>
   <article class="no-entries" *ngIf="!myPlayers.length">
     <h3>No players created.</h3>
@@ -33,23 +54,43 @@
 </article>
 
 <section class="players" *ngIf="!isLoadingMyFav">
-  <h2>My<span>Favourites</span> ({{ myFavPlayers.length }})</h2>
-  <section class="players-wrapper" [@fade] *ngIf="myFavPlayers.length > 0">
-    <article
-    class="player-card"
-    *ngFor="let player of myFavPlayers"
-    [routerLink]="['/players/', player.id]"
-  >
-    <article class="player-card-image">
-      <img [src]="player.imagePath" alt="{{ player.name }}" />
-    </article>
-    <article class="player-card-details-wrapper">
-      <h3 class="player-name">{{ player.name }}</h3>
-      <p class="player-sport">{{ player.sport | titlecase }}</p>
-      <p class="player-desc">{{ player.description | substring: 120 }}</p>
-      <!-- <button>Read More</button> -->
-    </article>
-  </article>
+  <h2>
+    My<span>Favourites</span> ({{ myFavPlayers.length }})
+    <button
+      type="button"
+      (click)="onShowLessFavouritePlayers()"
+      *ngIf="!showLessFavouritePlayers"
+      class="button-hide"
+    >
+    <i class="fas fa-chevron-circle-up"></i>
+    </button>
+    <button
+      type="button"
+      (click)="onShowLessFavouritePlayers()"
+      *ngIf="showLessFavouritePlayers"
+      class="button-hide"
+    >
+    <i class="fas fa-chevron-circle-down"></i>
+    </button>
+  </h2>
+  <section [ngClass]="showLessFavouritePlayers == true ? 'show-less' : ''">
+    <section class="players-wrapper" [@fade] *ngIf="myFavPlayers.length > 0">
+      <article
+        class="player-card"
+        *ngFor="let player of myFavPlayers"
+        [routerLink]="['/players/', player.id]"
+      >
+        <article class="player-card-image">
+          <img [src]="player.imagePath" alt="{{ player.name }}" />
+        </article>
+        <article class="player-card-details-wrapper">
+          <h3 class="player-name">{{ player.name }}</h3>
+          <p class="player-sport">{{ player.sport | titlecase }}</p>
+          <p class="player-desc">{{ player.description | substring: 120 }}</p>
+          <!-- <button>Read More</button> -->
+        </article>
+      </article>
+    </section>
   </section>
   <article class="no-entries" *ngIf="!myFavPlayers.length">
     <h3>No players added to favourites.</h3>

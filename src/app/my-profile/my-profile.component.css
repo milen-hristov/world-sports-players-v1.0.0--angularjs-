@@ -102,6 +102,21 @@
     font-weight: bold;
 }
 
+.show-less {
+    display: none;
+}
+
+.fas.fa-chevron-circle-up,
+.fas.fa-chevron-circle-down {
+   color: var(--main-color);
+   font-size: 20px;
+}
+
+.button-hide {
+    border: none;
+    background-color: transparent;
+}
+
 @media screen and (max-width:1600px) {
     .players-wrapper {
         grid-template-columns: repeat(4, 1fr);
@@ -129,6 +144,7 @@
 }
 
 @media screen and (max-width:800px) {
+
     .players-wrapper {
         display: flex;
         flex-wrap: wrap;
@@ -167,7 +183,7 @@
 }
 
 @media screen and (max-width:550px) {
-      .player-card img {
+    .player-card img {
         height: 120px;
     }
 }
