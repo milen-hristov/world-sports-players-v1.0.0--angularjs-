@@ -26,7 +26,12 @@ The project is deployed on:
 - Firebase (Front-end):
 https://world-sports-players.web.app/
 
+#### Addition
 - Firebase (Back-end):
 a. Authentication
 b. Realtime Database
+https://firebase.google.com/
+
+- Cloud Storage
+https://cloudinary.com/
 
