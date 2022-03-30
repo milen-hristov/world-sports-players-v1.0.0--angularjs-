@@ -13,7 +13,7 @@ import { AuthResponseData } from './authResponseData.interface';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css'],
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent {
   isLoginMode: boolean = true;
   isLoading: boolean = false;
   message: string = null;
@@ -33,8 +33,6 @@ export class AuthComponent implements OnInit {
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
   }
-
-  ngOnInit() {}
 
   onSubmit(form: NgForm) {
     if (!form.valid) {

@@ -8,13 +8,11 @@ import { FileUploadService } from './file-upload.service';
   templateUrl: './upload-image.component.html',
   styleUrls: ['./upload-image.component.css'],
 })
-export class UploadImageComponent implements OnInit {
+export class UploadImageComponent {
   loading: boolean = false;
   file: File = null;
 
   constructor(private fileUploadService: FileUploadService) {}
-
-  ngOnInit(): void {}
 
   onChange(event) {
     this.file = <File>event.target.files[0];

@@ -6,8 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./players.component.css'],
   providers: [],
 })
-export class PlayersComponent implements OnInit {
+export class PlayersComponent {
   constructor() {}
 
-  ngOnInit() {}
 }

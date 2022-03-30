@@ -5,10 +5,8 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './alert-message.component.html',
   styleUrls: ['./alert-message.component.css'],
 })
-export class AlertMessageComponent implements OnInit {
+export class AlertMessageComponent {
   @Input() message: string;
 
   constructor() {}
-
-  ngOnInit(): void {}
 }

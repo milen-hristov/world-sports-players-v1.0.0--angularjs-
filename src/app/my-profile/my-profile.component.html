@@ -25,7 +25,7 @@
     </button>
   </h2>
 
-  <section [ngClass]="showLessCreatedPlayers == true ? 'show-less' : ''">
+  <section [ngClass]="showLessCreatedPlayers === true ? 'show-less' : ''">
     <section class="players-wrapper" [@fade] *ngIf="myPlayers.length > 0">
       <article
         class="player-card"
@@ -73,7 +73,7 @@
       <i class="fas fa-chevron-circle-down"></i>
     </button>
   </h2>
-  <section [ngClass]="showLessFavouritePlayers == true ? 'show-less' : ''">
+  <section [ngClass]="showLessFavouritePlayers === true ? 'show-less' : ''">
     <section class="players-wrapper" [@fade] *ngIf="myFavPlayers.length > 0">
       <article
         class="player-card"
