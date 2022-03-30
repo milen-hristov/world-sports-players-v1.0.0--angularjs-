@@ -147,6 +147,7 @@ textarea.ng-invalid.ng-touched {
 }
 
 @media screen and (max-width:800px) {
+
     .post-board-profile>label,
     .post-board-profile>input,
     .post-board-profile>textarea,
@@ -161,7 +162,7 @@ textarea.ng-invalid.ng-touched {
     .post-board-profile {
         /* display: grid; */
         grid-template-columns: 1fr 2fr;
-    
+
     }
 
 }

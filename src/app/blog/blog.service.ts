@@ -1,17 +1,17 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Subject } from "rxjs";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
 
-import { Post } from "./post.model";
-import { Comment } from "./comment.model";
-import { environment } from "../../environments/environment";
+import { Post } from './post.model';
+import { Comment } from './comment.model';
+import { environment } from '../../environments/environment';
 
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class PostsService {
   constructor(private http: HttpClient) {}
 
   postChanged = new Subject<string>();
-  postModified= new Subject<boolean>();
+  postModified = new Subject<boolean>();
 
   getPosts() {
     return this.http.get<Post[]>(`${environment.databaseURL}/posts.json`);
@@ -37,7 +37,10 @@ export class PostsService {
   }
 
   addComment(comment: Comment) {
-    return this.http.post<Comment>(`${environment.databaseURL}/comments.json`, comment);
+    return this.http.post<Comment>(
+      `${environment.databaseURL}/comments.json`,
+      comment
+    );
   }
 
   getComments() {

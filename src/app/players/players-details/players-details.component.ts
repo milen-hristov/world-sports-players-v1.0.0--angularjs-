@@ -1,32 +1,32 @@
-import { HttpErrorResponse } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Params, Router } from "@angular/router";
-import { map } from "rxjs/operators";
-import { AuthService } from "src/app/auth/auth.service";
-import { HandleError } from "src/app/shared/handleError.service";
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { AuthService } from 'src/app/auth/auth.service';
+import { HandleError } from 'src/app/shared/handleError.service';
 
-import { Player } from "../player.model";
-import { PlayerFav } from "../playerFav.model";
-import { PlayerLike } from "../playerLike.model";
-import { PlayersService } from "../players.service";
+import { Player } from '../player.model';
+import { PlayerFav } from '../playerFav.model';
+import { PlayerLike } from '../playerLike.model';
+import { PlayersService } from '../players.service';
 
 @Component({
-  selector: "app-players-details",
-  templateUrl: "./players-details.component.html",
-  styleUrls: ["./players-details.component.css"],
+  selector: 'app-players-details',
+  templateUrl: './players-details.component.html',
+  styleUrls: ['./players-details.component.css'],
 })
 export class PlayersDetailsComponent implements OnInit {
   player: Player = {
-    id: "",
-    name: "",
-    description: "",
-    imagePath: "",
-    country: "",
-    dob: "",
-    achievements: "",
-    active: "",
-    sport: "",
-    owner: "",
+    id: '',
+    name: '',
+    description: '',
+    imagePath: '',
+    country: '',
+    dob: '',
+    achievements: '',
+    active: '',
+    sport: '',
+    owner: '',
   };
   playerLikes: PlayerLike[] | undefined;
 
@@ -54,7 +54,7 @@ export class PlayersDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      this.id = params["id"];
+      this.id = params['id'];
       this.authService.user.subscribe({
         next: (user) => {
           if (user) {
@@ -92,13 +92,13 @@ export class PlayersDetailsComponent implements OnInit {
 
   onEditPlayer() {
     // this.router.navigate(['edit'], { relativeTo: this.route });
-    this.router.navigate(["../", this.id, "edit"], { relativeTo: this.route });
+    this.router.navigate(['../', this.id, 'edit'], { relativeTo: this.route });
   }
 
   onDeletePlayer() {
     this.playersService.deletePlayer(this.id).subscribe({
       next: () => {
-        this.router.navigate(["/players"]);
+        this.router.navigate(['/players']);
       },
       error: (err) => {
         this.message = this.handleError.handleErrorPlayer(err);
@@ -167,7 +167,7 @@ export class PlayersDetailsComponent implements OnInit {
       let favObj: PlayerFav = {
         id: this.id,
         owner: this.currentUserID,
-        isFavID: "",
+        isFavID: '',
       };
 
       this.playersService.addFavPlayer(favObj).subscribe({

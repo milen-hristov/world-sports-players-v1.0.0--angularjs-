@@ -1,29 +1,29 @@
-import { NgModule } from "@angular/core";
-import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
+import { NgModule } from '@angular/core';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
-import { NotFoundComponent } from "./not-found/not-found.component";
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
-  { path: "", redirectTo: "/players", pathMatch: "full" },
+  { path: '', redirectTo: '/players', pathMatch: 'full' },
   {
-    path: "players",
+    path: 'players',
     loadChildren: () =>
-      import("./players/players.module").then((m) => m.PlayersModule),
+      import('./players/players.module').then((m) => m.PlayersModule),
   },
   {
-    path: "my-profile",
+    path: 'my-profile',
     loadChildren: () =>
-      import("./my-profile/my-profile.module").then((m) => m.MyProfileModule),
+      import('./my-profile/my-profile.module').then((m) => m.MyProfileModule),
   },
   {
-    path: "auth",
-    loadChildren: () => import("./auth/auth.module").then((m) => m.AuthModule),
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: "blog",
-    loadChildren: () => import("./blog/blog.module").then((m) => m.BlogModule),
+    path: 'blog',
+    loadChildren: () => import('./blog/blog.module').then((m) => m.BlogModule),
   },
-  { path: "**", component: NotFoundComponent },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

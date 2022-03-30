@@ -11,7 +11,7 @@
         <h2 class="post-info-name">{{ post.name }}</h2>
       </article>
       <h3 class="post-info-owner">by {{ post.ownerEmail }}</h3>
-      <h4 class="post-info-time">{{ post.date | date: "fullDate" }}</h4>
+      <h4 class="post-info-time">{{ post.date | date: 'fullDate' }}</h4>
 
       <article class="post-body">
         <section class="post-body-image">
@@ -69,14 +69,13 @@
         <article class="comment-board-info-right">
           <p class="post-details-notes">{{ comment.info }}</p>
         </article>
-
       </section>
     </article>
-    
+
     <section *ngIf="!isCommented">
-        <p class="post-details-notes">
-          No comments yet. Be first to share your thoughts.
-        </p>
+      <p class="post-details-notes">
+        No comments yet. Be first to share your thoughts.
+      </p>
     </section>
   </section>
 

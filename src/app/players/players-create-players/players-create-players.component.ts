@@ -1,22 +1,22 @@
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Router, Params } from "@angular/router";
-import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { Subscription } from "rxjs";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, Params } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
-import { PlayersService } from "../players.service";
-import { AuthService } from "src/app/auth/auth.service";
-import { User } from "src/app/auth/user.model";
-import countryListExport from "../../shared/countryList";
-import { Sport } from "src/app/sports/sport.model";
-import { SportsService } from "src/app/sports/sports.service";
-import { map } from "rxjs/operators";
-import { HandleError } from "src/app/shared/handleError.service";
-import { FileUploadService } from "src/app/shared/upload-image/file-upload.service";
+import { PlayersService } from '../players.service';
+import { AuthService } from 'src/app/auth/auth.service';
+import { User } from 'src/app/auth/user.model';
+import countryListExport from '../../shared/countryList';
+import { Sport } from 'src/app/sports/sport.model';
+import { SportsService } from 'src/app/sports/sports.service';
+import { map } from 'rxjs/operators';
+import { HandleError } from 'src/app/shared/handleError.service';
+import { FileUploadService } from 'src/app/shared/upload-image/file-upload.service';
 
 @Component({
-  selector: "app-players-create-players",
-  templateUrl: "./players-create-players.component.html",
-  styleUrls: ["./players-create-players.component.css"],
+  selector: 'app-players-create-players',
+  templateUrl: './players-create-players.component.html',
+  styleUrls: ['./players-create-players.component.css'],
 })
 export class PlayersCreatePlayersComponent implements OnInit {
   id: string;
@@ -27,7 +27,7 @@ export class PlayersCreatePlayersComponent implements OnInit {
   sports: Sport[] | undefined;
   message: string = null;
   subscription: Subscription;
-  imageUrl: string = "default";
+  imageUrl: string = 'default';
 
   constructor(
     private route: ActivatedRoute,
@@ -45,8 +45,8 @@ export class PlayersCreatePlayersComponent implements OnInit {
     });
 
     this.route.params.subscribe((params: Params) => {
-      this.id = params["id"];
-      this.editMode = params["id"] != null;
+      this.id = params['id'];
+      this.editMode = params['id'] != null;
       this.initForm();
     });
 
@@ -54,17 +54,19 @@ export class PlayersCreatePlayersComponent implements OnInit {
 
     this.fetchSports();
 
-    this.subscription = this.fileUploadService.imagePathChanged.subscribe((res) => {
-      this.imageUrl = res;
-      this.playerForm.patchValue({
-        imagePath: this.imageUrl,
-      });
-    });
+    this.subscription = this.fileUploadService.imagePathChanged.subscribe(
+      (res) => {
+        this.imageUrl = res;
+        this.playerForm.patchValue({
+          imagePath: this.imageUrl,
+        });
+      }
+    );
   }
 
   onSubmit() {
     if (!this.playerForm.valid) {
-      this.message = "Please fill in all the required (*) fields.";
+      this.message = 'Please fill in all the required (*) fields.';
       return;
     }
 
@@ -73,7 +75,7 @@ export class PlayersCreatePlayersComponent implements OnInit {
         .updatePlayer(this.id, this.playerForm.value)
         .subscribe({
           next: () => {
-            this.router.navigate(["/players"]);
+            this.router.navigate(['/players']);
           },
           error: (err) => {
             this.message = this.handleError.handleErrorPlayer(err);
@@ -83,7 +85,7 @@ export class PlayersCreatePlayersComponent implements OnInit {
     } else {
       this.playersService.addPlayer(this.playerForm.value).subscribe({
         next: () => {
-          this.router.navigate(["/players"]);
+          this.router.navigate(['/players']);
         },
         error: (err) => {
           this.message = this.handleError.handleErrorPlayer(err);
@@ -122,22 +124,22 @@ export class PlayersCreatePlayersComponent implements OnInit {
   }
 
   private initForm() {
-    let playerName = "";
-    let playerCountry = "";
-    let playerDesc = "";
-    let playerImg = "";
-    let playerDOB = "";
-    let playerAchievements = "";
-    let playerActive = "";
-    let playerSport = "";
+    let playerName = '';
+    let playerCountry = '';
+    let playerDesc = '';
+    let playerImg = '';
+    let playerDOB = '';
+    let playerAchievements = '';
+    let playerActive = '';
+    let playerSport = '';
     let owner = this.currentUser.id;
 
     if (this.editMode) {
       this.playersService.getPlayer(this.id).subscribe((player) => {
         if (player.owner !== this.currentUser.id) {
           this.message =
-            "You are not authorised to edit player created by different user.";
-          this.router.navigate(["/players", this.id]);
+            'You are not authorised to edit player created by different user.';
+          this.router.navigate(['/players', this.id]);
         } else {
           this.playerForm.patchValue({
             name: player.name,
@@ -173,24 +175,24 @@ export class PlayersCreatePlayersComponent implements OnInit {
   }
 
   get name() {
-    return this.playerForm.get("name");
+    return this.playerForm.get('name');
   }
   get sport() {
-    return this.playerForm.get("sport");
+    return this.playerForm.get('sport');
   }
   get country() {
-    return this.playerForm.get("country");
+    return this.playerForm.get('country');
   }
   get description() {
-    return this.playerForm.get("description");
+    return this.playerForm.get('description');
   }
   get imagePath() {
-    return this.playerForm.get("imagePath");
+    return this.playerForm.get('imagePath');
   }
   get dob() {
-    return this.playerForm.get("dob");
+    return this.playerForm.get('dob');
   }
   get active() {
-    return this.playerForm.get("active");
+    return this.playerForm.get('active');
   }
 }

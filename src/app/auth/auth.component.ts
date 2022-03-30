@@ -1,17 +1,17 @@
-import { HttpErrorResponse } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
-import { NgForm } from "@angular/forms";
-import { Router } from "@angular/router";
-import { Observable } from "rxjs";
-import { HandleError } from "../shared/handleError.service";
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { HandleError } from '../shared/handleError.service';
 
-import { AuthService } from "./auth.service";
-import { AuthResponseData } from "./authResponseData.interface";
+import { AuthService } from './auth.service';
+import { AuthResponseData } from './authResponseData.interface';
 
 @Component({
-  selector: "app-auth",
-  templateUrl: "./auth.component.html",
-  styleUrls: ["./auth.component.css"],
+  selector: 'app-auth',
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.css'],
 })
 export class AuthComponent implements OnInit {
   isLoginMode: boolean = true;
@@ -19,9 +19,9 @@ export class AuthComponent implements OnInit {
   message: string = null;
   isSamePassword: boolean = true;
   user = {
-    email: "",
-    password: "",
-    repeatPassword: "",
+    email: '',
+    password: '',
+    repeatPassword: '',
   };
 
   constructor(
@@ -48,7 +48,7 @@ export class AuthComponent implements OnInit {
     if (!this.isLoginMode) {
       if (this.user.password != this.user.repeatPassword) {
         this.isSamePassword = false;
-        this.message = "Passwords do not match.";
+        this.message = 'Passwords do not match.';
         return;
       }
     }
@@ -68,7 +68,7 @@ export class AuthComponent implements OnInit {
     authObs.subscribe({
       next: () => {
         this.isLoading = false;
-        this.router.navigate(["/players"]);
+        this.router.navigate(['/players']);
       },
       error: (errorRes: HttpErrorResponse) => {
         this.message = this.handleError.handleError(errorRes);

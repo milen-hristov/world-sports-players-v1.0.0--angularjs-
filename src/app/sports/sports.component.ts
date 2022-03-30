@@ -1,18 +1,18 @@
-import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
-import { map } from "rxjs/operators";
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 
-import { AuthService } from "../auth/auth.service";
-import { User } from "../auth/user.model";
-import { HandleError } from "../shared/handleError.service";
-import { Sport } from "./sport.model";
-import { SportsService } from "./sports.service";
+import { AuthService } from '../auth/auth.service';
+import { User } from '../auth/user.model';
+import { HandleError } from '../shared/handleError.service';
+import { Sport } from './sport.model';
+import { SportsService } from './sports.service';
 
 @Component({
-  selector: "app-sports",
-  templateUrl: "./sports.component.html",
-  styleUrls: ["./sports.component.css"],
+  selector: 'app-sports',
+  templateUrl: './sports.component.html',
+  styleUrls: ['./sports.component.css'],
 })
 export class SportsComponent implements OnInit {
   isLoading: boolean = false;
@@ -40,14 +40,14 @@ export class SportsComponent implements OnInit {
 
   onSubmit() {
     if (!this.sportForm.valid) {
-      this.message = "Please fill in all the required (*) fields.";
+      this.message = 'Please fill in all the required (*) fields.';
       return;
     }
 
     this.sportsService.addSport(this.sportForm.value).subscribe({
       next: () => {
         this.fetchSports();
-        this.router.navigate(["/players/create/sport"]);
+        this.router.navigate(['/players/create/sport']);
         this.message = null;
       },
       error: (err) => {
@@ -60,8 +60,8 @@ export class SportsComponent implements OnInit {
   }
 
   private initForm() {
-    let sportsName = "";
-    let confirmationLink = "";
+    let sportsName = '';
+    let confirmationLink = '';
     let owner = this.currentUser.id;
 
     this.sportForm = new FormGroup({
@@ -97,11 +97,11 @@ export class SportsComponent implements OnInit {
           this.message = this.handleError.handleErrorPlayer(err);
           console.log(err);
           this.isLoading = false;
-        },        
+        },
       });
   }
 
   get name() {
-    return this.sportForm.get("name");
+    return this.sportForm.get('name');
   }
 }

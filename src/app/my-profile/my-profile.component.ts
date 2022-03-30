@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { map } from "rxjs/operators";
+import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
 import {
   trigger,
   transition,
@@ -7,30 +7,30 @@ import {
   style,
   stagger,
   animate,
-} from "@angular/animations";
+} from '@angular/animations';
 
-import { PlayersService } from "../players/players.service";
-import { Player } from "../players/player.model";
-import { PlayerFav } from "../players/playerFav.model";
-import { AuthService } from "../auth/auth.service";
-import { User } from "../auth/user.model";
-import { HandleError } from "../shared/handleError.service";
+import { PlayersService } from '../players/players.service';
+import { Player } from '../players/player.model';
+import { PlayerFav } from '../players/playerFav.model';
+import { AuthService } from '../auth/auth.service';
+import { User } from '../auth/user.model';
+import { HandleError } from '../shared/handleError.service';
 
 @Component({
-  selector: "app-my-profile",
-  templateUrl: "./my-profile.component.html",
-  styleUrls: ["./my-profile.component.css"],
+  selector: 'app-my-profile',
+  templateUrl: './my-profile.component.html',
+  styleUrls: ['./my-profile.component.css'],
   animations: [
-    trigger("fade", [
-      transition("void => *", [
-        query(":enter", [
+    trigger('fade', [
+      transition('void => *', [
+        query(':enter', [
           style({
-            opacity: "0",
+            opacity: '0',
           }),
-          stagger(30, [animate("300ms ease-in", style({ opacity: 1 }))]),
+          stagger(30, [animate('300ms ease-in', style({ opacity: 1 }))]),
         ]),
       ]),
-      transition("* => void", animate("300ms ease-out", style({ opacity: 0 }))),
+      transition('* => void', animate('300ms ease-out', style({ opacity: 0 }))),
     ]),
   ],
 })
@@ -155,7 +155,7 @@ export class MyProfileComponent implements OnInit {
   onShowLessCreatedPlayers() {
     this.showLessCreatedPlayers = !this.showLessCreatedPlayers;
   }
-  
+
   onShowLessFavouritePlayers() {
     this.showLessFavouritePlayers = !this.showLessFavouritePlayers;
   }

@@ -1,13 +1,13 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Subject } from "rxjs";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
 
-import { Player } from "./player.model";
-import { environment } from "../../environments/environment";
-import { PlayerLike } from "./playerLike.model";
-import { PlayerFav } from "./playerFav.model";
+import { Player } from './player.model';
+import { environment } from '../../environments/environment';
+import { PlayerLike } from './playerLike.model';
+import { PlayerFav } from './playerFav.model';
 
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class PlayersService {
   constructor(private http: HttpClient) {}
 

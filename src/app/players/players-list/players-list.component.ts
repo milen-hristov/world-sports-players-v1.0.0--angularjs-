@@ -1,10 +1,10 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { map } from "rxjs/operators";
-import { FormControl, FormGroup } from "@angular/forms";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { FormControl, FormGroup } from '@angular/forms';
 
-import { PlayersService } from "../players.service";
-import { Player } from "../player.model";
-import { HandleError } from "src/app/shared/handleError.service";
+import { PlayersService } from '../players.service';
+import { Player } from '../player.model';
+import { HandleError } from 'src/app/shared/handleError.service';
 import {
   animate,
   query,
@@ -12,24 +12,24 @@ import {
   style,
   transition,
   trigger,
-} from "@angular/animations";
-import { Subscription } from "rxjs";
+} from '@angular/animations';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: "app-players-list",
-  templateUrl: "./players-list.component.html",
-  styleUrls: ["./players-list.component.css"],
+  selector: 'app-players-list',
+  templateUrl: './players-list.component.html',
+  styleUrls: ['./players-list.component.css'],
   animations: [
-    trigger("fade", [
-      transition("void => *", [
-        query(":enter", [
+    trigger('fade', [
+      transition('void => *', [
+        query(':enter', [
           style({
-            opacity: "0",
+            opacity: '0',
           }),
-          stagger(30, [animate("300ms ease-in", style({ opacity: 1 }))]),
+          stagger(30, [animate('300ms ease-in', style({ opacity: 1 }))]),
         ]),
       ]),
-      transition("* => void", animate("300ms ease-out", style({ opacity: 0 }))),
+      transition('* => void', animate('300ms ease-out', style({ opacity: 0 }))),
     ]),
   ],
 })
@@ -65,7 +65,7 @@ export class PlayersListComponent implements OnInit, OnDestroy {
   }
 
   private initForm() {
-    let searchedText = "";
+    let searchedText = '';
 
     this.searchForm = new FormGroup({
       searchedText: new FormControl(searchedText),

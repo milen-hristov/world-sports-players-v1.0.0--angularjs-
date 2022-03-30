@@ -1,20 +1,18 @@
-import { Component, OnInit } from "@angular/core";
-import { PostsService } from "src/app/blog/blog.service";
-import { PlayersService } from "src/app/players/players.service";
-import { FileUploadService } from "./file-upload.service";
+import { Component, OnInit } from '@angular/core';
+import { PostsService } from 'src/app/blog/blog.service';
+import { PlayersService } from 'src/app/players/players.service';
+import { FileUploadService } from './file-upload.service';
 
 @Component({
-  selector: "app-upload-image",
-  templateUrl: "./upload-image.component.html",
-  styleUrls: ["./upload-image.component.css"],
+  selector: 'app-upload-image',
+  templateUrl: './upload-image.component.html',
+  styleUrls: ['./upload-image.component.css'],
 })
 export class UploadImageComponent implements OnInit {
   loading: boolean = false;
   file: File = null;
 
-  constructor(
-    private fileUploadService: FileUploadService,
-  ) {}
+  constructor(private fileUploadService: FileUploadService) {}
 
   ngOnInit(): void {}
 
@@ -23,7 +21,7 @@ export class UploadImageComponent implements OnInit {
 
     this.loading = !this.loading;
     this.fileUploadService.upload(this.file).subscribe((event: any) => {
-      if (typeof event === "object") {
+      if (typeof event === 'object') {
         this.loading = false;
         this.fileUploadService.imagePathChanged.next(event.url);
       }

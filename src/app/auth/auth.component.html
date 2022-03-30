@@ -4,13 +4,13 @@
 
 <main>
   <section class="users" *ngIf="!isLoading">
-    <h2>{{ isLoginMode ? "Login" : "Sign Up" }}<span>Now</span></h2>
+    <h2>{{ isLoginMode ? 'Login' : 'Sign Up' }}<span>Now</span></h2>
     <section class="buttons">
       <button class="btn-switch" (click)="onSwitchMode()">
         {{
           isLoginMode
-            ? "No account? Sign Up Now"
-            : "Already registered? Login Now"
+            ? 'No account? Sign Up Now'
+            : 'Already registered? Login Now'
         }}
       </button>
     </section>
@@ -97,7 +97,7 @@
       <article class="buttons">
         <section>
           <button class="btn-enter" type="submit" [disabled]="!authForm.valid">
-            {{ isLoginMode ? "Login" : "Sign Up" }}
+            {{ isLoginMode ? 'Login' : 'Sign Up' }}
           </button>
         </section>
       </article>

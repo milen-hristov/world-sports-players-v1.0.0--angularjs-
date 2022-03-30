@@ -1,48 +1,48 @@
-import { HttpErrorResponse } from "@angular/common/http";
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { ActivatedRoute, Params, Router } from "@angular/router";
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import {
   trigger,
   transition,
   style,
   animate,
   state,
-} from "@angular/animations";
-import { map, Subscription } from "rxjs";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+} from '@angular/animations';
+import { map, Subscription } from 'rxjs';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { AuthService } from "src/app/auth/auth.service";
-import { HandleError } from "src/app/shared/handleError.service";
-import { PostsService } from "../blog.service";
+import { AuthService } from 'src/app/auth/auth.service';
+import { HandleError } from 'src/app/shared/handleError.service';
+import { PostsService } from '../blog.service';
 
-import { Post } from "../post.model";
-import { Comment } from "../comment.model";
+import { Post } from '../post.model';
+import { Comment } from '../comment.model';
 
 @Component({
-  selector: "app-posts-details",
-  templateUrl: "./posts-details.component.html",
-  styleUrls: ["./posts-details.component.css"],
+  selector: 'app-posts-details',
+  templateUrl: './posts-details.component.html',
+  styleUrls: ['./posts-details.component.css'],
   animations: [
-    trigger("postIntro", [
+    trigger('postIntro', [
       state(
-        "in",
+        'in',
         style({
           opacity: 1,
-          transform: "translatey(0)",
+          transform: 'translatey(0)',
         })
       ),
-      transition("void => *", [
+      transition('void => *', [
         style({
           opacity: 0,
-          transform: "translatey(-100px)",
+          transform: 'translatey(-100px)',
         }),
         animate(1000),
       ]),
-      transition("* => void", [
+      transition('* => void', [
         animate(
           1000,
           style({
-            transform: "translatey(100px)",
+            transform: 'translatey(100px)',
             opacity: 0,
           })
         ),
@@ -53,13 +53,13 @@ import { Comment } from "../comment.model";
 export class PostsDetailsComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   post: Post = {
-    id: "",
-    name: "",
-    info: "",
-    imagePath: "",
+    id: '',
+    name: '',
+    info: '',
+    imagePath: '',
     date: null,
-    ownerId: "",
-    ownerEmail: "",
+    ownerId: '',
+    ownerEmail: '',
   };
 
   id: string;
@@ -107,7 +107,7 @@ export class PostsDetailsComponent implements OnInit, OnDestroy {
     });
 
     this.route.params.subscribe((params: Params) => {
-      this.id = params["id"];
+      this.id = params['id'];
       this.authService.user.subscribe({
         next: (user) => {
           if (user) {
@@ -148,14 +148,14 @@ export class PostsDetailsComponent implements OnInit, OnDestroy {
 
   onEditPost() {
     // this.router.navigate(['edit'], { relativeTo: this.route });
-    this.router.navigate(["../", this.id, "edit"], { relativeTo: this.route });
+    this.router.navigate(['../', this.id, 'edit'], { relativeTo: this.route });
   }
 
   onDeletePost() {
     this.isLoading = true;
     this.postsService.deletePost(this.id).subscribe({
       next: () => {
-        this.router.navigate(["/blog/posts"]);
+        this.router.navigate(['/blog/posts']);
         this.postsService.postModified.next(true);
         this.isLoading = false;
       },
@@ -172,7 +172,7 @@ export class PostsDetailsComponent implements OnInit, OnDestroy {
   }
 
   private initForm() {
-    let info = "";
+    let info = '';
     let date = new Date();
     let postId = this.id;
     let ownerId = this.currentUserID;
@@ -189,7 +189,7 @@ export class PostsDetailsComponent implements OnInit, OnDestroy {
 
   onCommentPost() {
     if (!this.commentForm.valid) {
-      this.message = "Please fill in all the required (*) fields.";
+      this.message = 'Please fill in all the required (*) fields.';
       return;
     }
 
@@ -239,7 +239,7 @@ export class PostsDetailsComponent implements OnInit, OnDestroy {
   }
 
   get info() {
-    return this.commentForm.get("info");
+    return this.commentForm.get('info');
   }
 
   ngOnDestroy() {

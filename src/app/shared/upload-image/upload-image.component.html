@@ -1,15 +1,15 @@
 <article class="post-board-profile">
-    <label class="post-board-name" for="imagePathUpload"
-      >Upload image here<span>*</span></label
-    >
-    <input
-      type="file"
-      id="imagePathUpload"
-      class="post-board-value"
-      (change)="onChange($event)"
-    />
-  </article>
-  
+  <label class="post-board-name" for="imagePathUpload"
+    >Upload image here<span>*</span></label
+  >
+  <input
+    type="file"
+    id="imagePathUpload"
+    class="post-board-value"
+    (change)="onChange($event)"
+  />
+</article>
+
 <article class="post-board-name" *ngIf="loading">
-    <h3>Loading...</h3>
+  <h3>Loading...</h3>
 </article>

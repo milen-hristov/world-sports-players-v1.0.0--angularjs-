@@ -1,18 +1,18 @@
-import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { ActivatedRoute, Params, Router } from "@angular/router";
-import { Subscription } from "rxjs";
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
-import { AuthService } from "src/app/auth/auth.service";
-import { User } from "src/app/auth/user.model";
-import { HandleError } from "src/app/shared/handleError.service";
-import { FileUploadService } from "src/app/shared/upload-image/file-upload.service";
-import { PostsService } from "../blog.service";
+import { AuthService } from 'src/app/auth/auth.service';
+import { User } from 'src/app/auth/user.model';
+import { HandleError } from 'src/app/shared/handleError.service';
+import { FileUploadService } from 'src/app/shared/upload-image/file-upload.service';
+import { PostsService } from '../blog.service';
 
 @Component({
-  selector: "app-create-post",
-  templateUrl: "./create-post.component.html",
-  styleUrls: ["./create-post.component.css"],
+  selector: 'app-create-post',
+  templateUrl: './create-post.component.html',
+  styleUrls: ['./create-post.component.css'],
 })
 export class CreatePostComponent implements OnInit {
   id: string;
@@ -21,7 +21,7 @@ export class CreatePostComponent implements OnInit {
   currentUser: User;
   message: string = null;
   subscription: Subscription;
-  imageUrl: string = "default";
+  imageUrl: string = 'default';
 
   constructor(
     private route: ActivatedRoute,
@@ -38,28 +38,30 @@ export class CreatePostComponent implements OnInit {
     });
 
     this.route.params.subscribe((params: Params) => {
-      this.id = params["id"];
-      this.editMode = params["id"] != null;
+      this.id = params['id'];
+      this.editMode = params['id'] != null;
       this.initForm();
     });
 
-    this.subscription = this.fileUploadService.imagePathChanged.subscribe((res) => {
-      this.imageUrl = res;
-      this.postsForm.patchValue({
-        imagePath: this.imageUrl,
-      });
-    });
+    this.subscription = this.fileUploadService.imagePathChanged.subscribe(
+      (res) => {
+        this.imageUrl = res;
+        this.postsForm.patchValue({
+          imagePath: this.imageUrl,
+        });
+      }
+    );
   }
 
   onSubmit() {
     if (!this.postsForm.valid) {
-      this.message = "Please fill in all the required (*) fields.";
+      this.message = 'Please fill in all the required (*) fields.';
       return;
     }
     if (this.editMode) {
       this.postsService.updatePost(this.id, this.postsForm.value).subscribe({
         next: () => {
-          this.router.navigate(["/blog/posts"]);
+          this.router.navigate(['/blog/posts']);
           this.postsService.postModified.next(true);
         },
         error: (err) => {
@@ -70,7 +72,7 @@ export class CreatePostComponent implements OnInit {
     } else {
       this.postsService.addPost(this.postsForm.value).subscribe({
         next: () => {
-          this.router.navigate(["/blog/posts"]);
+          this.router.navigate(['/blog/posts']);
         },
         error: (err) => {
           this.message = this.handleError.handleErrorPlayer(err);
@@ -81,9 +83,9 @@ export class CreatePostComponent implements OnInit {
   }
 
   private initForm() {
-    let title = "";
-    let info = "";
-    let imagePath = "";
+    let title = '';
+    let info = '';
+    let imagePath = '';
     let date = new Date();
     let ownerId = this.currentUser.id;
     let ownerEmail = this.currentUser.email;
@@ -92,8 +94,8 @@ export class CreatePostComponent implements OnInit {
       this.postsService.getPost(this.id).subscribe((post) => {
         if (post.ownerId !== this.currentUser.id) {
           this.message =
-            "You are not authorised to edit player created by different user.";
-          this.router.navigate(["/blog/posts", this.id]);
+            'You are not authorised to edit player created by different user.';
+          this.router.navigate(['/blog/posts', this.id]);
         } else {
           this.postsForm.patchValue({
             name: post.name,
@@ -123,13 +125,13 @@ export class CreatePostComponent implements OnInit {
   }
 
   get name() {
-    return this.postsForm.get("name");
+    return this.postsForm.get('name');
   }
   get info() {
-    return this.postsForm.get("info");
+    return this.postsForm.get('info');
   }
   get imagePath() {
-    return this.postsForm.get("imagePath");
+    return this.postsForm.get('imagePath');
   }
 
   ngOnDestroy(): void {

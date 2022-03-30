@@ -1,21 +1,25 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { Router } from "@angular/router";
-import { tap } from "rxjs/operators";
-import { BehaviorSubject } from "rxjs";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { tap } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
-import { AuthResponseData } from "./authResponseData.interface";
-import { HandleError } from "../shared/handleError.service";
-import { User } from "./user.model";
-import { environment } from "../../environments/environment";
+import { AuthResponseData } from './authResponseData.interface';
+import { HandleError } from '../shared/handleError.service';
+import { User } from './user.model';
+import { environment } from '../../environments/environment';
 
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class AuthService {
   user = new BehaviorSubject<User>(null);
 
   private tokenExpirationTimer: any;
 
-  constructor(private http: HttpClient, private router: Router, private handleError: HandleError) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private handleError: HandleError
+  ) {}
 
   signup(email: string, password: string) {
     return this.http
@@ -77,8 +81,8 @@ export class AuthService {
 
   logout() {
     this.user.next(null);
-    this.router.navigate(["/auth"]);
-    localStorage.removeItem("userData");
+    this.router.navigate(['/auth']);
+    localStorage.removeItem('userData');
     if (this.tokenExpirationTimer) {
       clearTimeout(this.tokenExpirationTimer);
     }
@@ -95,7 +99,7 @@ export class AuthService {
     const user = new User(email, userId, token, expirationDate);
     this.user.next(user);
     this.autoLogout(expiresIn * 1000);
-    localStorage.setItem("userData", JSON.stringify(user));
+    localStorage.setItem('userData', JSON.stringify(user));
   }
 
   autoLogin() {
@@ -104,7 +108,7 @@ export class AuthService {
       id: string;
       _token: string;
       _tokenExpirationDate: string;
-    } = JSON.parse(localStorage.getItem("userData"));
+    } = JSON.parse(localStorage.getItem('userData'));
     if (!userData) {
       return;
     }

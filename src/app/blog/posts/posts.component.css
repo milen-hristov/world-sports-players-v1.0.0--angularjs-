@@ -74,8 +74,8 @@
 
 @media screen and (max-width:1000px) {
     .posts-wrapper {
-       display: flex;
-       flex-wrap: wrap;
+        display: flex;
+        flex-wrap: wrap;
     }
 
     .post-card {
@@ -86,7 +86,7 @@
     .post-card-details-wrapper .post-name {
         font-size: 18px;
     }
-    
+
     .post-card-details-wrapper .post-info-time,
     .post-card-details-wrapper .post-info-owner {
         font-size: 14px;
@@ -105,7 +105,7 @@
     .post-card-details-wrapper .post-name {
         font-size: 16px;
     }
-    
+
     .post-card-details-wrapper .post-info-time,
     .post-card-details-wrapper .post-info-owner {
         font-size: 12px;
@@ -125,7 +125,7 @@
     .post-card-details-wrapper .post-name {
         font-size: 12px;
     }
-    
+
     .post-card-details-wrapper .post-info-time,
     .post-card-details-wrapper .post-info-owner {
         font-size: 8px;

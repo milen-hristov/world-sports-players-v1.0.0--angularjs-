@@ -1,18 +1,16 @@
-import { NgModule } from "@angular/core";
-import { AuthGuard } from "../auth/auth.guard";
-import { RouterModule } from "@angular/router";
+import { NgModule } from '@angular/core';
+import { AuthGuard } from '../auth/auth.guard';
+import { RouterModule } from '@angular/router';
 
-import { MyProfileComponent } from "./my-profile.component";
-import { SharedModule } from "../shared/shared.module";
+import { MyProfileComponent } from './my-profile.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [
-    MyProfileComponent,
-  ],
+  declarations: [MyProfileComponent],
   imports: [
     RouterModule.forChild([
       {
-        path: "",
+        path: '',
         component: MyProfileComponent,
         canActivate: [AuthGuard],
       },
