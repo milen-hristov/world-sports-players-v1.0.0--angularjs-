@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { PostsService } from 'src/app/blog/blog.service';
-import { PlayersService } from 'src/app/players/players.service';
+import { Component } from '@angular/core';
 import { FileUploadService } from './file-upload.service';
 
 @Component({
