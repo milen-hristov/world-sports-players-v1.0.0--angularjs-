@@ -1,1 +1,19 @@
+<header>
+  <section class="players">
+    <h2>Sports<span>Players</span></h2>
+  </section>
+  <nav class="navigation">
+    <ul>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a routerLink="/players">All</a>
+      </li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a routerLink="create/player">New<span>Player</span></a>
+      </li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a routerLink="create/sport">New<span>Sport</span></a>
+      </li>
+    </ul>
+  </nav>
+</header>
 <router-outlet></router-outlet>

@@ -12,13 +12,10 @@
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <a routerLink="/players">Home</a>
+          <a routerLink="/players">Players</a>
         </li>
         <li routerLinkActive="active" *ngIf="!isAuthenticated">
           <a routerLink="/auth">Auth</a>
-        </li>
-        <li *ngIf="isAuthenticated" routerLinkActive="active">
-          <a routerLink="/players/create">Create</a>
         </li>
         <li *ngIf="isAuthenticated" routerLinkActive="active">
           <a routerLink="/blog">Blog</a>

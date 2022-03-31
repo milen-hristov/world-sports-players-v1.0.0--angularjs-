@@ -10,6 +10,7 @@ import { PlayersListComponent } from './players-list/players-list.component';
 import { PlayersComponent } from './players.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/players', pathMatch: 'full' },
   {
     path: '',
     component: PlayersComponent,
@@ -25,7 +26,11 @@ const routes: Routes = [
         ],
       },
       { path: ':id', component: PlayersDetailsComponent },
-      { path: ':id/edit', component: PlayersCreatePlayersComponent },
+      {
+        path: ':id/edit',
+        component: PlayersCreatePlayersComponent,
+        canActivate: [AuthGuard],
+      },
     ],
   },
 ];
