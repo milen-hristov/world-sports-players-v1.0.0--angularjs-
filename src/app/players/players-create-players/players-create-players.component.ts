@@ -102,13 +102,14 @@ export class PlayersCreatePlayersComponent implements OnInit {
       .getSports()
       .pipe(
         map((responseData) => {
-          const postsArray: Sport[] = [];
+          const sportsArray: Sport[] = [];
           for (const key in responseData) {
             if (responseData.hasOwnProperty(key)) {
-              postsArray.push({ ...responseData[key], id: key });
+              sportsArray.push({ ...responseData[key], id: key });
             }
           }
-          return postsArray;
+          let sortedSportsArray = sportsArray.sort((a,b) => a.name.localeCompare(b.name));
+          return sortedSportsArray;
         })
       )
       .subscribe({
