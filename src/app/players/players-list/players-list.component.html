@@ -5,20 +5,44 @@
 </article>
 
 <section class="players" *ngIf="!isLoading">
-  <section class="intro">
-    <article class="intro-image-container">
-      <img class="intro-image" src="../../../assets/images/cover.png" alt="" />
-    </article>
-    <article class="intro-text-container">
-      <h1 class="intro-heading">Welcome to Sports<span> Players</span></h1>
-      <p class="intro-text">
-        This database contains a listing of a number of athletes. The
-        information contained in this archive has been gathered from a number of
-        sources, with the bulk of material researched and compiled by our users.
-        Log in and be part of our community by contributing valuable
-        information.
-      </p>
-    </article>
+  <h2>
+    <button
+      type="button"
+      (click)="onShowLess()"
+      *ngIf="!showLessIntro"
+      class="button-hide"
+    >
+      <i class="fas fa-chevron-circle-up"></i>
+    </button>
+    <button
+      type="button"
+      (click)="onShowLess()"
+      *ngIf="showLessIntro"
+      class="button-hide"
+    >
+      <i class="fas fa-chevron-circle-down"></i>
+    </button>
+  </h2>
+  <section [ngClass]="showLessIntro === true ? 'show-less' : ''">
+    <section class="intro">
+      <article class="intro-image-container">
+        <img
+          class="intro-image"
+          src="../../../assets/images/cover.png"
+          alt=""
+        />
+      </article>
+      <article class="intro-text-container">
+        <h1 class="intro-heading">Welcome to Sports<span> Players</span></h1>
+        <p class="intro-text">
+          This database contains a listing of a number of athletes. The
+          information contained in this archive has been gathered from a number
+          of sources, with the bulk of material researched and compiled by our
+          users. Log in and be part of our community by contributing valuable
+          information.
+        </p>
+      </article>
+    </section>
   </section>
 
   <h2>Search<span>Player</span></h2>

@@ -40,6 +40,7 @@ export class PlayersListComponent implements OnInit, OnDestroy {
   message: string = null;
   searchForm: FormGroup;
   subscription: Subscription;
+  showLessIntro: boolean = false;
 
   constructor(
     private playersService: PlayersService,
@@ -101,6 +102,10 @@ export class PlayersListComponent implements OnInit, OnDestroy {
           console.log(err);
         },
       });
+  }
+
+  onShowLess() {
+    this.showLessIntro = !this.showLessIntro;
   }
 
   ngOnDestroy(): void {
