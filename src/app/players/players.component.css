@@ -102,3 +102,13 @@ span {
         width: 95%;
     }
 }
+
+@media screen and (max-width:500px) {
+    .navigation ul{
+        justify-content: space-between;
+    }
+
+    .navigation ul li {
+        font-size: 18px;
+    }
+}
