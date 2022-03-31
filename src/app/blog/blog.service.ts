@@ -14,36 +14,36 @@ export class PostsService {
   postModified = new Subject<boolean>();
 
   getPosts() {
-    return this.http.get<Post[]>(`${environment.databaseURL}/posts.json`);
+    return this.http.get<Post[]>(`${environment.databaseURL}/blog/posts.json`);
   }
 
   getPost(id: string) {
-    return this.http.get<Post>(`${environment.databaseURL}/posts/${id}.json`);
+    return this.http.get<Post>(`${environment.databaseURL}/blog/posts/${id}.json`);
   }
 
   addPost(post: Post) {
-    return this.http.post<Post>(`${environment.databaseURL}/posts.json`, post);
+    return this.http.post<Post>(`${environment.databaseURL}/blog/posts.json`, post);
   }
 
   updatePost(id: string, updatedPost: Post) {
     return this.http.put<Post>(
-      `${environment.databaseURL}/posts/${id}.json`,
+      `${environment.databaseURL}/blog/posts/${id}.json`,
       updatedPost
     );
   }
 
   deletePost(id: string) {
-    return this.http.delete(`${environment.databaseURL}/posts/${id}.json`);
+    return this.http.delete(`${environment.databaseURL}/blog/posts/${id}.json`);
   }
 
   addComment(comment: Comment) {
     return this.http.post<Comment>(
-      `${environment.databaseURL}/comments.json`,
+      `${environment.databaseURL}/blog/comments.json`,
       comment
     );
   }
 
   getComments() {
-    return this.http.get<Comment[]>(`${environment.databaseURL}/comments.json`);
+    return this.http.get<Comment[]>(`${environment.databaseURL}/blog/comments.json`);
   }
 }

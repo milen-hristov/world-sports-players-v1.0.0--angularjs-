@@ -9,12 +9,12 @@ export class SportsService {
   constructor(private http: HttpClient) {}
 
   getSports() {
-    return this.http.get<Sport[]>(`${environment.databaseURL}/sports.json`);
+    return this.http.get<Sport[]>(`${environment.databaseURL}/players/sports.json`);
   }
 
   addSport(player: Sport) {
     return this.http.post<Sport>(
-      `${environment.databaseURL}/sports.json`,
+      `${environment.databaseURL}/players/sports.json`,
       player
     );
   }
