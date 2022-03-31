@@ -8,4 +8,11 @@ import { Component } from '@angular/core';
 export class FooterComponent {
   constructor() {}
 
+  onActivate() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  }
 }
