@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 
 import { MyProfileComponent } from './my-profile.component';
 import { SharedModule } from '../shared/shared.module';
+import {StoreModule} from '@ngrx/store';
+import * as fromMyProfile from './store/myProfile.reducer';
 
 @NgModule({
   declarations: [MyProfileComponent],
@@ -16,6 +18,7 @@ import { SharedModule } from '../shared/shared.module';
       },
     ]),
     SharedModule,
+    StoreModule.forFeature('myProfilePlayers', fromMyProfile.playerReducer),
   ],
 })
 export class MyProfileModule {}

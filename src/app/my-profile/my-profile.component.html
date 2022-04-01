@@ -6,7 +6,7 @@
 
 <section class="players" *ngIf="!isLoadingCreated">
   <h2>
-    Created<span>Players</span> ({{ myPlayers.length }})
+    Created<span>Players</span> ({{ myPlayers?.length  == undefined ? 'n/a' : myPlayers.length  }})
     <button
       type="button"
       (click)="onShowLessCreatedPlayers()"
@@ -26,7 +26,7 @@
   </h2>
 
   <section [ngClass]="showLessCreatedPlayers === true ? 'show-less' : ''">
-    <section class="players-wrapper" [@fade] *ngIf="myPlayers.length > 0">
+    <section class="players-wrapper" [@fade] *ngIf="myPlayers?.length > 0">
       <article
         class="player-card"
         *ngFor="let player of myPlayers"
@@ -44,7 +44,7 @@
       </article>
     </section>
   </section>
-  <article class="no-entries" *ngIf="!myPlayers.length">
+  <article class="no-entries" *ngIf="!myPlayers?.length">
     <h3>No players created.</h3>
   </article>
 </section>
@@ -55,7 +55,7 @@
 
 <section class="players" *ngIf="!isLoadingMyFav">
   <h2>
-    My<span>Favourites</span> ({{ myFavPlayers.length }})
+    My<span>Favourites</span> ({{ myFavPlayers?.length == undefined ? 'n/a' : myFavPlayers.length }})
     <button
       type="button"
       (click)="onShowLessFavouritePlayers()"
@@ -74,7 +74,7 @@
     </button>
   </h2>
   <section [ngClass]="showLessFavouritePlayers === true ? 'show-less' : ''">
-    <section class="players-wrapper" [@fade] *ngIf="myFavPlayers.length > 0">
+    <section class="players-wrapper" [@fade] *ngIf="myFavPlayers?.length > 0">
       <article
         class="player-card"
         *ngFor="let player of myFavPlayers"
@@ -92,7 +92,7 @@
       </article>
     </section>
   </section>
-  <article class="no-entries" *ngIf="!myFavPlayers.length">
+  <article class="no-entries" *ngIf="!myFavPlayers?.length">
     <h3>No players added to favourites.</h3>
   </article>
 </section>
