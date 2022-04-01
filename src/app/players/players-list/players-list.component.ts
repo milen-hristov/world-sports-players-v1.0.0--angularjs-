@@ -80,13 +80,13 @@ export class PlayersListComponent implements OnInit, OnDestroy {
       .getPlayers()
       .pipe(
         map((responseData) => {
-          const postsArray: Player[] = [];
+          const playersArray: Player[] = [];
           for (const key in responseData) {
             if (responseData.hasOwnProperty(key)) {
-              postsArray.push({ ...responseData[key], id: key });
+              playersArray.push({ ...responseData[key], id: key });
             }
           }
-          return postsArray;
+          return playersArray;
         })
       )
       .subscribe({
