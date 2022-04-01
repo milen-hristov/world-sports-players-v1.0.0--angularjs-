@@ -6,7 +6,7 @@
 
 <section class="players" *ngIf="!isLoadingCreated">
   <h2>
-    Created<span>Players</span> ({{ myPlayers?.length  == undefined ? 'n/a' : myPlayers.length  }})
+    Created<span>Players</span> ({{ myPlayers?.length  === undefined ? 'n/a' : myPlayers.length  }})
     <button
       type="button"
       (click)="onShowLessCreatedPlayers()"
@@ -55,7 +55,7 @@
 
 <section class="players" *ngIf="!isLoadingMyFav">
   <h2>
-    My<span>Favourites</span> ({{ myFavPlayers?.length == undefined ? 'n/a' : myFavPlayers.length }})
+    My<span>Favourites</span> ({{ myFavPlayers?.length === undefined ? 'n/a' : myFavPlayers.length }})
     <button
       type="button"
       (click)="onShowLessFavouritePlayers()"
