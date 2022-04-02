@@ -27,7 +27,7 @@ export class PlayersCreatePlayersComponent implements OnInit {
   sports: Sport[] | undefined;
   message: string = null;
   subscription: Subscription;
-  imageUrl: string = 'default';
+  imageUrl: string = '';
 
   constructor(
     private route: ActivatedRoute,

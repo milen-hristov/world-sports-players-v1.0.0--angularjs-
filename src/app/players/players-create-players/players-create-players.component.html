@@ -80,6 +80,10 @@
       <span>Please select a country from the list.</span>
     </article>
 
+    <article class="uploaded-image-container" *ngIf="imageUrl" >
+      <img class="uploaded-image" src="{{ imageUrl }}" alt="" />
+    </article>
+    
     <article class="player-board-profile">
       <img
         src="/assets/images/background.jpg"
