@@ -21,7 +21,7 @@ export class CreatePostComponent implements OnInit, OnDestroy {
   currentUser: User;
   message: string = null;
   subscription: Subscription;
-  imageUrl: string = 'default';
+  imageUrl: string = '';
 
   constructor(
     private route: ActivatedRoute,

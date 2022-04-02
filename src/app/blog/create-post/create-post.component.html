@@ -41,6 +41,10 @@
       <span>Please add your text. Max length 1500 characters.</span>
     </article>
 
+    <article class="uploaded-image-container" *ngIf="imageUrl" >
+      <img class="uploaded-image" src="{{ imageUrl }}" alt="" />
+    </article>
+    
     <article class="post-board-profile">
       <img
         src="/assets/images/background.jpg"
