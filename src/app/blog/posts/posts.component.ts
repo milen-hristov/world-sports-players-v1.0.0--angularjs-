@@ -1,3 +1,7 @@
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 import {
   animate,
   query,
@@ -6,9 +10,6 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import { HandleError } from 'src/app/shared/handleError.service';
 import { PostsService } from '../blog.service';
@@ -41,8 +42,13 @@ export class PostsComponent implements OnInit, OnDestroy {
 
   constructor(
     private postsService: PostsService,
-    private handleError: HandleError
-  ) {}
+    private handleError: HandleError,
+    private router: Router
+  ) {
+    if (this.router.getCurrentNavigation().extras.state) {
+      this.message = this.router.getCurrentNavigation().extras.state['message'];
+    }
+  }
 
   ngOnInit() {
     this.fetchPosts();
