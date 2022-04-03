@@ -1,4 +1,6 @@
-<app-alert-message *ngIf="message" [message]="message"></app-alert-message>
+<article>
+  <app-alert-message [message]="message"></app-alert-message>
+</article>
 
 <article *ngIf="isLoading">
   <app-loading></app-loading>
@@ -12,7 +14,7 @@
         Likes:
         <span>{{ playerLikes?.length }} <i class="far fa-thumbs-up"></i></span
       ></label>
-      <p *ngIf="isLiked" class="liked"> You have already liked this.</p>
+      <p *ngIf="isLiked" class="liked">You have already liked this.</p>
     </article>
   </section>
   <section class="player-details">

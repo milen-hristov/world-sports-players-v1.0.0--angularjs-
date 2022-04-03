@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+
 import { AuthService } from 'src/app/auth/auth.service';
 import { HandleError } from 'src/app/shared/handleError.service';
 
@@ -98,7 +99,10 @@ export class PlayersDetailsComponent implements OnInit {
   onDeletePlayer() {
     this.playersService.deletePlayer(this.id).subscribe({
       next: () => {
-        this.router.navigate(['/players']);
+        this.message = 'Player deleted successfully';
+        this.router.navigate(['/players'], {
+          state: { message: this.message },
+        });
       },
       error: (err) => {
         this.message = this.handleError.handleErrorPlayer(err);
@@ -152,6 +156,7 @@ export class PlayersDetailsComponent implements OnInit {
     this.playersService.likePlayer(likeObj).subscribe({
       next: () => {
         this.getAllLikes();
+        this.message = 'Player liked successfully';
       },
       error: (err) => {
         this.message = this.handleError.handleErrorPlayer(err);
@@ -173,6 +178,7 @@ export class PlayersDetailsComponent implements OnInit {
       this.playersService.addFavPlayer(favObj).subscribe({
         next: () => {
           this.getAllFavourites();
+          this.message = 'Player added to favourites';
         },
         error: (err) => {
           this.message = this.handleError.handleErrorPlayer(err);
@@ -184,6 +190,7 @@ export class PlayersDetailsComponent implements OnInit {
       this.playersService.removeFavPlayer(this.isFavID).subscribe({
         next: () => {
           this.getAllFavourites();
+          this.message = 'Player removed from favourites';
         },
         error: (err) => {
           this.message = this.handleError.handleErrorPlayer(err);
