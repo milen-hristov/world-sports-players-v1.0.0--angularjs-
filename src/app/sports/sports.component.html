@@ -1,4 +1,6 @@
-<app-alert-message *ngIf="message" [message]="message"></app-alert-message>
+<article>
+  <app-alert-message [message]="message"></app-alert-message>
+</article>
 
 <main class="sport">
   <section>
@@ -28,9 +30,7 @@
           alt="Item"
           class="sport-board-picture"
         />
-        <label class="sport-board-name" for="confirmationLink"
-          >Link</label
-        >
+        <label class="sport-board-name" for="confirmationLink">Link</label>
         <input
           type="text"
           id="confirmationLink"
@@ -66,9 +66,7 @@
           alt="Item"
           class="sport-board-picture"
         />
-        <label class="sport-board-name" for="sportList">{{
-          sport.name
-        }}</label>
+        <label class="sport-board-name" for="sportList">{{ sport.name }}</label>
       </article>
     </section>
   </section>

@@ -47,8 +47,8 @@ export class SportsComponent implements OnInit {
     this.sportsService.addSport(this.sportForm.value).subscribe({
       next: () => {
         this.fetchSports();
+        this.message = 'Sport created successfully';
         this.router.navigate(['/players/create/sport']);
-        this.message = null;
       },
       error: (err) => {
         this.message = this.handleError.handleErrorPlayer(err);
@@ -84,7 +84,9 @@ export class SportsComponent implements OnInit {
               sportsArray.push({ ...responseData[key], id: key });
             }
           }
-          let sortedSportsArray = sportsArray.sort((a,b) => a.name.localeCompare(b.name));
+          let sortedSportsArray = sportsArray.sort((a, b) =>
+            a.name.localeCompare(b.name)
+          );
           return sortedSportsArray;
         })
       )
