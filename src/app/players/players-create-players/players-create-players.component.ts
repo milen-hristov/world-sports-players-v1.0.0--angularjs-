@@ -75,7 +75,10 @@ export class PlayersCreatePlayersComponent implements OnInit {
         .updatePlayer(this.id, this.playerForm.value)
         .subscribe({
           next: () => {
-            this.router.navigate(['/players']);
+            this.message = 'Player updated successfully';
+            this.router.navigate(['/players'], {
+              state: { message: this.message },
+            });
           },
           error: (err) => {
             this.message = this.handleError.handleErrorPlayer(err);
@@ -85,7 +88,10 @@ export class PlayersCreatePlayersComponent implements OnInit {
     } else {
       this.playersService.addPlayer(this.playerForm.value).subscribe({
         next: () => {
-          this.router.navigate(['/players']);
+          this.message = 'Player created successfully';
+          this.router.navigate(['/players'], {
+            state: { message: this.message },
+          });
         },
         error: (err) => {
           this.message = this.handleError.handleErrorPlayer(err);
@@ -108,7 +114,9 @@ export class PlayersCreatePlayersComponent implements OnInit {
               sportsArray.push({ ...responseData[key], id: key });
             }
           }
-          let sortedSportsArray = sportsArray.sort((a,b) => a.name.localeCompare(b.name));
+          let sortedSportsArray = sportsArray.sort((a, b) =>
+            a.name.localeCompare(b.name)
+          );
           return sortedSportsArray;
         })
       )
