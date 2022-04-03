@@ -61,7 +61,10 @@ export class CreatePostComponent implements OnInit, OnDestroy {
     if (this.editMode) {
       this.postsService.updatePost(this.id, this.postsForm.value).subscribe({
         next: () => {
-          this.router.navigate(['/blog/posts']);
+          this.message = 'Post updated successfully';
+          this.router.navigate(['/blog/posts'], {
+            state: { message: this.message },
+          });
           this.postsService.postModified.next(true);
         },
         error: (err) => {
@@ -72,7 +75,10 @@ export class CreatePostComponent implements OnInit, OnDestroy {
     } else {
       this.postsService.addPost(this.postsForm.value).subscribe({
         next: () => {
-          this.router.navigate(['/blog/posts']);
+          this.message = 'Post created successfully';
+          this.router.navigate(['/blog/posts'], {
+            state: { message: this.message },
+          });
         },
         error: (err) => {
           this.message = this.handleError.handleErrorPlayer(err);

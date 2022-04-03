@@ -1,4 +1,6 @@
-<app-alert-message *ngIf="message" [message]="message"></app-alert-message>
+<article>
+  <app-alert-message [message]="message"></app-alert-message>
+</article>
 
 <main class="post">
   <form [formGroup]="postsForm" (ngSubmit)="onSubmit()">
@@ -41,10 +43,10 @@
       <span>Please add your text. Max length 1500 characters.</span>
     </article>
 
-    <article class="uploaded-image-container" *ngIf="imageUrl" >
+    <article class="uploaded-image-container" *ngIf="imageUrl">
       <img class="uploaded-image" src="{{ imageUrl }}" alt="" />
     </article>
-    
+
     <article class="post-board-profile">
       <img
         src="/assets/images/background.jpg"
