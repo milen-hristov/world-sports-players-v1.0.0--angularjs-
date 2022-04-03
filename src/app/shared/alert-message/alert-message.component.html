@@ -1,3 +1,4 @@
-<article class="alert-message">
-  <p>{{ message }}</p>
+<article>
+  <p *ngIf="message" class="alert-message-active">{{ message }}</p>
+  <p *ngIf="!message" class="alert-message-default"></p>
 </article>
