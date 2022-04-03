@@ -1,10 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { map } from 'rxjs/operators';
 import { FormControl, FormGroup } from '@angular/forms';
-
-import { PlayersService } from '../players.service';
-import { Player } from '../player.model';
-import { HandleError } from 'src/app/shared/handleError.service';
+import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 import {
   animate,
   query,
@@ -13,7 +11,10 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { Subscription } from 'rxjs';
+
+import { PlayersService } from '../players.service';
+import { Player } from '../player.model';
+import { HandleError } from 'src/app/shared/handleError.service';
 
 @Component({
   selector: 'app-players-list',
@@ -40,12 +41,17 @@ export class PlayersListComponent implements OnInit, OnDestroy {
   message: string = null;
   searchForm: FormGroup;
   subscription: Subscription;
-  showLessIntro: boolean = false;
+  showLessIntro: boolean = true;
 
   constructor(
     private playersService: PlayersService,
-    private handleError: HandleError
-  ) {}
+    private handleError: HandleError,
+    private router: Router
+  ) {
+    if (this.router.getCurrentNavigation().extras.state) {
+      this.message = this.router.getCurrentNavigation().extras.state['message'];
+    }
+  }
 
   ngOnInit() {
     this.fetchPlayers();
@@ -62,6 +68,7 @@ export class PlayersListComponent implements OnInit, OnDestroy {
           x.country.toLowerCase().includes(search.toLowerCase())
       );
       this.players = filterPlayers;
+      this.message = `Results found: ${this.players.length}`;
     });
   }
 
