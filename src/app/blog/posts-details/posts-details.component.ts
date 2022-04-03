@@ -155,7 +155,10 @@ export class PostsDetailsComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.postsService.deletePost(this.id).subscribe({
       next: () => {
-        this.router.navigate(['/blog/posts']);
+        this.message = 'Post deleted successfully';
+        this.router.navigate(['/blog/posts'], {
+          state: { message: this.message },
+        });
         this.postsService.postModified.next(true);
         this.isLoading = false;
       },
@@ -196,6 +199,7 @@ export class PostsDetailsComponent implements OnInit, OnDestroy {
     this.postsService.addComment(this.commentForm.value).subscribe({
       next: () => {
         this.getAllComments();
+        this.message = 'Comment sent successfully';
       },
       error: (err) => {
         this.message = this.handleError.handleErrorPlayer(err);
