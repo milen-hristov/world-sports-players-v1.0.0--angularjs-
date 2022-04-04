@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class FooterComponent {
   constructor() {}
 
-  onActivate() {
+  onActivateGoToTop() {
     window.scroll({
       top: 0,
       left: 0,

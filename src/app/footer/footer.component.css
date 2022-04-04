@@ -62,9 +62,20 @@
     cursor: unset;
 }
 
-.fas.fa-angle-double-up {
+.fas.fa-arrow-up {
     font-size: 20px;
+    color: white;
+    border: 1px solid var(--main-color);
+    background-color: var(--main-color);
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 50px;
+}
+
+.fas.fa-arrow-up:hover {
+    background-color: white;
     color: var(--main-color);
+    border: 1px solid var(--main-color);
 }
 
 .go-to-top {
