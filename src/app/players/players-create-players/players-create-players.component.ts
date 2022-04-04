@@ -147,8 +147,10 @@ export class PlayersCreatePlayersComponent implements OnInit {
       this.playersService.getPlayer(this.id).subscribe((player) => {
         if (player.owner !== this.currentUser.id) {
           this.message =
-            'You are not authorised to edit player created by different user.';
-          this.router.navigate(['/players', this.id]);
+            'You are not authorised to perform this action';
+          this.router.navigate(['/players'], {
+            state: { message: this.message },
+          });
         } else {
           this.playerForm.patchValue({
             name: player.name,
