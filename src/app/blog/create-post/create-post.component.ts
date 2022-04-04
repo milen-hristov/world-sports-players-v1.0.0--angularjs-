@@ -99,9 +99,10 @@ export class CreatePostComponent implements OnInit, OnDestroy {
     if (this.editMode) {
       this.postsService.getPost(this.id).subscribe((post) => {
         if (post.ownerId !== this.currentUser.id) {
-          this.message =
-            'You are not authorised to edit player created by different user.';
-          this.router.navigate(['/blog/posts', this.id]);
+          this.message = 'You are not authorised to perform this action';
+          this.router.navigate(['/blog/posts'], {
+            state: { message: this.message },
+          });
         } else {
           this.postsForm.patchValue({
             name: post.name,
